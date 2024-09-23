@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="panel.css">
+    <title>Panel</title>
+</head>
+<body>
+
+    <div class="c-panel">
+        <div class="c-panel__header">Anotaciones BEM</div>
+        <div class="c-panel__body">
+            Hay <b>COMPONENTES</b>, <b>MODIFICADORES</b> y <b>ELEMENTOS</b>.
+            <br> <br>
+            - El <i>componente</i> es el bloque principal, el contenedor. Su anotación es c-panel. <br>
+            - El <i>modificador</i> es una variante del componente. Su anotación es c-panel--modificador. <br>
+            - El <i>elemento</i> es una parte del componente. Su anotación es c-panel__elemento. <br>
+            <br> <br>
+            Si un componente tiene un modificador, el modificador se añade al componente. Si un componente tiene un elemento, el elemento se añade al componente. Si un componente tiene un modificador y un elemento, el modificador se añade al componente y el elemento se añade al componente. Su anotación es c-panel--modificador__elemento.
+            <br> <br>
+
+            <div class="c-panel__body c-panel__body--s">Panel 1</div>
+            <div class="c-panel__body c-panel__body--s">Panel 2</div>
+            <div class="c-panel__body c-panel__body--s">Panel 3</div>
+
+            <br> <br>
+
+        
+        </div>
+        <div class="c-panel__footer">Autor: Javi</div>
+    </div>
+    
+</body>
+</html>
