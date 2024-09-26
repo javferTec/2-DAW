@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arrays</title>
+  </head>
+  <body>
+    <h1>Arrays CRUD</h1>
+    <div id="tabla"></div>
+    <br />
+    <button onclick="insertarAlumno()">Insertar</button>
+    <br />
+    <br />
+
+    <h1>Numeros duplicados</h1>
+    <div id="duplicados"></div>
+    <button onclick="eliminarNumerosDuplicados()">
+      Eliminar Números Duplicados
+    </button>
+
+    <script src="main.js"></script>
+    <script src="duplicados.js"></script>
+
+    <script>
+      window.onload = function () {
+        verAlumnos();
+        generarTabla();
+        verNumeros();
+      };
+    </script>
+  </body>
+</html>
