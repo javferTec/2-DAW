@@ -1,0 +1,39 @@
+.l-piramide {
+    display: grid;
+    grid-template-areas: ". cuspide ."
+                         "izquierda central derecha";
+}
+
+.l-piramide__cuspide {
+    grid-area: cuspide;
+}
+
+.l-piramide__izquierda {
+    grid-area: izquierda;
+}
+
+.l-piramide__derecha {
+    grid-area: derecha;
+}
+
+.l-piramide--invertida {
+    grid-template-areas: "izquierda central derecha"
+                         ". cuspide .";
+}
+
+.g--width-100 {
+    width: auto;
+    height: 100px;
+}
+
+.g--background-azul {
+    background-color: blue;
+}
+
+.g--background-verde {
+    background-color: green;
+}
+
+.g--background-rojo {
+    background-color: red;
+}
