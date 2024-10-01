@@ -1,0 +1,45 @@
+.div-parent {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 100vh;
+}
+
+.div-child {
+    background-color: hsl(230, 50%, 10%);
+    width: 200px;
+    height: 600px;
+    margin: 5px;
+}
+
+.div-child-20 {
+    background-color: hsl(230, 50%, 20%);
+}
+
+.div-child-30 {
+    background-color: hsl(230, 50%, 30%);
+}
+
+.div-child-40 {
+    background-color: hsl(230, 50%, 40%);
+}
+
+.div-child-50 {
+    background-color: hsl(230, 50%, 50%);
+}
+
+.div-child-60 {
+    background-color: hsl(230, 50%, 60%);
+}
+
+.div-child-70 {
+    background-color: hsl(230, 50%, 70%);
+}
+
+.div-child-80 {
+    background-color: hsl(230, 50%, 80%);
+}
+
+.div-child-90 {
+    background-color: hsl(230, 50%, 90%);
+}

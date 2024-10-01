@@ -1,0 +1,54 @@
+button {
+    border-radius: 5px;
+    border: none;
+    padding: 15px;
+    margin: 10px;
+}
+
+.normal-primary {
+    background-color: blue;
+    color: white;
+}
+
+.normal-secondary {
+    background-color: white;
+    color: blue;
+    border: 1px solid blue;
+}
+
+.normal-third {
+    background-color: white;
+    color: blue;
+}
+
+.alternative-primary {
+    background-color: orange;
+    color: white;
+}
+
+.alternative-secondary {
+    background-color: white;
+    color: orange;
+    border: 1px solid orange;
+}
+
+.alternative-third {
+    background-color: white;
+    color: orange;
+}
+
+.danger-primary {
+    background-color: red;
+    color: white;
+}
+
+.danger-secondary {
+    background-color: white;
+    color: red;
+    border: 1px solid red;
+}
+
+.danger-third {
+    background-color: white;
+    color: red;
+}
