@@ -9,7 +9,7 @@
               <option name="id" value="409d0452-3bb5-4f60-8d44-a958c43a4a7d" />
               <option name="method" value="GET" />
               <option name="name" value="Draft" />
-              <option name="url" value="http://localhost:8080/api/books" />
+              <option name="url" value="http://localhost:8080/api/bookss" />
             </requestState>
             <requestState>
               <option name="id" value="3c2a9168-00ba-4fb0-b2b9-bb0b4b80b0b9" />

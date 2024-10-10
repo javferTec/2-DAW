@@ -529,6 +529,230 @@
           </option>
           <option name="workspaceId" value="drafts" />
         </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1728369323708" />
+          <option name="id" value="92eb969e-5fac-416f-a5c4-bb3659634380" />
+          <option name="request">
+            <requestState>
+              <option name="id" value="409d0452-3bb5-4f60-8d44-a958c43a4a7d" />
+              <option name="method" value="GET" />
+              <option name="name" value="Draft" />
+              <option name="url" value="http://localhost:8080/api/bookss" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJlcnJvciI6Ik5vUmVzb3VyY2VGb3VuZEV4Y2VwdGlvbiIsIm1lc3NhZ2UiOiJObyBzdGF0aWMgcmVzb3VyY2UgYXBpL2Jvb2tzcy4ifQ==" />
+              <option name="bodyString" value="{&#10;  &quot;error&quot;: &quot;NoResourceFoundException&quot;,&#10;  &quot;message&quot;: &quot;No static resource api/bookss.&quot;&#10;}" />
+              <option name="code" value="500" />
+              <option name="contentType" value="application/json" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Vary" />
+                    <option name="value" value="Origin" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Vary" />
+                    <option name="value" value="Access-Control-Request-Method" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Vary" />
+                    <option name="value" value="Access-Control-Request-Headers" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Transfer-Encoding" />
+                    <option name="value" value="chunked" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Tue, 08 Oct 2024 06:35:23 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="close" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="92eb969e-5fac-416f-a5c4-bb3659634380" />
+              <option name="message" value="Internal Server Error" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;error&quot;:&quot;NoResourceFoundException&quot;,&quot;message&quot;:&quot;No static resource api/bookss.&quot;}" />
+              <option name="size" value="79" />
+              <option name="time" value="95" />
+            </responseState>
+          </option>
+          <option name="workspaceId" value="drafts" />
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1728369333148" />
+          <option name="id" value="ffae9418-f3ba-4ee7-a49a-29dc148a7351" />
+          <option name="request">
+            <requestState>
+              <option name="id" value="409d0452-3bb5-4f60-8d44-a958c43a4a7d" />
+              <option name="method" value="GET" />
+              <option name="name" value="Draft" />
+              <option name="url" value="http://localhost:8080/api/books" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJlcnJvciI6IkNhbm5vdEdldEpkYmNDb25uZWN0aW9uRXhjZXB0aW9uIiwibWVzc2FnZSI6IkZhaWxlZCB0byBvYnRhaW4gSkRCQyBDb25uZWN0aW9uIn0=" />
+              <option name="bodyString" value="{&#10;  &quot;error&quot;: &quot;CannotGetJdbcConnectionException&quot;,&#10;  &quot;message&quot;: &quot;Failed to obtain JDBC Connection&quot;&#10;}" />
+              <option name="code" value="500" />
+              <option name="contentType" value="application/json" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Transfer-Encoding" />
+                    <option name="value" value="chunked" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Tue, 08 Oct 2024 06:35:33 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="close" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="ffae9418-f3ba-4ee7-a49a-29dc148a7351" />
+              <option name="message" value="Internal Server Error" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;error&quot;:&quot;CannotGetJdbcConnectionException&quot;,&quot;message&quot;:&quot;Failed to obtain JDBC Connection&quot;}" />
+              <option name="size" value="89" />
+              <option name="time" value="1130" />
+            </responseState>
+          </option>
+          <option name="workspaceId" value="drafts" />
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1728369349876" />
+          <option name="id" value="d2f373c7-c6fc-4989-a65e-14a7fbf3f06d" />
+          <option name="request">
+            <requestState>
+              <option name="id" value="409d0452-3bb5-4f60-8d44-a958c43a4a7d" />
+              <option name="method" value="GET" />
+              <option name="name" value="Draft" />
+              <option name="url" value="http://localhost:8080/api/bookss" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJlcnJvciI6Ik5vUmVzb3VyY2VGb3VuZEV4Y2VwdGlvbiIsIm1lc3NhZ2UiOiJObyBzdGF0aWMgcmVzb3VyY2UgYXBpL2Jvb2tzcy4ifQ==" />
+              <option name="bodyString" value="{&#10;  &quot;error&quot;: &quot;NoResourceFoundException&quot;,&#10;  &quot;message&quot;: &quot;No static resource api/bookss.&quot;&#10;}" />
+              <option name="code" value="500" />
+              <option name="contentType" value="application/json" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Vary" />
+                    <option name="value" value="Origin" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Vary" />
+                    <option name="value" value="Access-Control-Request-Method" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Vary" />
+                    <option name="value" value="Access-Control-Request-Headers" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Transfer-Encoding" />
+                    <option name="value" value="chunked" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Tue, 08 Oct 2024 06:35:49 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="close" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="d2f373c7-c6fc-4989-a65e-14a7fbf3f06d" />
+              <option name="message" value="Internal Server Error" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;error&quot;:&quot;NoResourceFoundException&quot;,&quot;message&quot;:&quot;No static resource api/bookss.&quot;}" />
+              <option name="size" value="79" />
+              <option name="time" value="9" />
+            </responseState>
+          </option>
+          <option name="workspaceId" value="drafts" />
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1728369352543" />
+          <option name="id" value="10be8988-7bf5-401d-aeed-3b9e794e1f5e" />
+          <option name="request">
+            <requestState>
+              <option name="id" value="409d0452-3bb5-4f60-8d44-a958c43a4a7d" />
+              <option name="method" value="GET" />
+              <option name="name" value="Draft" />
+              <option name="url" value="http://localhost:8080/api/bookss" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="bodyBytesBase64" value="eyJlcnJvciI6Ik5vUmVzb3VyY2VGb3VuZEV4Y2VwdGlvbiIsIm1lc3NhZ2UiOiJObyBzdGF0aWMgcmVzb3VyY2UgYXBpL2Jvb2tzcy4ifQ==" />
+              <option name="bodyString" value="{&#10;  &quot;error&quot;: &quot;NoResourceFoundException&quot;,&#10;  &quot;message&quot;: &quot;No static resource api/bookss.&quot;&#10;}" />
+              <option name="code" value="500" />
+              <option name="contentType" value="application/json" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Vary" />
+                    <option name="value" value="Origin" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Vary" />
+                    <option name="value" value="Access-Control-Request-Method" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Vary" />
+                    <option name="value" value="Access-Control-Request-Headers" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Transfer-Encoding" />
+                    <option name="value" value="chunked" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Tue, 08 Oct 2024 06:35:52 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="close" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="10be8988-7bf5-401d-aeed-3b9e794e1f5e" />
+              <option name="message" value="Internal Server Error" />
+              <option name="prettyResponseType" value="JSON" />
+              <option name="rawBodyString" value="{&quot;error&quot;:&quot;NoResourceFoundException&quot;,&quot;message&quot;:&quot;No static resource api/bookss.&quot;}" />
+              <option name="size" value="79" />
+              <option name="time" value="3" />
+            </responseState>
+          </option>
+          <option name="workspaceId" value="drafts" />
+        </requestHistoryState>
       </list>
     </option>
   </component>
