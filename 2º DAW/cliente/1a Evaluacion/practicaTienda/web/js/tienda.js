@@ -1,23 +1,45 @@
+import { listaArticulos } from "./articulos.js";
+
 let criterios = ["Sin ordenar", "Ascendente por precio", "Descendente por precio"];
+let listaArticulosOrdenados;
+
 
 function creaListaCriterios() {
     let lista = document.getElementById("criteriosOrdenacion");
 
+    let iterable = 1;
+
     criterios.forEach((criterio) => {
         let opcion = document.createElement("option");
         opcion.text = criterio;
-        opcion.value = criterio;
+        opcion.value = iterable++;
         lista.add(opcion);
     });
 }
 
-function pintaArticulos(orden) {
+function obtenerCriterioOrdenacion() {
+    let lista = document.getElementById("criteriosOrdenacion");
+    let indice = lista.selectedIndex;
+
+
+    if (indice === 1) {
+        listaArticulosOrdenados = [...listaArticulos].sort((a, b) => a.precio - b.precio);
+    } else if (indice === 2) {
+        listaArticulosOrdenados = [...listaArticulos].sort((a, b) => b.precio - a.precio);
+    } else {
+        listaArticulosOrdenados = listaArticulos;
+    }
+
+    return listaArticulosOrdenados;
+}
+
+function pintaArticulos(listaArticulosOrdenados) {
     let contenedor = document.getElementById("contenedor");
 
-    listaArticulos.forEach(articulos => {
+    listaArticulosOrdenados.forEach(articulos => {
         let card = `
-              <div class="col">
-                <div class="card">
+              <div class="col mb-4">
+                <div class="card mb-2">
                   <img src="./assets/${articulos.codigo}.jpg" class="card-img-top" alt="">
                   <div class="card-body">
                     <h5 class="card-title">${articulos.nombre}</h5>
@@ -32,8 +54,6 @@ function pintaArticulos(orden) {
         `;
         contenedor.innerHTML += card;
     });
-
-
 }
 
 function ponArticuloEnCarrito() {
@@ -50,5 +70,10 @@ function efectuaPedido() {
 
 window.onload = () => {
     creaListaCriterios();
-    pintaArticulos();
+
+    let lista = document.getElementById("criteriosOrdenacion");
+    lista.addEventListener("change", () => {
+        listaArticulosOrdenados = obtenerCriterioOrdenacion();
+        pintaArticulos(listaArticulosOrdenados);
+    });
 };

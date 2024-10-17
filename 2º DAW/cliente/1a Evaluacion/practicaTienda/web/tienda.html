@@ -17,7 +17,9 @@
 	  </a>
 	
 	     
-      <select id="criteriosOrdenacion"></select>
+      <select id="criteriosOrdenacion">
+		  <option value="0" disabled>Ordenar por:</option>
+	  </select>
 	
 	  <img src="assets/cart.png" height="60px" alt="">
 	</nav>
@@ -26,8 +28,8 @@
 	<br>
 
 	<!-- Div contenedor de los cards de articulos -->
-	<div id="contenedor" class="row row-cols-1 row-cols-md-6 g-4"></div>  
-	
+	<div id="contenedor" class="row row-cols-1 row-cols-md-6 g-4"></div>
+
 	<!-- Componente HTML para dialogos modales -->
 	<dialog id="miDialogo">
 		<div id="dialogHead">
@@ -40,7 +42,7 @@
 		</div>
 		<div class="text-center">
 			<button id="btnCierraDialog" class="btn btn-secondary">Seguir comprando</button>
-			<button id="btnEfectuaPedido"class="btn btn-info">Efectuar pedido</button>
+			<button id="btnEfectuaPedido" class="btn btn-info">Efectuar pedido</button>
 		</div>
 	</dialog>
 
