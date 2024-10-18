@@ -1,8 +1,6 @@
-import { listaArticulos } from "./articulos.js";
-
 let criterios = ["Sin ordenar", "Ascendente por precio", "Descendente por precio"];
-let listaArticulosOrdenados;
-
+let listaArticulosOrdenados = listaArticulos;
+let carrito = new Carrito();
 
 function creaListaCriterios() {
     let lista = document.getElementById("criteriosOrdenacion");
@@ -15,6 +13,11 @@ function creaListaCriterios() {
         opcion.value = iterable++;
         lista.add(opcion);
     });
+
+    lista.addEventListener("change", () => {
+        listaArticulosOrdenados = obtenerCriterioOrdenacion();
+        pintaArticulos(listaArticulosOrdenados);
+    });
 }
 
 function obtenerCriterioOrdenacion() {
@@ -22,12 +25,12 @@ function obtenerCriterioOrdenacion() {
     let indice = lista.selectedIndex;
 
 
-    if (indice === 1) {
+    if (indice === 3) { // descendente por precio
         listaArticulosOrdenados = [...listaArticulos].sort((a, b) => a.precio - b.precio);
-    } else if (indice === 2) {
+    } else if (indice === 2) { // ascendente por precio
         listaArticulosOrdenados = [...listaArticulos].sort((a, b) => b.precio - a.precio);
-    } else {
-        listaArticulosOrdenados = listaArticulos;
+    } else { // sin ordenar
+        listaArticulosOrdenados = [...listaArticulos];
     }
 
     return listaArticulosOrdenados;
@@ -35,6 +38,8 @@ function obtenerCriterioOrdenacion() {
 
 function pintaArticulos(listaArticulosOrdenados) {
     let contenedor = document.getElementById("contenedor");
+
+    contenedor.innerHTML = "";
 
     listaArticulosOrdenados.forEach(articulos => {
         let card = `
@@ -48,32 +53,49 @@ function pintaArticulos(listaArticulosOrdenados) {
                       <p class="card-text text-center">${articulos.precio}€</p>
                     </b>
                   </div>
-                  <button id="${articulos.codigo}" class="btn btn-success">Comprar</button>
+                  <button id="${articulos.codigo}" class="ponArticuloEnCarrito btn btn-success">Comprar</button>
                 </div>
               </div>
         `;
+
         contenedor.innerHTML += card;
     });
+
+    let botones = document.getElementsByClassName("ponArticuloEnCarrito");
+    for (let boton of botones) {
+        boton.addEventListener("click", () => {
+            ponArticuloEnCarrito();
+        });
+    }
+
 }
 
 function ponArticuloEnCarrito() {
-    console.log("Artículo añadido al carrito");
+    let boton = event.target;
+    let codigo = boton.id;
+    let articulo = listaArticulos.find(articulo => articulo.codigo === codigo);
+    carrito.anyadeArticulo(articulo);
 }
 
 function verCarro() {
-    console.log("Mostrando el carrito");
+    let botonCarrito = document.getElementById("carrito");
+    botonCarrito.addEventListener("click", () => {
+        carrito.verCarrito();
+    });
 }
 
 function efectuaPedido() {
-    console.log("Pedido realizado");
+    let botonPedido = document.getElementById("btnEfectuaPedido");
+    botonPedido.addEventListener("click", () => {
+        console.log(JSON.stringify(carrito.articulos) + " - " + carrito.id);
+    });
 }
 
 window.onload = () => {
     creaListaCriterios();
-
-    let lista = document.getElementById("criteriosOrdenacion");
-    lista.addEventListener("change", () => {
-        listaArticulosOrdenados = obtenerCriterioOrdenacion();
-        pintaArticulos(listaArticulosOrdenados);
-    });
+    pintaArticulos(listaArticulosOrdenados);
+    carrito.id = 1111;
+    verCarro();
+    carrito.cerrarDialogo();
+    efectuaPedido();
 };
