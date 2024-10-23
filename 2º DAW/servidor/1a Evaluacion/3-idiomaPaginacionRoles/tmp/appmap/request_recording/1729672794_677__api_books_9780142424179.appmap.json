@@ -1,0 +1,1119 @@
+{
+  "events": [
+    {
+      "event": "call",
+      "http_server_request": {
+        "headers": {
+          "sec-fetch-mode": "navigate",
+          "sec-fetch-site": "none",
+          "accept-language": "es,en-US;q=0.9,en;q=0.8",
+          "cookie": "Webstorm-a27517ec=cdd9fa11-846a-4d20-a4a1-f0fb2bf3797f",
+          "sec-fetch-user": "?1",
+          "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+          "sec-ch-ua": "\"Chromium\";v=\"130\", \"Google Chrome\";v=\"130\", \"Not?A_Brand\";v=\"99\"",
+          "sec-ch-ua-mobile": "?0",
+          "sec-ch-ua-platform": "\"Windows\"",
+          "host": "localhost:8080",
+          "upgrade-insecure-requests": "1",
+          "connection": "keep-alive",
+          "accept-encoding": "gzip, deflate, br, zstd",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+          "sec-fetch-dest": "document"
+        },
+        "normalized_path_info": "/api/books/{isbn}",
+        "path_info": "/api/books/9780142424179",
+        "protocol": "HTTP/1.1",
+        "request_method": "GET"
+      },
+      "id": 1,
+      "thread_id": 54
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.common.locale.CustomLocaleChangeInterceptor",
+      "event": "call",
+      "id": 2,
+      "lineno": 20,
+      "method_id": "preHandle",
+      "parameters": [
+        {
+          "class": "org.apache.catalina.connector.RequestFacade",
+          "kind": "req",
+          "name": "request",
+          "object_id": 1196999593,
+          "value": "org.apache.catalina.connector.RequestFacade@4758c3a9"
+        },
+        {
+          "class": "org.apache.catalina.connector.ResponseFacade",
+          "kind": "req",
+          "name": "response",
+          "object_id": 1130844058,
+          "value": "org.apache.catalina.connector.ResponseFacade@43674f9a"
+        },
+        {
+          "class": "org.springframework.web.method.HandlerMethod",
+          "kind": "req",
+          "name": "handler",
+          "object_id": 107334034,
+          "value": "com.fpmislata.basespring.controller.BookController#findByIsbn(String)"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/common/locale/CustomLocaleChangeInterceptor.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.common.locale.CustomLocaleChangeInterceptor",
+        "object_id": 421120197,
+        "value": "com.fpmislata.basespring.common.locale.CustomLocaleChangeInterceptor@1919c8c5"
+      },
+      "static": false,
+      "thread_id": 54
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 3,
+      "parent_id": 2,
+      "return_value": {
+        "class": "java.lang.Boolean",
+        "object_id": 1591276683,
+        "value": "true"
+      },
+      "thread_id": 54
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.BookController",
+      "event": "call",
+      "id": 4,
+      "lineno": 36,
+      "method_id": "findByIsbn",
+      "parameters": [
+        {
+          "class": "java.lang.String",
+          "kind": "req",
+          "name": "isbn",
+          "object_id": 946246540,
+          "value": "9780142424179"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/controller/BookController.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.BookController",
+        "object_id": 195942392,
+        "value": "com.fpmislata.basespring.controller.BookController@badd7f8"
+      },
+      "static": false,
+      "thread_id": 54
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.domain.service.impl.BookServiceImpl",
+      "event": "call",
+      "id": 5,
+      "lineno": 24,
+      "method_id": "findByIsbn",
+      "parameters": [
+        {
+          "class": "java.lang.String",
+          "kind": "req",
+          "name": "isbn",
+          "object_id": 946246540,
+          "value": "9780142424179"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/domain/service/impl/BookServiceImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.domain.service.impl.BookServiceImpl",
+        "object_id": 2077637013,
+        "value": "com.fpmislata.basespring.domain.service.impl.BookServiceImpl@7bd63995"
+      },
+      "static": false,
+      "thread_id": 54
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.BookRepositoryImplJdbc",
+      "event": "call",
+      "id": 6,
+      "lineno": 32,
+      "method_id": "findByIsbn",
+      "parameters": [
+        {
+          "class": "java.lang.String",
+          "kind": "req",
+          "name": "isbn",
+          "object_id": 946246540,
+          "value": "9780142424179"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/BookRepositoryImplJdbc.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.BookRepositoryImplJdbc",
+        "object_id": 1129671294,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.BookRepositoryImplJdbc@43556a7e"
+      },
+      "static": false,
+      "thread_id": 54
+    },
+    {
+      "event": "call",
+      "id": 7,
+      "sql_query": {
+        "database_type": "MariaDB",
+        "sql": "     SELECT * FROM books\n     LEFT JOIN categories ON books.category_id = categories.id\n     LEFT JOIN publishers ON books.publisher_id = publishers.id\n     WHERE books.isbn = ?\n"
+      },
+      "thread_id": 54
+    },
+    {
+      "elapsed": 0.00494227,
+      "event": "return",
+      "id": 8,
+      "parent_id": 7,
+      "thread_id": 54
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+      "event": "call",
+      "id": 9,
+      "lineno": 16,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 171471184,
+          "value": "HikariProxyResultSet@171471184 wrapping org.mariadb.jdbc.client.result.CompleteResult@2f88a6d6"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 640869883,
+          "value": "0"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/BookRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+        "object_id": 823830052,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper@311aa624"
+      },
+      "static": false,
+      "thread_id": 54
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+      "event": "call",
+      "id": 10,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 171471184,
+          "value": "HikariProxyResultSet@171471184 wrapping org.mariadb.jdbc.client.result.CompleteResult@2f88a6d6"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 640869883,
+          "value": "0"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/CategoryRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+        "object_id": 914176018,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper@367d3812"
+      },
+      "static": false,
+      "thread_id": 54
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 11,
+      "parent_id": 10,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Category",
+        "object_id": 1718874246,
+        "value": "Category(id=1, name=Novedades, slug=new-releases)"
+      },
+      "thread_id": 54
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+      "event": "call",
+      "id": 12,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 171471184,
+          "value": "HikariProxyResultSet@171471184 wrapping org.mariadb.jdbc.client.result.CompleteResult@2f88a6d6"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 640869883,
+          "value": "0"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/PublisherRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+        "object_id": 45892074,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper@2bc41ea"
+      },
+      "static": false,
+      "thread_id": 54
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 13,
+      "parent_id": 12,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Publisher",
+        "object_id": 1566462983,
+        "value": "Publisher(id=1, name=Novedades, slug=new-releases)"
+      },
+      "thread_id": 54
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 14,
+      "parent_id": 9,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Book",
+        "object_id": 923465580,
+        "value": "Book(isbn=9780142424179, title=The Little Prince, synopsis=The Little Prince is a novella and the most famous work of the French writer and aviator Antoine de Saint-Exupéry. The story is philosophical and involves a young prince who travels from planet to planet, meeting characters who show different aspects of human nature. In his journey, the little prince learns about loneliness, love, loss, and friendship., price=15.99, discount=10.0, cover=http://images.cesguiro.es/books/9780142424179.webp, publisher=Publisher(id=1, name=Novedades, slug=new-releases), category=Category(id=1, name=Novedades, slug=new-releases), authors=null, genres=null)"
+      },
+      "thread_id": 54
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.AuthorRepositoryImplJdbc",
+      "event": "call",
+      "id": 15,
+      "lineno": 20,
+      "method_id": "getByIsbnBook",
+      "parameters": [
+        {
+          "class": "java.lang.String",
+          "kind": "req",
+          "name": "isbn",
+          "object_id": 946246540,
+          "value": "9780142424179"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/AuthorRepositoryImplJdbc.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.AuthorRepositoryImplJdbc",
+        "object_id": 1759485170,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.AuthorRepositoryImplJdbc@68df9cf2"
+      },
+      "static": false,
+      "thread_id": 54
+    },
+    {
+      "event": "call",
+      "id": 16,
+      "sql_query": {
+        "database_type": "MariaDB",
+        "sql": "    SELECT authors.* FROM authors\n                    JOIN books_authors ON authors.id = books_authors.author_id\n                    JOIN books ON books_authors.book_id = books.id\n                    AND books.isbn = ?\n"
+      },
+      "thread_id": 54
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 17,
+      "parent_id": 16,
+      "thread_id": 54
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.AuthorRowMapper",
+      "event": "call",
+      "id": 18,
+      "lineno": 14,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 565781660,
+          "value": "HikariProxyResultSet@565781660 wrapping org.mariadb.jdbc.client.result.CompleteResult@554bf3b2"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 640869883,
+          "value": "0"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/AuthorRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.AuthorRowMapper",
+        "object_id": 468781647,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.AuthorRowMapper@1bf10a4f"
+      },
+      "static": false,
+      "thread_id": 54
+    },
+    {
+      "elapsed": 0.00162972,
+      "event": "return",
+      "id": 19,
+      "parent_id": 18,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Author",
+        "object_id": 1812950337,
+        "value": "Author(id=1, name=Antoine de Saint-Exupéry, nationality=French, biography=Antoine de Saint-Exupéry fue un escritor, poeta, aristócrata, periodista y aviador pionero francés. Es recordado por su novela corta El principito y por sus escritos líricos sobre la aviación., birthYear=1900, deathYear=1944)"
+      },
+      "thread_id": 54
+    },
+    {
+      "elapsed": 0.00162972,
+      "event": "return",
+      "id": 20,
+      "parent_id": 15,
+      "return_value": {
+        "class": "java.util.ArrayList",
+        "object_id": 1977083348,
+        "value": "[Author(id=1, name=Antoine de Saint-Exupéry, nationality=French, biography=Antoine de Saint-Exupéry fue un escritor, poeta, aristócrata, periodista y aviador pionero francés. Es recordado por su novela corta El principito y por sus escritos líricos sobre la aviación., birthYear=1900, deathYear=1944)]"
+      },
+      "thread_id": 54
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.GenreRepositoryImplJdbc",
+      "event": "call",
+      "id": 21,
+      "lineno": 20,
+      "method_id": "getByIsbnBook",
+      "parameters": [
+        {
+          "class": "java.lang.String",
+          "kind": "req",
+          "name": "isbn",
+          "object_id": 946246540,
+          "value": "9780142424179"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/GenreRepositoryImplJdbc.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.GenreRepositoryImplJdbc",
+        "object_id": 1158518434,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.GenreRepositoryImplJdbc@450d96a2"
+      },
+      "static": false,
+      "thread_id": 54
+    },
+    {
+      "event": "call",
+      "id": 22,
+      "sql_query": {
+        "database_type": "MariaDB",
+        "sql": "    SELECT genres.* FROM genres\n                    JOIN books_genres ON genres.id = books_genres.genre_id\n                    JOIN books ON books_genres.book_id = books.id\n                    AND books.isbn = ?\n"
+      },
+      "thread_id": 54
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 23,
+      "parent_id": 22,
+      "thread_id": 54
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.GenreRowMapper",
+      "event": "call",
+      "id": 24,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 484954852,
+          "value": "HikariProxyResultSet@484954852 wrapping org.mariadb.jdbc.client.result.CompleteResult@2f42e228"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 640869883,
+          "value": "0"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/GenreRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.GenreRowMapper",
+        "object_id": 461581916,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.GenreRowMapper@1b832e5c"
+      },
+      "static": false,
+      "thread_id": 54
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 25,
+      "parent_id": 24,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Genre",
+        "object_id": 731852558,
+        "value": "Genre(id=1, name=Infantil, slug=childrens)"
+      },
+      "thread_id": 54
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.GenreRowMapper",
+      "event": "call",
+      "id": 26,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 484954852,
+          "value": "HikariProxyResultSet@484954852 wrapping org.mariadb.jdbc.client.result.CompleteResult@2f42e228"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 691541294,
+          "value": "1"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/GenreRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.GenreRowMapper",
+        "object_id": 461581916,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.GenreRowMapper@1b832e5c"
+      },
+      "static": false,
+      "thread_id": 54
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 27,
+      "parent_id": 26,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Genre",
+        "object_id": 1761025027,
+        "value": "Genre(id=3, name=Ficción, slug=fiction)"
+      },
+      "thread_id": 54
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 28,
+      "parent_id": 21,
+      "return_value": {
+        "class": "java.util.ArrayList",
+        "object_id": 903009806,
+        "value": "[Genre(id=1, name=Infantil, slug=childrens), Genre(id=3, name=Ficción, slug=fiction)]"
+      },
+      "thread_id": 54
+    },
+    {
+      "elapsed": 0.00670338,
+      "event": "return",
+      "id": 29,
+      "parent_id": 6,
+      "return_value": {
+        "class": "java.util.Optional",
+        "object_id": 1743223013,
+        "value": "Optional[Book(isbn=9780142424179, title=The Little Prince, synopsis=The Little Prince is a novella and the most famous work of the French writer and aviator Antoine de Saint-Exupéry. The story is philosophical and involves a young prince who travels from planet to planet, meeting characters who show different aspects of human nature. In his journey, the little prince learns about loneliness, love, loss, and friendship., price=15.99, discount=10.0, cover=http://images.cesguiro.es/books/9780142424179.webp, publisher=Publisher(id=1, name=Novedades, slug=new-releases), category=Category(id=1, name=Novedades, slug=new-releases), authors=[Author(id=1, name=Antoine de Saint-Exupéry, nationality=French, biography=Antoine de Saint-Exupéry fue un escritor, poeta, aristócrata, periodista y aviador pionero francés. Es recordado por su novela corta El principito y por sus escritos líricos sobre la aviación., birthYear=1900, deathYear=1944)], genres=[Genre(id=1, name=Infantil, slug=childrens), Genre(id=3, name=Ficción, ..."
+      },
+      "thread_id": 54
+    },
+    {
+      "elapsed": 0.00670338,
+      "event": "return",
+      "id": 30,
+      "parent_id": 5,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Book",
+        "object_id": 923465580,
+        "value": "Book(isbn=9780142424179, title=The Little Prince, synopsis=The Little Prince is a novella and the most famous work of the French writer and aviator Antoine de Saint-Exupéry. The story is philosophical and involves a young prince who travels from planet to planet, meeting characters who show different aspects of human nature. In his journey, the little prince learns about loneliness, love, loss, and friendship., price=15.99, discount=10.0, cover=http://images.cesguiro.es/books/9780142424179.webp, publisher=Publisher(id=1, name=Novedades, slug=new-releases), category=Category(id=1, name=Novedades, slug=new-releases), authors=[Author(id=1, name=Antoine de Saint-Exupéry, nationality=French, biography=Antoine de Saint-Exupéry fue un escritor, poeta, aristócrata, periodista y aviador pionero francés. Es recordado por su novela corta El principito y por sus escritos líricos sobre la aviación., birthYear=1900, deathYear=1944)], genres=[Genre(id=1, name=Infantil, slug=childrens), Genre(id=3, name=Ficción, slug=fict..."
+      },
+      "thread_id": 54
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+      "event": "call",
+      "id": 31,
+      "lineno": 54,
+      "method_id": "toBookDetail",
+      "parameters": [
+        {
+          "class": "com.fpmislata.basespring.domain.model.Book",
+          "kind": "req",
+          "name": "book",
+          "object_id": 923465580,
+          "value": "Book(isbn=9780142424179, title=The Little Prince, synopsis=The Little Prince is a novella and the most famous work of the French writer and aviator Antoine de Saint-Exupéry. The story is philosophical and involves a young prince who travels from planet to planet, meeting characters who show different aspects of human nature. In his journey, the little prince learns about loneliness, love, loss, and friendship., price=15.99, discount=10.0, cover=http://images.cesguiro.es/books/9780142424179.webp, publisher=Publisher(id=1, name=Novedades, slug=new-releases), category=Category(id=1, name=Novedades, slug=new-releases), authors=[Author(id=1, name=Antoine de Saint-Exupéry, nationality=French, biography=Antoine de Saint-Exupéry fue un escritor, poeta, aristócrata, periodista y aviador pionero francés. Es recordado por su novela corta El principito y por sus escritos líricos sobre la aviación., birthYear=1900, deathYear=1944)], genres=[Genre(id=1, name=Infantil, slug=childrens), Genre(id=3, name=Ficción, slug=fict..."
+        }
+      ],
+      "path": "com/fpmislata/basespring/controller/webMapper/book/BookMapperImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+        "object_id": 1541609896,
+        "value": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl@5be319a8"
+      },
+      "static": false,
+      "thread_id": 54
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.webMapper.publisher.PublisherMapperImpl",
+      "event": "call",
+      "id": 32,
+      "lineno": 16,
+      "method_id": "toPublisherCollection",
+      "parameters": [
+        {
+          "class": "com.fpmislata.basespring.domain.model.Publisher",
+          "kind": "req",
+          "name": "publisher",
+          "object_id": 1566462983,
+          "value": "Publisher(id=1, name=Novedades, slug=new-releases)"
+        }
+      ],
+      "path": "com/fpmislata/basespring/controller/webMapper/publisher/PublisherMapperImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.webMapper.publisher.PublisherMapperImpl",
+        "object_id": 265002341,
+        "value": "com.fpmislata.basespring.controller.webMapper.publisher.PublisherMapperImpl@fcb9d65"
+      },
+      "static": false,
+      "thread_id": 54
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 33,
+      "parent_id": 32,
+      "return_value": {
+        "class": "com.fpmislata.basespring.controller.webModel.publisher.PublisherCollection",
+        "object_id": 661949834,
+        "value": "PublisherCollection[id=1, name=Novedades]"
+      },
+      "thread_id": 54
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+      "event": "call",
+      "id": 34,
+      "lineno": 86,
+      "method_id": "authorListToAuthorCollectionList",
+      "parameters": [
+        {
+          "class": "java.util.ArrayList",
+          "kind": "req",
+          "name": "list",
+          "object_id": 1977083348,
+          "value": "[Author(id=1, name=Antoine de Saint-Exupéry, nationality=French, biography=Antoine de Saint-Exupéry fue un escritor, poeta, aristócrata, periodista y aviador pionero francés. Es recordado por su novela corta El principito y por sus escritos líricos sobre la aviación., birthYear=1900, deathYear=1944)]"
+        }
+      ],
+      "path": "com/fpmislata/basespring/controller/webMapper/book/BookMapperImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+        "object_id": 1541609896,
+        "value": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl@5be319a8"
+      },
+      "static": false,
+      "thread_id": 54
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.webMapper.author.AuthorMapperImpl",
+      "event": "call",
+      "id": 35,
+      "lineno": 16,
+      "method_id": "toAuthorCollection",
+      "parameters": [
+        {
+          "class": "com.fpmislata.basespring.domain.model.Author",
+          "kind": "req",
+          "name": "author",
+          "object_id": 1812950337,
+          "value": "Author(id=1, name=Antoine de Saint-Exupéry, nationality=French, biography=Antoine de Saint-Exupéry fue un escritor, poeta, aristócrata, periodista y aviador pionero francés. Es recordado por su novela corta El principito y por sus escritos líricos sobre la aviación., birthYear=1900, deathYear=1944)"
+        }
+      ],
+      "path": "com/fpmislata/basespring/controller/webMapper/author/AuthorMapperImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.webMapper.author.AuthorMapperImpl",
+        "object_id": 265097935,
+        "value": "com.fpmislata.basespring.controller.webMapper.author.AuthorMapperImpl@fcd12cf"
+      },
+      "static": false,
+      "thread_id": 54
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 36,
+      "parent_id": 35,
+      "return_value": {
+        "class": "com.fpmislata.basespring.controller.webModel.author.AuthorCollection",
+        "object_id": 548094173,
+        "value": "AuthorCollection[id=1, name=Antoine de Saint-Exupéry]"
+      },
+      "thread_id": 54
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 37,
+      "parent_id": 34,
+      "return_value": {
+        "class": "java.util.ArrayList",
+        "object_id": 1064400014,
+        "value": "[AuthorCollection[id=1, name=Antoine de Saint-Exupéry]]"
+      },
+      "thread_id": 54
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.webMapper.genre.GenreMapperImpl",
+      "event": "call",
+      "id": 38,
+      "lineno": 17,
+      "method_id": "toGenreNameList",
+      "parameters": [
+        {
+          "class": "java.util.ArrayList",
+          "kind": "req",
+          "name": "genres",
+          "object_id": 903009806,
+          "value": "[Genre(id=1, name=Infantil, slug=childrens), Genre(id=3, name=Ficción, slug=fiction)]"
+        }
+      ],
+      "path": "com/fpmislata/basespring/controller/webMapper/genre/GenreMapperImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.webMapper.genre.GenreMapperImpl",
+        "object_id": 643870904,
+        "value": "com.fpmislata.basespring.controller.webMapper.genre.GenreMapperImpl@2660b0b8"
+      },
+      "static": false,
+      "thread_id": 54
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 39,
+      "parent_id": 38,
+      "return_value": {
+        "class": "java.util.ArrayList",
+        "object_id": 1934404253,
+        "value": "[Infantil, Ficción]"
+      },
+      "thread_id": 54
+    },
+    {
+      "elapsed": 0.00143302,
+      "event": "return",
+      "id": 40,
+      "parent_id": 31,
+      "return_value": {
+        "class": "com.fpmislata.basespring.controller.webModel.book.BookDetail",
+        "object_id": 1031430440,
+        "value": "BookDetail[isbn=9780142424179, title=The Little Prince, price=15.99, discount=10.0, synopsis=The Little Prince is a novella and the most famous work of the French writer and aviator Antoine de Saint-Exupéry. The story is philosophical and involves a young prince who travels from planet to planet, meeting characters who show different aspects of human nature. In his journey, the little prince learns about loneliness, love, loss, and friendship., cover=http://images.cesguiro.es/books/9780142424179.webp, genres=[Infantil, Ficción], category=Novedades, publisherCollection=PublisherCollection[id=1, name=Novedades], authorsCollection=[AuthorCollection[id=1, name=Antoine de Saint-Exupéry]]]"
+      },
+      "thread_id": 54
+    },
+    {
+      "elapsed": 0.0081364,
+      "event": "return",
+      "id": 41,
+      "parent_id": 4,
+      "return_value": {
+        "class": "org.springframework.http.ResponseEntity",
+        "object_id": 515699535,
+        "value": "<200 OK OK,BookDetail[isbn=9780142424179, title=The Little Prince, price=15.99, discount=10.0, synopsis=The Little Prince is a novella and the most famous work of the French writer and aviator Antoine de Saint-Exupéry. The story is philosophical and involves a young prince who travels from planet to planet, meeting characters who show different aspects of human nature. In his journey, the little prince learns about loneliness, love, loss, and friendship., cover=http://images.cesguiro.es/books/9780142424179.webp, genres=[Infantil, Ficción], category=Novedades, publisherCollection=PublisherCollection[id=1, name=Novedades], authorsCollection=[AuthorCollection[id=1, name=Antoine de Saint-Exupéry]]],[]>"
+      },
+      "thread_id": 54
+    },
+    {
+      "elapsed": 0.00909565,
+      "event": "return",
+      "http_server_response": {
+        "headers": {
+          "Transfer-Encoding": "chunked",
+          "Keep-Alive": "timeout=60",
+          "Connection": "keep-alive",
+          "Date": "Wed, 23 Oct 2024 08:39:54 GMT",
+          "Content-Type": "application/json"
+        },
+        "status": 200
+      },
+      "id": 42,
+      "parent_id": 1,
+      "thread_id": 54
+    }
+  ],
+  "version": "1.2",
+  "metadata": {
+    "name": "GET /api/books/9780142424179 (200) - 10:39:54.677",
+    "app": "base-spring",
+    "language": {
+      "name": "java",
+      "version": "21.0.4+7-LTS",
+      "engine": "OpenJDK 64-Bit Server VM"
+    },
+    "client": {
+      "name": "appmap-java",
+      "url": "https://github.com/appland/appmap-java"
+    },
+    "recorder": {
+      "name": "request_recording",
+      "type": "requests"
+    },
+    "recording": {},
+    "git": {
+      "repository": "https://github.com/javferTec/2-DAW.git",
+      "branch": "main",
+      "commit": "5d1d2fc17416b33497b08f7e486653b5f0e0a3e8"
+    }
+  },
+  "classMap": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "name": "mapRow",
+                                          "type": "function",
+                                          "static": false,
+                                          "location": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/BookRowMapper.java:16"
+                                        }
+                                      ],
+                                      "name": "BookRowMapper",
+                                      "type": "class"
+                                    },
+                                    {
+                                      "children": [
+                                        {
+                                          "name": "mapRow",
+                                          "type": "function",
+                                          "static": false,
+                                          "location": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/CategoryRowMapper.java:13"
+                                        }
+                                      ],
+                                      "name": "CategoryRowMapper",
+                                      "type": "class"
+                                    },
+                                    {
+                                      "children": [
+                                        {
+                                          "name": "mapRow",
+                                          "type": "function",
+                                          "static": false,
+                                          "location": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/GenreRowMapper.java:13"
+                                        }
+                                      ],
+                                      "name": "GenreRowMapper",
+                                      "type": "class"
+                                    },
+                                    {
+                                      "children": [
+                                        {
+                                          "name": "mapRow",
+                                          "type": "function",
+                                          "static": false,
+                                          "location": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/PublisherRowMapper.java:13"
+                                        }
+                                      ],
+                                      "name": "PublisherRowMapper",
+                                      "type": "class"
+                                    },
+                                    {
+                                      "children": [
+                                        {
+                                          "name": "mapRow",
+                                          "type": "function",
+                                          "static": false,
+                                          "location": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/AuthorRowMapper.java:14"
+                                        }
+                                      ],
+                                      "name": "AuthorRowMapper",
+                                      "type": "class"
+                                    }
+                                  ],
+                                  "name": "mapper",
+                                  "type": "package"
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "name": "getByIsbnBook",
+                                      "type": "function",
+                                      "static": false,
+                                      "location": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/GenreRepositoryImplJdbc.java:20"
+                                    }
+                                  ],
+                                  "name": "GenreRepositoryImplJdbc",
+                                  "type": "class"
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "name": "getByIsbnBook",
+                                      "type": "function",
+                                      "static": false,
+                                      "location": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/AuthorRepositoryImplJdbc.java:20"
+                                    }
+                                  ],
+                                  "name": "AuthorRepositoryImplJdbc",
+                                  "type": "class"
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "name": "findByIsbn",
+                                      "type": "function",
+                                      "static": false,
+                                      "location": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/BookRepositoryImplJdbc.java:32"
+                                    }
+                                  ],
+                                  "name": "BookRepositoryImplJdbc",
+                                  "type": "class"
+                                }
+                              ],
+                              "name": "jdbc",
+                              "type": "package"
+                            }
+                          ],
+                          "name": "impl",
+                          "type": "package"
+                        }
+                      ],
+                      "name": "repository",
+                      "type": "package"
+                    }
+                  ],
+                  "name": "persistence",
+                  "type": "package"
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "name": "preHandle",
+                              "type": "function",
+                              "static": false,
+                              "location": "base-spring/src/main/java/com/fpmislata/basespring/common/locale/CustomLocaleChangeInterceptor.java:20"
+                            }
+                          ],
+                          "name": "CustomLocaleChangeInterceptor",
+                          "type": "class"
+                        }
+                      ],
+                      "name": "locale",
+                      "type": "package"
+                    }
+                  ],
+                  "name": "common",
+                  "type": "package"
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "name": "findByIsbn",
+                          "type": "function",
+                          "static": false,
+                          "location": "base-spring/src/main/java/com/fpmislata/basespring/controller/BookController.java:36"
+                        }
+                      ],
+                      "name": "BookController",
+                      "type": "class"
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "name": "toBookDetail",
+                                  "type": "function",
+                                  "static": false,
+                                  "location": "com/fpmislata/basespring/controller/webMapper/book/BookMapperImpl.java:54"
+                                },
+                                {
+                                  "name": "authorListToAuthorCollectionList",
+                                  "type": "function",
+                                  "static": false,
+                                  "location": "com/fpmislata/basespring/controller/webMapper/book/BookMapperImpl.java:86"
+                                }
+                              ],
+                              "name": "BookMapperImpl",
+                              "type": "class"
+                            }
+                          ],
+                          "name": "book",
+                          "type": "package"
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "name": "toAuthorCollection",
+                                  "type": "function",
+                                  "static": false,
+                                  "location": "com/fpmislata/basespring/controller/webMapper/author/AuthorMapperImpl.java:16"
+                                }
+                              ],
+                              "name": "AuthorMapperImpl",
+                              "type": "class"
+                            }
+                          ],
+                          "name": "author",
+                          "type": "package"
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "name": "toPublisherCollection",
+                                  "type": "function",
+                                  "static": false,
+                                  "location": "com/fpmislata/basespring/controller/webMapper/publisher/PublisherMapperImpl.java:16"
+                                }
+                              ],
+                              "name": "PublisherMapperImpl",
+                              "type": "class"
+                            }
+                          ],
+                          "name": "publisher",
+                          "type": "package"
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "name": "toGenreNameList",
+                                  "type": "function",
+                                  "static": false,
+                                  "location": "com/fpmislata/basespring/controller/webMapper/genre/GenreMapperImpl.java:17"
+                                }
+                              ],
+                              "name": "GenreMapperImpl",
+                              "type": "class"
+                            }
+                          ],
+                          "name": "genre",
+                          "type": "package"
+                        }
+                      ],
+                      "name": "webMapper",
+                      "type": "package"
+                    }
+                  ],
+                  "name": "controller",
+                  "type": "package"
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "name": "findByIsbn",
+                                  "type": "function",
+                                  "static": false,
+                                  "location": "base-spring/src/main/java/com/fpmislata/basespring/domain/service/impl/BookServiceImpl.java:24"
+                                }
+                              ],
+                              "name": "BookServiceImpl",
+                              "type": "class"
+                            }
+                          ],
+                          "name": "impl",
+                          "type": "package"
+                        }
+                      ],
+                      "name": "service",
+                      "type": "package"
+                    }
+                  ],
+                  "name": "domain",
+                  "type": "package"
+                }
+              ],
+              "name": "basespring",
+              "type": "package"
+            }
+          ],
+          "name": "fpmislata",
+          "type": "package"
+        }
+      ],
+      "name": "com",
+      "type": "package"
+    },
+    {
+      "type": "http",
+      "name": "HTTP server requests",
+      "children": [
+        {
+          "type": "route",
+          "name": "GET /api/books/{isbn}"
+        }
+      ]
+    },
+    {
+      "type": "database",
+      "name": "Database",
+      "children": [
+        {
+          "type": "query",
+          "name": "     SELECT * FROM books\n     LEFT JOIN categories ON books.category_id = categories.id\n     LEFT JOIN publishers ON books.publisher_id = publishers.id\n     WHERE books.isbn = ?\n"
+        },
+        {
+          "type": "query",
+          "name": "    SELECT authors.* FROM authors\n                    JOIN books_authors ON authors.id = books_authors.author_id\n                    JOIN books ON books_authors.book_id = books.id\n                    AND books.isbn = ?\n"
+        },
+        {
+          "type": "query",
+          "name": "    SELECT genres.* FROM genres\n                    JOIN books_genres ON genres.id = books_genres.genre_id\n                    JOIN books ON books_genres.book_id = books.id\n                    AND books.isbn = ?\n"
+        }
+      ]
+    }
+  ]
+}

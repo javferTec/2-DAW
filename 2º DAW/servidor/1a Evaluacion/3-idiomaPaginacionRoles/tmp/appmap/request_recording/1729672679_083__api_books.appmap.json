@@ -1,0 +1,4415 @@
+{
+  "events": [
+    {
+      "event": "call",
+      "http_server_request": {
+        "headers": {
+          "sec-fetch-mode": "navigate",
+          "sec-fetch-site": "none",
+          "accept-language": "es,en-US;q=0.9,en;q=0.8",
+          "cookie": "Webstorm-a27517ec=cdd9fa11-846a-4d20-a4a1-f0fb2bf3797f",
+          "sec-fetch-user": "?1",
+          "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+          "sec-ch-ua": "\"Chromium\";v=\"130\", \"Google Chrome\";v=\"130\", \"Not?A_Brand\";v=\"99\"",
+          "sec-ch-ua-mobile": "?0",
+          "sec-ch-ua-platform": "\"Windows\"",
+          "host": "localhost:8080",
+          "upgrade-insecure-requests": "1",
+          "connection": "keep-alive",
+          "cache-control": "max-age=0",
+          "accept-encoding": "gzip, deflate, br, zstd",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+          "sec-fetch-dest": "document"
+        },
+        "normalized_path_info": "/api/books",
+        "path_info": "/api/books",
+        "protocol": "HTTP/1.1",
+        "request_method": "GET"
+      },
+      "id": 1,
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.common.locale.CustomLocaleChangeInterceptor",
+      "event": "call",
+      "id": 2,
+      "lineno": 20,
+      "method_id": "preHandle",
+      "parameters": [
+        {
+          "class": "org.apache.catalina.connector.RequestFacade",
+          "kind": "req",
+          "name": "request",
+          "object_id": 835729715,
+          "value": "org.apache.catalina.connector.RequestFacade@31d03933"
+        },
+        {
+          "class": "org.apache.catalina.connector.ResponseFacade",
+          "kind": "req",
+          "name": "response",
+          "object_id": 904903633,
+          "value": "org.apache.catalina.connector.ResponseFacade@35efbbd1"
+        },
+        {
+          "class": "org.springframework.web.method.HandlerMethod",
+          "kind": "req",
+          "name": "handler",
+          "object_id": 1894593288,
+          "value": "com.fpmislata.basespring.controller.BookController#findAll()"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/common/locale/CustomLocaleChangeInterceptor.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.common.locale.CustomLocaleChangeInterceptor",
+        "object_id": 370997834,
+        "value": "com.fpmislata.basespring.common.locale.CustomLocaleChangeInterceptor@161cfa4a"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 3,
+      "parent_id": 2,
+      "return_value": {
+        "class": "java.lang.Boolean",
+        "object_id": 1196937698,
+        "value": "true"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.BookController",
+      "event": "call",
+      "id": 4,
+      "lineno": 27,
+      "method_id": "findAll",
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/controller/BookController.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.BookController",
+        "object_id": 2011756986,
+        "value": "com.fpmislata.basespring.controller.BookController@77e8f9ba"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.domain.service.impl.BookServiceImpl",
+      "event": "call",
+      "id": 5,
+      "lineno": 19,
+      "method_id": "findAll",
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/domain/service/impl/BookServiceImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.domain.service.impl.BookServiceImpl",
+        "object_id": 1737452477,
+        "value": "com.fpmislata.basespring.domain.service.impl.BookServiceImpl@678f6bbd"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.BookRepositoryImplJdbc",
+      "event": "call",
+      "id": 6,
+      "lineno": 26,
+      "method_id": "findAll",
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/BookRepositoryImplJdbc.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.BookRepositoryImplJdbc",
+        "object_id": 182196914,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.BookRepositoryImplJdbc@adc1ab2"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "event": "call",
+      "id": 7,
+      "sql_query": {
+        "database_type": "MariaDB",
+        "sql": "SELECT @@session.tx_isolation"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0.00105243,
+      "event": "return",
+      "id": 8,
+      "parent_id": 7,
+      "thread_id": 60
+    },
+    {
+      "event": "call",
+      "id": 9,
+      "sql_query": {
+        "database_type": "MariaDB",
+        "sql": "SELECT * FROM books LEFT JOIN categories ON books.category_id = categories.id LEFT JOIN publishers ON books.publisher_id = publishers.id"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0.0016282,
+      "event": "return",
+      "id": 10,
+      "parent_id": 9,
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+      "event": "call",
+      "id": 11,
+      "lineno": 16,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 910411053,
+          "value": "0"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/BookRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+        "object_id": 1393887018,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper@5315072a"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+      "event": "call",
+      "id": 12,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 910411053,
+          "value": "0"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/CategoryRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+        "object_id": 1696733807,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper@65221a6f"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0.00058087,
+      "event": "return",
+      "id": 13,
+      "parent_id": 12,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Category",
+        "object_id": 1413795159,
+        "value": "Category(id=1, name=Novedades, slug=new-releases)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+      "event": "call",
+      "id": 14,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 910411053,
+          "value": "0"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/PublisherRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+        "object_id": 1870984102,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper@6f84f3a6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0.00080002,
+      "event": "return",
+      "id": 15,
+      "parent_id": 14,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Publisher",
+        "object_id": 1120982050,
+        "value": "Publisher(id=1, name=Novedades, slug=new-releases)"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0.00148098,
+      "event": "return",
+      "id": 16,
+      "parent_id": 11,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Book",
+        "object_id": 1618109265,
+        "value": "Book(isbn=9780142424179, title=The Little Prince, synopsis=The Little Prince is a novella and the most famous work of the French writer and aviator Antoine de Saint-Exupéry. The story is philosophical and involves a young prince who travels from planet to planet, meeting characters who show different aspects of human nature. In his journey, the little prince learns about loneliness, love, loss, and friendship., price=15.99, discount=10.0, cover=http://images.cesguiro.es/books/9780142424179.webp, publisher=Publisher(id=1, name=Novedades, slug=new-releases), category=Category(id=1, name=Novedades, slug=new-releases), authors=null, genres=null)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+      "event": "call",
+      "id": 17,
+      "lineno": 16,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 325129321,
+          "value": "1"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/BookRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+        "object_id": 1393887018,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper@5315072a"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+      "event": "call",
+      "id": 18,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 325129321,
+          "value": "1"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/CategoryRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+        "object_id": 1696733807,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper@65221a6f"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 19,
+      "parent_id": 18,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Category",
+        "object_id": 167675106,
+        "value": "Category(id=2, name=Recomendados, slug=recommended)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+      "event": "call",
+      "id": 20,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 325129321,
+          "value": "1"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/PublisherRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+        "object_id": 1870984102,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper@6f84f3a6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 21,
+      "parent_id": 20,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Publisher",
+        "object_id": 1972258407,
+        "value": "Publisher(id=2, name=Recomendados, slug=recommended)"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0.00020005,
+      "event": "return",
+      "id": 22,
+      "parent_id": 17,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Book",
+        "object_id": 1289899544,
+        "value": "Book(isbn=9780142410363, title=Matilda, synopsis=Matilda is a prodigy child with terribly negligent parents. Despite her hostile family environment, Matilda discovers her love for reading and her telekinetic ability. When she starts school, she encounters the terrible headmistress Miss Trunchbull, but also the kind Miss Honey. Over time, Matilda uses her powers to fight against the injustices of the adults in her life., price=14.99, discount=5.0, cover=http://images.cesguiro.es/books/9780142410363.webp, publisher=Publisher(id=2, name=Recomendados, slug=recommended), category=Category(id=2, name=Recomendados, slug=recommended), authors=null, genres=null)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+      "event": "call",
+      "id": 23,
+      "lineno": 16,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 1034837859,
+          "value": "2"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/BookRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+        "object_id": 1393887018,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper@5315072a"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+      "event": "call",
+      "id": 24,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 1034837859,
+          "value": "2"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/CategoryRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+        "object_id": 1696733807,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper@65221a6f"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0.00010325,
+      "event": "return",
+      "id": 25,
+      "parent_id": 24,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Category",
+        "object_id": 1074402720,
+        "value": "Category(id=3, name=Ofertas, slug=offers)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+      "event": "call",
+      "id": 26,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 1034837859,
+          "value": "2"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/PublisherRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+        "object_id": 1870984102,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper@6f84f3a6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 27,
+      "parent_id": 26,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Publisher",
+        "object_id": 1202773688,
+        "value": "Publisher(id=3, name=Ofertas, slug=offers)"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0.00010325,
+      "event": "return",
+      "id": 28,
+      "parent_id": 23,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Book",
+        "object_id": 427608792,
+        "value": "Book(isbn=9780142418222, title=Charlie and the Chocolate Factory, synopsis=Charlie Bucket is a poor boy living with his family near Willy Wonka's gigantic chocolate factory. One day, Willy Wonka decides to open the doors of his factory to five lucky children who find a golden ticket inside Wonka chocolate bars. Charlie, against all odds, finds one of the tickets, and his life changes forever as he discovers the secrets and wonders of the chocolate factory., price=13.99, discount=15.0, cover=http://images.cesguiro.es/books/9780142418222.jpeg, publisher=Publisher(id=3, name=Ofertas, slug=offers), category=Category(id=3, name=Ofertas, slug=offers), authors=null, genres=null)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+      "event": "call",
+      "id": 29,
+      "lineno": 16,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 1449581523,
+          "value": "3"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/BookRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+        "object_id": 1393887018,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper@5315072a"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+      "event": "call",
+      "id": 30,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 1449581523,
+          "value": "3"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/CategoryRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+        "object_id": 1696733807,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper@65221a6f"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 31,
+      "parent_id": 30,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Category",
+        "object_id": 1188127658,
+        "value": "Category(id=4, name=Ofertas, slug=offers)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+      "event": "call",
+      "id": 32,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 1449581523,
+          "value": "3"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/PublisherRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+        "object_id": 1870984102,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper@6f84f3a6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 33,
+      "parent_id": 32,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Publisher",
+        "object_id": 123023574,
+        "value": "Publisher(id=4, name=Ofertas, slug=offers)"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 34,
+      "parent_id": 29,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Book",
+        "object_id": 2021654766,
+        "value": "Book(isbn=9780060256654, title=Where the Wild Things Are, synopsis=Where the Wild Things Are is a children's bookQuery written and illustrated by Maurice Sendak. The bookQuery tells the story of Max, a mischievous boy who embarks on an adventure to a world of wild monsters after being sent to bed without dinner. In this imaginary world, Max becomes the king of the monsters but soon realizes he misses his family and decides to return home., price=16.99, discount=15.0, cover=http://images.cesguiro.es/books/9780060256654.webp, publisher=Publisher(id=4, name=Ofertas, slug=offers), category=Category(id=4, name=Ofertas, slug=offers), authors=null, genres=null)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+      "event": "call",
+      "id": 35,
+      "lineno": 16,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 408482926,
+          "value": "4"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/BookRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+        "object_id": 1393887018,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper@5315072a"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+      "event": "call",
+      "id": 36,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 408482926,
+          "value": "4"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/CategoryRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+        "object_id": 1696733807,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper@65221a6f"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 37,
+      "parent_id": 36,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Category",
+        "object_id": 1431898364,
+        "value": "Category(id=5, name=Más leídos, slug=best-sellers)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+      "event": "call",
+      "id": 38,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 408482926,
+          "value": "4"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/PublisherRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+        "object_id": 1870984102,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper@6f84f3a6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 39,
+      "parent_id": 38,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Publisher",
+        "object_id": 2074362113,
+        "value": "Publisher(id=5, name=Más leídos, slug=best-sellers)"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0.00009665,
+      "event": "return",
+      "id": 40,
+      "parent_id": 35,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Book",
+        "object_id": 56338923,
+        "value": "Book(isbn=9780618260300, title=The Lion, the Witch and the Wardrobe, synopsis=The Lion, the Witch and the Wardrobe is a children's fantasy novel by C.S. Lewis. It is the first bookQuery published and the second in the chronological order of the series The Chronicles of Narnia. The story follows four children who discover the magical world of Narnia through a wardrobe and join the lion Aslan to defeat the evil White Witch., price=18.99, discount=0.0, cover=http://images.cesguiro.es/books/9780618260300.webp, publisher=Publisher(id=5, name=Más leídos, slug=best-sellers), category=Category(id=5, name=Más leídos, slug=best-sellers), authors=null, genres=null)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+      "event": "call",
+      "id": 41,
+      "lineno": 16,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 1551877738,
+          "value": "5"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/BookRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+        "object_id": 1393887018,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper@5315072a"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+      "event": "call",
+      "id": 42,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 1551877738,
+          "value": "5"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/CategoryRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+        "object_id": 1696733807,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper@65221a6f"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 43,
+      "parent_id": 42,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Category",
+        "object_id": 1098660849,
+        "value": "Category(id=6, name=Ofertas, slug=offers)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+      "event": "call",
+      "id": 44,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 1551877738,
+          "value": "5"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/PublisherRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+        "object_id": 1870984102,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper@6f84f3a6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 45,
+      "parent_id": 44,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Publisher",
+        "object_id": 403297942,
+        "value": "Publisher(id=6, name=Ofertas, slug=offers)"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 46,
+      "parent_id": 41,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Book",
+        "object_id": 1178804365,
+        "value": "Book(isbn=9780439554930, title=Harry Potter and the Sorcerer's Stone, synopsis=Harry Potter is an orphaned boy living with his abusive aunt and uncle. On his eleventh birthday, he discovers he is a wizard and is invited to attend the Hogwarts School of Witchcraft and Wizardry. There, Harry makes friends and enemies and learns the truth about his parents and his connection to the dark wizard Voldemort., price=19.99, discount=15.0, cover=http://images.cesguiro.es/books/9780439554930.webp, publisher=Publisher(id=6, name=Ofertas, slug=offers), category=Category(id=6, name=Ofertas, slug=offers), authors=null, genres=null)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+      "event": "call",
+      "id": 47,
+      "lineno": 16,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 1689117369,
+          "value": "6"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/BookRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+        "object_id": 1393887018,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper@5315072a"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+      "event": "call",
+      "id": 48,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 1689117369,
+          "value": "6"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/CategoryRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+        "object_id": 1696733807,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper@65221a6f"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 49,
+      "parent_id": 48,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Category",
+        "object_id": 1152319086,
+        "value": "Category(id=7, name=Novedades, slug=new-releases)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+      "event": "call",
+      "id": 50,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 1689117369,
+          "value": "6"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/PublisherRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+        "object_id": 1870984102,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper@6f84f3a6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 51,
+      "parent_id": 50,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Publisher",
+        "object_id": 314916107,
+        "value": "Publisher(id=7, name=Novedades, slug=new-releases)"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 52,
+      "parent_id": 47,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Book",
+        "object_id": 1297952918,
+        "value": "Book(isbn=9781451673319, title=The Story of Ferdinand, synopsis=The Story of Ferdinand is a children's bookQuery written by Munro Leaf and illustrated by Robert Lawson. The bookQuery tells the story of a peaceful bull named Ferdinand who prefers to smell flowers rather than fight. When he is stung by a bee, his behavior changes and he is taken to a bullfight, but he eventually returns to his quiet life in the countryside., price=12.99, discount=5.0, cover=http://images.cesguiro.es/books/9781451673319.jpg, publisher=Publisher(id=7, name=Novedades, slug=new-releases), category=Category(id=7, name=Novedades, slug=new-releases), authors=null, genres=null)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+      "event": "call",
+      "id": 53,
+      "lineno": 16,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 1190050734,
+          "value": "7"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/BookRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+        "object_id": 1393887018,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper@5315072a"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+      "event": "call",
+      "id": 54,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 1190050734,
+          "value": "7"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/CategoryRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+        "object_id": 1696733807,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper@65221a6f"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 55,
+      "parent_id": 54,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Category",
+        "object_id": 1962963091,
+        "value": "Category(id=8, name=Recomendados, slug=recommended)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+      "event": "call",
+      "id": 56,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 1190050734,
+          "value": "7"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/PublisherRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+        "object_id": 1870984102,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper@6f84f3a6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 57,
+      "parent_id": 56,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Publisher",
+        "object_id": 1310078557,
+        "value": "Publisher(id=8, name=Recomendados, slug=recommended)"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0.00009999,
+      "event": "return",
+      "id": 58,
+      "parent_id": 53,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Book",
+        "object_id": 1793812105,
+        "value": "Book(isbn=9780064400558, title=Alice's Adventures in Wonderland, synopsis=Alice's Adventures in Wonderland is a novel written by Lewis Carroll. The story follows a young girl named Alice who falls down a rabbit hole and enters a fantastical world filled with peculiar creatures and absurd situations. Throughout her adventure, Alice must navigate this strange and surreal world as she tries to find her way back home., price=11.99, discount=0.0, cover=http://images.cesguiro.es/books/9780064400558.webp, publisher=Publisher(id=8, name=Recomendados, slug=recommended), category=Category(id=8, name=Recomendados, slug=recommended), authors=null, genres=null)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+      "event": "call",
+      "id": 59,
+      "lineno": 16,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 1500222385,
+          "value": "8"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/BookRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+        "object_id": 1393887018,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper@5315072a"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+      "event": "call",
+      "id": 60,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 1500222385,
+          "value": "8"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/CategoryRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+        "object_id": 1696733807,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper@65221a6f"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 61,
+      "parent_id": 60,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Category",
+        "object_id": 798614759,
+        "value": "Category(id=9, name=Más leídos, slug=best-sellers)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+      "event": "call",
+      "id": 62,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 1500222385,
+          "value": "8"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/PublisherRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+        "object_id": 1870984102,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper@6f84f3a6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 63,
+      "parent_id": 62,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Publisher",
+        "object_id": 1123342128,
+        "value": "Publisher(id=9, name=Más leídos, slug=best-sellers)"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0.00010006,
+      "event": "return",
+      "id": 64,
+      "parent_id": 59,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Book",
+        "object_id": 1514058848,
+        "value": "Book(isbn=9780439023528, title=The Hunger Games, synopsis=In a dystopian future, young Katniss Everdeen must participate in The Hunger Games, a televised event where 24 teenagers fight to the death until only one remains. Katniss volunteers to save her younger sister and must use all her skills to survive., price=19.99, discount=0.0, cover=http://images.cesguiro.es/books/9780439023528.webp, publisher=Publisher(id=9, name=Más leídos, slug=best-sellers), category=Category(id=9, name=Más leídos, slug=best-sellers), authors=null, genres=null)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+      "event": "call",
+      "id": 65,
+      "lineno": 16,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 1363935591,
+          "value": "9"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/BookRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+        "object_id": 1393887018,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper@5315072a"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+      "event": "call",
+      "id": 66,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 1363935591,
+          "value": "9"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/CategoryRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+        "object_id": 1696733807,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper@65221a6f"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 67,
+      "parent_id": 66,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Category",
+        "object_id": 1268550439,
+        "value": "Category(id=10, name=Novedades, slug=new-releases)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+      "event": "call",
+      "id": 68,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 1363935591,
+          "value": "9"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/PublisherRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+        "object_id": 1870984102,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper@6f84f3a6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 69,
+      "parent_id": 68,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Publisher",
+        "object_id": 800430131,
+        "value": "Publisher(id=10, name=Novedades, slug=new-releases)"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 70,
+      "parent_id": 65,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Book",
+        "object_id": 504849,
+        "value": "Book(isbn=9781423103349, title=Percy Jackson and the Olympians: The Lightning Thief, synopsis=Percy Jackson discovers that he is a demigod, the son of Poseidon, and embarks on an adventure to prevent a war among the gods of Olympus. Along with his friends, Percy must retrieve Zeus' stolen lightning bolt before it's too late., price=17.99, discount=0.0, cover=http://images.cesguiro.es/books/9781423103349.webp, publisher=Publisher(id=10, name=Novedades, slug=new-releases), category=Category(id=10, name=Novedades, slug=new-releases), authors=null, genres=null)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+      "event": "call",
+      "id": 71,
+      "lineno": 16,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 829540943,
+          "value": "10"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/BookRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+        "object_id": 1393887018,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper@5315072a"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+      "event": "call",
+      "id": 72,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 829540943,
+          "value": "10"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/CategoryRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+        "object_id": 1696733807,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper@65221a6f"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 73,
+      "parent_id": 72,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Category",
+        "object_id": 505133813,
+        "value": "Category(id=11, name=Recomendados, slug=recommended)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+      "event": "call",
+      "id": 74,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 829540943,
+          "value": "10"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/PublisherRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+        "object_id": 1870984102,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper@6f84f3a6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 75,
+      "parent_id": 74,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Publisher",
+        "object_id": 502062341,
+        "value": "Publisher(id=11, name=Recomendados, slug=recommended)"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 76,
+      "parent_id": 71,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Book",
+        "object_id": 544621973,
+        "value": "Book(isbn=9780316015844, title=Twilight, synopsis=Bella Swan moves to the rainy town of Forks and falls in love with Edward Cullen, a mysterious young man who turns out to be a vampire. As their relationship deepens, Bella becomes entangled in the dangerous world of vampires and must face the threats that loom over them., price=15.99, discount=0.0, cover=http://images.cesguiro.es/books/9780316015844.webp, publisher=Publisher(id=11, name=Recomendados, slug=recommended), category=Category(id=11, name=Recomendados, slug=recommended), authors=null, genres=null)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+      "event": "call",
+      "id": 77,
+      "lineno": 16,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 535482470,
+          "value": "11"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/BookRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+        "object_id": 1393887018,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper@5315072a"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+      "event": "call",
+      "id": 78,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 535482470,
+          "value": "11"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/CategoryRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+        "object_id": 1696733807,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper@65221a6f"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 79,
+      "parent_id": 78,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Category",
+        "object_id": 1550130556,
+        "value": "Category(id=12, name=Más leídos, slug=best-sellers)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+      "event": "call",
+      "id": 80,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 535482470,
+          "value": "11"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/PublisherRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+        "object_id": 1870984102,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper@6f84f3a6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 81,
+      "parent_id": 80,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Publisher",
+        "object_id": 656078592,
+        "value": "Publisher(id=12, name=Más leídos, slug=best-sellers)"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 82,
+      "parent_id": 77,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Book",
+        "object_id": 902976667,
+        "value": "Book(isbn=9780062024039, title=Divergent, synopsis=In a society divided into factions based on human virtues, Beatrice Prior discovers that she is Divergent, someone who does not fit into any faction. When she uncovers a conspiracy to destroy Divergents, Beatrice must find her place and protect those she loves., price=18.99, discount=10.0, cover=http://images.cesguiro.es/books/9780062024039.webp, publisher=Publisher(id=12, name=Más leídos, slug=best-sellers), category=Category(id=12, name=Más leídos, slug=best-sellers), authors=null, genres=null)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+      "event": "call",
+      "id": 83,
+      "lineno": 16,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 2087902119,
+          "value": "12"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/BookRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+        "object_id": 1393887018,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper@5315072a"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+      "event": "call",
+      "id": 84,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 2087902119,
+          "value": "12"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/CategoryRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+        "object_id": 1696733807,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper@65221a6f"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 85,
+      "parent_id": 84,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Category",
+        "object_id": 134789032,
+        "value": "Category(id=13, name=Ofertas, slug=offers)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+      "event": "call",
+      "id": 86,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 2087902119,
+          "value": "12"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/PublisherRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+        "object_id": 1870984102,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper@6f84f3a6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 87,
+      "parent_id": 86,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Publisher",
+        "object_id": 2027610974,
+        "value": "Publisher(id=13, name=Ofertas, slug=offers)"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 88,
+      "parent_id": 83,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Book",
+        "object_id": 1594562130,
+        "value": "Book(isbn=9781416914280, title=The Mortal Instruments: City of Bones, synopsis=Clary Fray discovers that she belongs to a race of half-angel warriors called Shadowhunters, whose mission is to protect the world from demons. Alongside other Shadowhunters, Clary must unravel the mystery of her past and fight against the dark forces that threaten her world., price=17.99, discount=15.0, cover=http://images.cesguiro.es/books/9781416914280.webp, publisher=Publisher(id=13, name=Ofertas, slug=offers), category=Category(id=13, name=Ofertas, slug=offers), authors=null, genres=null)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+      "event": "call",
+      "id": 89,
+      "lineno": 16,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 902709751,
+          "value": "13"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/BookRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+        "object_id": 1393887018,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper@5315072a"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+      "event": "call",
+      "id": 90,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 902709751,
+          "value": "13"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/CategoryRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+        "object_id": 1696733807,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper@65221a6f"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 91,
+      "parent_id": 90,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Category",
+        "object_id": 2016810257,
+        "value": "Category(id=14, name=Ofertas, slug=offers)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+      "event": "call",
+      "id": 92,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 902709751,
+          "value": "13"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/PublisherRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+        "object_id": 1870984102,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper@6f84f3a6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 93,
+      "parent_id": 92,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Publisher",
+        "object_id": 1465506138,
+        "value": "Publisher(id=14, name=Ofertas, slug=offers)"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 94,
+      "parent_id": 89,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Book",
+        "object_id": 1348988005,
+        "value": "Book(isbn=9780385737951, title=The Maze Runner, synopsis=Thomas wakes up in a dark, ascending elevator with no memory except his name. When the doors open, he finds himself surrounded by other boys in a massive, deadly maze. Thomas must join forces with the others to escape and uncover the truth behind the maze., price=16.99, discount=15.0, cover=http://images.cesguiro.es/books/9780385737951.webp, publisher=Publisher(id=14, name=Ofertas, slug=offers), category=Category(id=14, name=Ofertas, slug=offers), authors=null, genres=null)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+      "event": "call",
+      "id": 95,
+      "lineno": 16,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 392285799,
+          "value": "14"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/BookRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+        "object_id": 1393887018,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper@5315072a"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+      "event": "call",
+      "id": 96,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 392285799,
+          "value": "14"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/CategoryRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+        "object_id": 1696733807,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper@65221a6f"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 97,
+      "parent_id": 96,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Category",
+        "object_id": 1605881607,
+        "value": "Category(id=15, name=Novedades, slug=new-releases)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+      "event": "call",
+      "id": 98,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 392285799,
+          "value": "14"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/PublisherRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+        "object_id": 1870984102,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper@6f84f3a6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 99,
+      "parent_id": 98,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Publisher",
+        "object_id": 1186815650,
+        "value": "Publisher(id=15, name=Novedades, slug=new-releases)"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 100,
+      "parent_id": 95,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Book",
+        "object_id": 693536468,
+        "value": "Book(isbn=9781250047819, title=Eleanor & Park, synopsis=Eleanor and Park are two misfit teenagers who meet on the school bus and form an unexpected connection through their love of music and comics. As their relationship grows, they must face the challenges and prejudices of life in their small town., price=14.99, discount=5.0, cover=http://images.cesguiro.es/books/9781250047819.webp, publisher=Publisher(id=15, name=Novedades, slug=new-releases), category=Category(id=15, name=Novedades, slug=new-releases), authors=null, genres=null)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+      "event": "call",
+      "id": 101,
+      "lineno": 16,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 811427695,
+          "value": "15"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/BookRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+        "object_id": 1393887018,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper@5315072a"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+      "event": "call",
+      "id": 102,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 811427695,
+          "value": "15"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/CategoryRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+        "object_id": 1696733807,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper@65221a6f"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 103,
+      "parent_id": 102,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Category",
+        "object_id": 1366514068,
+        "value": "Category(id=16, name=Ofertas, slug=offers)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+      "event": "call",
+      "id": 104,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 811427695,
+          "value": "15"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/PublisherRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+        "object_id": 1870984102,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper@6f84f3a6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 105,
+      "parent_id": 104,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Publisher",
+        "object_id": 2098677078,
+        "value": "Publisher(id=16, name=Ofertas, slug=offers)"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0.00010363,
+      "event": "return",
+      "id": 106,
+      "parent_id": 101,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Book",
+        "object_id": 1625955334,
+        "value": "Book(isbn=9780142424180, title=The Fault in Our Stars, synopsis=Hazel Grace Lancaster is a teenager with terminal cancer who falls in love with Augustus Waters, a young man who attends her cancer patient support group. Together, they embark on a journey of love and bravery as they face the reality of their illness., price=15.99, discount=15.0, cover=http://images.cesguiro.es/books/9780142424180.webp, publisher=Publisher(id=16, name=Ofertas, slug=offers), category=Category(id=16, name=Ofertas, slug=offers), authors=null, genres=null)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+      "event": "call",
+      "id": 107,
+      "lineno": 16,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 995584363,
+          "value": "16"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/BookRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+        "object_id": 1393887018,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper@5315072a"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+      "event": "call",
+      "id": 108,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 995584363,
+          "value": "16"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/CategoryRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+        "object_id": 1696733807,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper@65221a6f"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 109,
+      "parent_id": 108,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Category",
+        "object_id": 1889745004,
+        "value": "Category(id=17, name=Recomendados, slug=recommended)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+      "event": "call",
+      "id": 110,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 995584363,
+          "value": "16"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/PublisherRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+        "object_id": 1870984102,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper@6f84f3a6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 111,
+      "parent_id": 110,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Publisher",
+        "object_id": 937029339,
+        "value": "Publisher(id=17, name=Recomendados, slug=recommended)"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 112,
+      "parent_id": 107,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Book",
+        "object_id": 132374026,
+        "value": "Book(isbn=9780618260400, title=The Hobbit, synopsis=The Hobbit tells the story of Bilbo Baggins, a hobbit who embarks on an unexpected adventure to help a group of dwarves reclaim their mountain and treasure from the dragon Smaug., price=14.99, discount=0.0, cover=http://images.cesguiro.es/books/9780618260400.jpg, publisher=Publisher(id=17, name=Recomendados, slug=recommended), category=Category(id=17, name=Recomendados, slug=recommended), authors=null, genres=null)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+      "event": "call",
+      "id": 113,
+      "lineno": 16,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 134210476,
+          "value": "17"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/BookRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+        "object_id": 1393887018,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper@5315072a"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+      "event": "call",
+      "id": 114,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 134210476,
+          "value": "17"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/CategoryRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+        "object_id": 1696733807,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper@65221a6f"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 115,
+      "parent_id": 114,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Category",
+        "object_id": 1853279079,
+        "value": "Category(id=18, name=Más leídos, slug=best-sellers)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+      "event": "call",
+      "id": 116,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 134210476,
+          "value": "17"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/PublisherRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+        "object_id": 1870984102,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper@6f84f3a6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0.00009662,
+      "event": "return",
+      "id": 117,
+      "parent_id": 116,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Publisher",
+        "object_id": 379674436,
+        "value": "Publisher(id=18, name=Más leídos, slug=best-sellers)"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0.00009662,
+      "event": "return",
+      "id": 118,
+      "parent_id": 113,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Book",
+        "object_id": 254525460,
+        "value": "Book(isbn=9780261103573, title=The Lord of the Rings: The Fellowship of the Ring, synopsis=The Fellowship of the Ring follows Frodo Baggins and his companions on their mission to destroy the One Ring, a powerful relic created by the dark lord Sauron., price=19.99, discount=0.0, cover=http://images.cesguiro.es/books/9780261103573.webp, publisher=Publisher(id=18, name=Más leídos, slug=best-sellers), category=Category(id=18, name=Más leídos, slug=best-sellers), authors=null, genres=null)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+      "event": "call",
+      "id": 119,
+      "lineno": 16,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 2008133854,
+          "value": "18"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/BookRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+        "object_id": 1393887018,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper@5315072a"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+      "event": "call",
+      "id": 120,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 2008133854,
+          "value": "18"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/CategoryRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+        "object_id": 1696733807,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper@65221a6f"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 121,
+      "parent_id": 120,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Category",
+        "object_id": 793014460,
+        "value": "Category(id=19, name=Novedades, slug=new-releases)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+      "event": "call",
+      "id": 122,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 2008133854,
+          "value": "18"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/PublisherRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+        "object_id": 1870984102,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper@6f84f3a6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 123,
+      "parent_id": 122,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Publisher",
+        "object_id": 855855471,
+        "value": "Publisher(id=19, name=Novedades, slug=new-releases)"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 124,
+      "parent_id": 119,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Book",
+        "object_id": 1660492923,
+        "value": "Book(isbn=9780261102361, title=The Lord of the Rings: The Two Towers, synopsis=The Two Towers continues Frodo and Sam's mission to destroy the One Ring, while Aragorn, Legolas, and Gimli search for Merry and Pippin, who have been captured by orcs., price=19.99, discount=0.0, cover=http://images.cesguiro.es/books/9780261102361.webp, publisher=Publisher(id=19, name=Novedades, slug=new-releases), category=Category(id=19, name=Novedades, slug=new-releases), authors=null, genres=null)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+      "event": "call",
+      "id": 125,
+      "lineno": 16,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 414480314,
+          "value": "19"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/BookRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+        "object_id": 1393887018,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper@5315072a"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+      "event": "call",
+      "id": 126,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 414480314,
+          "value": "19"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/CategoryRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+        "object_id": 1696733807,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper@65221a6f"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 127,
+      "parent_id": 126,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Category",
+        "object_id": 343487872,
+        "value": "Category(id=20, name=Recomendados, slug=recommended)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+      "event": "call",
+      "id": 128,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 414480314,
+          "value": "19"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/PublisherRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+        "object_id": 1870984102,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper@6f84f3a6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 129,
+      "parent_id": 128,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Publisher",
+        "object_id": 1037600329,
+        "value": "Publisher(id=20, name=Recomendados, slug=recommended)"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0.00009986,
+      "event": "return",
+      "id": 130,
+      "parent_id": 125,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Book",
+        "object_id": 401100621,
+        "value": "Book(isbn=9780316029186, title=The Last Wish, synopsis=The Last Wish is a collection of stories introducing the witcher Geralt of Rivia, a monster hunter in a fantasy world full of dangerous creatures and magic., price=18.99, discount=10.0, cover=http://images.cesguiro.es/books/9780316029186.jpg, publisher=Publisher(id=20, name=Recomendados, slug=recommended), category=Category(id=20, name=Recomendados, slug=recommended), authors=null, genres=null)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+      "event": "call",
+      "id": 131,
+      "lineno": 16,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 752546733,
+          "value": "20"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/BookRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+        "object_id": 1393887018,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper@5315072a"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+      "event": "call",
+      "id": 132,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 752546733,
+          "value": "20"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/CategoryRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+        "object_id": 1696733807,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper@65221a6f"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 133,
+      "parent_id": 132,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Category",
+        "object_id": 1901201027,
+        "value": "Category(id=21, name=Más leídos, slug=best-sellers)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+      "event": "call",
+      "id": 134,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 752546733,
+          "value": "20"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/PublisherRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+        "object_id": 1870984102,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper@6f84f3a6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0.00010037,
+      "event": "return",
+      "id": 135,
+      "parent_id": 134,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Publisher",
+        "object_id": 146881582,
+        "value": "Publisher(id=21, name=Más leídos, slug=best-sellers)"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0.00010037,
+      "event": "return",
+      "id": 136,
+      "parent_id": 131,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Book",
+        "object_id": 1569101916,
+        "value": "Book(isbn=9780316073797, title=Sword of Destiny, synopsis=Sword of Destiny is a collection of stories following Geralt of Rivia's adventures as he faces monsters and encounters important characters in his life., price=18.99, discount=5.0, cover=http://images.cesguiro.es/books/9780316073797.jpeg, publisher=Publisher(id=21, name=Más leídos, slug=best-sellers), category=Category(id=21, name=Más leídos, slug=best-sellers), authors=null, genres=null)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+      "event": "call",
+      "id": 137,
+      "lineno": 16,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 649744346,
+          "value": "21"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/BookRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+        "object_id": 1393887018,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper@5315072a"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+      "event": "call",
+      "id": 138,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 649744346,
+          "value": "21"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/CategoryRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+        "object_id": 1696733807,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper@65221a6f"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 139,
+      "parent_id": 138,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Category",
+        "object_id": 1203581840,
+        "value": "Category(id=22, name=Recomendados, slug=recommended)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+      "event": "call",
+      "id": 140,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 649744346,
+          "value": "21"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/PublisherRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+        "object_id": 1870984102,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper@6f84f3a6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0.00009962,
+      "event": "return",
+      "id": 141,
+      "parent_id": 140,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Publisher",
+        "object_id": 1176262405,
+        "value": "Publisher(id=22, name=Recomendados, slug=recommended)"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0.00009962,
+      "event": "return",
+      "id": 142,
+      "parent_id": 137,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Book",
+        "object_id": 791770082,
+        "value": "Book(isbn=9780060557912, title=Good Omens, synopsis=Good Omens tells the story of an angel and a demon who team up to prevent the apocalypse. Both have lived on Earth for centuries and have grown fond of humanity, so they will do everything possible to stop the end of the world., price=16.99, discount=0.0, cover=http://images.cesguiro.es/books/9780060557912.jpg, publisher=Publisher(id=22, name=Recomendados, slug=recommended), category=Category(id=22, name=Recomendados, slug=recommended), authors=null, genres=null)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+      "event": "call",
+      "id": 143,
+      "lineno": 16,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 1526807873,
+          "value": "22"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/BookRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+        "object_id": 1393887018,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper@5315072a"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+      "event": "call",
+      "id": 144,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 1526807873,
+          "value": "22"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/CategoryRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+        "object_id": 1696733807,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper@65221a6f"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 145,
+      "parent_id": 144,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Category",
+        "object_id": 1972282370,
+        "value": "Category(id=23, name=Ofertas, slug=offers)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+      "event": "call",
+      "id": 146,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 1526807873,
+          "value": "22"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/PublisherRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+        "object_id": 1870984102,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper@6f84f3a6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 147,
+      "parent_id": 146,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Publisher",
+        "object_id": 1359897033,
+        "value": "Publisher(id=23, name=Ofertas, slug=offers)"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 148,
+      "parent_id": 143,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Book",
+        "object_id": 1971631721,
+        "value": "Book(isbn=9780060853983, title=American Gods, synopsis=American Gods follows Shadow Moon, an ex-convict who becomes the bodyguard of the enigmatic Mr. Wednesday. He soon discovers that his boss is an incarnation of Odin, and he becomes embroiled in a battle between the old gods and the new., price=17.99, discount=15.0, cover=http://images.cesguiro.es/books/9780060853983.webp, publisher=Publisher(id=23, name=Ofertas, slug=offers), category=Category(id=23, name=Ofertas, slug=offers), authors=null, genres=null)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+      "event": "call",
+      "id": 149,
+      "lineno": 16,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 658339501,
+          "value": "23"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/BookRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper",
+        "object_id": 1393887018,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.BookRowMapper@5315072a"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+      "event": "call",
+      "id": 150,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 658339501,
+          "value": "23"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/CategoryRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper",
+        "object_id": 1696733807,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.CategoryRowMapper@65221a6f"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 151,
+      "parent_id": 150,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Category",
+        "object_id": 655587580,
+        "value": "Category(id=24, name=Recomendados, slug=recommended)"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+      "event": "call",
+      "id": 152,
+      "lineno": 13,
+      "method_id": "mapRow",
+      "parameters": [
+        {
+          "class": "com.zaxxer.hikari.pool.HikariProxyResultSet",
+          "kind": "req",
+          "name": "rs",
+          "object_id": 446577439,
+          "value": "HikariProxyResultSet@446577439 wrapping org.mariadb.jdbc.client.result.CompleteResult@5522542f"
+        },
+        {
+          "class": "java.lang.Integer",
+          "kind": "req",
+          "name": "rowNum",
+          "object_id": 658339501,
+          "value": "23"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/PublisherRowMapper.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper",
+        "object_id": 1870984102,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper@6f84f3a6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 153,
+      "parent_id": 152,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Publisher",
+        "object_id": 95507966,
+        "value": "Publisher(id=24, name=Recomendados, slug=recommended)"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 154,
+      "parent_id": 149,
+      "return_value": {
+        "class": "com.fpmislata.basespring.domain.model.Book",
+        "object_id": 1431735519,
+        "value": "Book(isbn=9780060557812, title=Stardust, synopsis=Stardust tells the adventure of Tristran Thorn, who promises to bring his beloved a fallen star. His quest leads him to the magical realm of Faerie, where he discovers that the star is a woman and faces unexpected dangers., price=15.99, discount=5.0, cover=http://images.cesguiro.es/books/9780060557812.webp, publisher=Publisher(id=24, name=Recomendados, slug=recommended), category=Category(id=24, name=Recomendados, slug=recommended), authors=null, genres=null)"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0.04000379,
+      "event": "return",
+      "id": 155,
+      "parent_id": 6,
+      "return_value": {
+        "class": "java.util.ArrayList",
+        "object_id": 627713748,
+        "value": "[Book(isbn=9780142424179, title=The Little Prince, synopsis=The Little Prince is a novella and the most famous work of the French writer and aviator Antoine de Saint-Exupéry. The story is philosophical and involves a young prince who travels from planet to planet, meeting characters who show different aspects of human nature. In his journey, the little prince learns about loneliness, love, loss, and friendship., price=15.99, discount=10.0, cover=http://images.cesguiro.es/books/9780142424179.webp, publisher=Publisher(id=1, name=Novedades, slug=new-releases), category=Category(id=1, name=Novedades, slug=new-releases), authors=null, genres=null), Book(isbn=9780142410363, title=Matilda, synopsis=Matilda is a prodigy child with terribly negligent parents. Despite her hostile family environment, Matilda discovers her love for reading and her telekinetic ability. When she starts school, she encounters the terrible headmistress Miss Trunchbull, but also the kind Miss Honey. Over time, Matilda uses her powers to fi..."
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0.04010343,
+      "event": "return",
+      "id": 156,
+      "parent_id": 5,
+      "return_value": {
+        "class": "java.util.ArrayList",
+        "object_id": 627713748,
+        "value": "[Book(isbn=9780142424179, title=The Little Prince, synopsis=The Little Prince is a novella and the most famous work of the French writer and aviator Antoine de Saint-Exupéry. The story is philosophical and involves a young prince who travels from planet to planet, meeting characters who show different aspects of human nature. In his journey, the little prince learns about loneliness, love, loss, and friendship., price=15.99, discount=10.0, cover=http://images.cesguiro.es/books/9780142424179.webp, publisher=Publisher(id=1, name=Novedades, slug=new-releases), category=Category(id=1, name=Novedades, slug=new-releases), authors=null, genres=null), Book(isbn=9780142410363, title=Matilda, synopsis=Matilda is a prodigy child with terribly negligent parents. Despite her hostile family environment, Matilda discovers her love for reading and her telekinetic ability. When she starts school, she encounters the terrible headmistress Miss Trunchbull, but also the kind Miss Honey. Over time, Matilda uses her powers to fi..."
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+      "event": "call",
+      "id": 157,
+      "lineno": 31,
+      "method_id": "toBookCollection",
+      "parameters": [
+        {
+          "class": "com.fpmislata.basespring.domain.model.Book",
+          "kind": "req",
+          "name": "book",
+          "object_id": 1618109265,
+          "value": "Book(isbn=9780142424179, title=The Little Prince, synopsis=The Little Prince is a novella and the most famous work of the French writer and aviator Antoine de Saint-Exupéry. The story is philosophical and involves a young prince who travels from planet to planet, meeting characters who show different aspects of human nature. In his journey, the little prince learns about loneliness, love, loss, and friendship., price=15.99, discount=10.0, cover=http://images.cesguiro.es/books/9780142424179.webp, publisher=Publisher(id=1, name=Novedades, slug=new-releases), category=Category(id=1, name=Novedades, slug=new-releases), authors=null, genres=null)"
+        }
+      ],
+      "path": "com/fpmislata/basespring/controller/webMapper/book/BookMapperImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+        "object_id": 967273638,
+        "value": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl@39a76ca6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0.00039597,
+      "event": "return",
+      "id": 158,
+      "parent_id": 157,
+      "return_value": {
+        "class": "com.fpmislata.basespring.controller.webModel.book.BookCollection",
+        "object_id": 185257916,
+        "value": "BookCollection[isbn=9780142424179, title=The Little Prince, price=15.99, discount=10.0, cover=http://images.cesguiro.es/books/9780142424179.webp]"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+      "event": "call",
+      "id": 159,
+      "lineno": 31,
+      "method_id": "toBookCollection",
+      "parameters": [
+        {
+          "class": "com.fpmislata.basespring.domain.model.Book",
+          "kind": "req",
+          "name": "book",
+          "object_id": 1289899544,
+          "value": "Book(isbn=9780142410363, title=Matilda, synopsis=Matilda is a prodigy child with terribly negligent parents. Despite her hostile family environment, Matilda discovers her love for reading and her telekinetic ability. When she starts school, she encounters the terrible headmistress Miss Trunchbull, but also the kind Miss Honey. Over time, Matilda uses her powers to fight against the injustices of the adults in her life., price=14.99, discount=5.0, cover=http://images.cesguiro.es/books/9780142410363.webp, publisher=Publisher(id=2, name=Recomendados, slug=recommended), category=Category(id=2, name=Recomendados, slug=recommended), authors=null, genres=null)"
+        }
+      ],
+      "path": "com/fpmislata/basespring/controller/webMapper/book/BookMapperImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+        "object_id": 967273638,
+        "value": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl@39a76ca6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0.00039994,
+      "event": "return",
+      "id": 160,
+      "parent_id": 159,
+      "return_value": {
+        "class": "com.fpmislata.basespring.controller.webModel.book.BookCollection",
+        "object_id": 513611154,
+        "value": "BookCollection[isbn=9780142410363, title=Matilda, price=14.99, discount=5.0, cover=http://images.cesguiro.es/books/9780142410363.webp]"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+      "event": "call",
+      "id": 161,
+      "lineno": 31,
+      "method_id": "toBookCollection",
+      "parameters": [
+        {
+          "class": "com.fpmislata.basespring.domain.model.Book",
+          "kind": "req",
+          "name": "book",
+          "object_id": 427608792,
+          "value": "Book(isbn=9780142418222, title=Charlie and the Chocolate Factory, synopsis=Charlie Bucket is a poor boy living with his family near Willy Wonka's gigantic chocolate factory. One day, Willy Wonka decides to open the doors of his factory to five lucky children who find a golden ticket inside Wonka chocolate bars. Charlie, against all odds, finds one of the tickets, and his life changes forever as he discovers the secrets and wonders of the chocolate factory., price=13.99, discount=15.0, cover=http://images.cesguiro.es/books/9780142418222.jpeg, publisher=Publisher(id=3, name=Ofertas, slug=offers), category=Category(id=3, name=Ofertas, slug=offers), authors=null, genres=null)"
+        }
+      ],
+      "path": "com/fpmislata/basespring/controller/webMapper/book/BookMapperImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+        "object_id": 967273638,
+        "value": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl@39a76ca6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 162,
+      "parent_id": 161,
+      "return_value": {
+        "class": "com.fpmislata.basespring.controller.webModel.book.BookCollection",
+        "object_id": 1466936727,
+        "value": "BookCollection[isbn=9780142418222, title=Charlie and the Chocolate Factory, price=13.99, discount=15.0, cover=http://images.cesguiro.es/books/9780142418222.jpeg]"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+      "event": "call",
+      "id": 163,
+      "lineno": 31,
+      "method_id": "toBookCollection",
+      "parameters": [
+        {
+          "class": "com.fpmislata.basespring.domain.model.Book",
+          "kind": "req",
+          "name": "book",
+          "object_id": 2021654766,
+          "value": "Book(isbn=9780060256654, title=Where the Wild Things Are, synopsis=Where the Wild Things Are is a children's bookQuery written and illustrated by Maurice Sendak. The bookQuery tells the story of Max, a mischievous boy who embarks on an adventure to a world of wild monsters after being sent to bed without dinner. In this imaginary world, Max becomes the king of the monsters but soon realizes he misses his family and decides to return home., price=16.99, discount=15.0, cover=http://images.cesguiro.es/books/9780060256654.webp, publisher=Publisher(id=4, name=Ofertas, slug=offers), category=Category(id=4, name=Ofertas, slug=offers), authors=null, genres=null)"
+        }
+      ],
+      "path": "com/fpmislata/basespring/controller/webMapper/book/BookMapperImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+        "object_id": 967273638,
+        "value": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl@39a76ca6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 164,
+      "parent_id": 163,
+      "return_value": {
+        "class": "com.fpmislata.basespring.controller.webModel.book.BookCollection",
+        "object_id": 1125156372,
+        "value": "BookCollection[isbn=9780060256654, title=Where the Wild Things Are, price=16.99, discount=15.0, cover=http://images.cesguiro.es/books/9780060256654.webp]"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+      "event": "call",
+      "id": 165,
+      "lineno": 31,
+      "method_id": "toBookCollection",
+      "parameters": [
+        {
+          "class": "com.fpmislata.basespring.domain.model.Book",
+          "kind": "req",
+          "name": "book",
+          "object_id": 56338923,
+          "value": "Book(isbn=9780618260300, title=The Lion, the Witch and the Wardrobe, synopsis=The Lion, the Witch and the Wardrobe is a children's fantasy novel by C.S. Lewis. It is the first bookQuery published and the second in the chronological order of the series The Chronicles of Narnia. The story follows four children who discover the magical world of Narnia through a wardrobe and join the lion Aslan to defeat the evil White Witch., price=18.99, discount=0.0, cover=http://images.cesguiro.es/books/9780618260300.webp, publisher=Publisher(id=5, name=Más leídos, slug=best-sellers), category=Category(id=5, name=Más leídos, slug=best-sellers), authors=null, genres=null)"
+        }
+      ],
+      "path": "com/fpmislata/basespring/controller/webMapper/book/BookMapperImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+        "object_id": 967273638,
+        "value": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl@39a76ca6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 166,
+      "parent_id": 165,
+      "return_value": {
+        "class": "com.fpmislata.basespring.controller.webModel.book.BookCollection",
+        "object_id": 288933773,
+        "value": "BookCollection[isbn=9780618260300, title=The Lion, the Witch and the Wardrobe, price=18.99, discount=0.0, cover=http://images.cesguiro.es/books/9780618260300.webp]"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+      "event": "call",
+      "id": 167,
+      "lineno": 31,
+      "method_id": "toBookCollection",
+      "parameters": [
+        {
+          "class": "com.fpmislata.basespring.domain.model.Book",
+          "kind": "req",
+          "name": "book",
+          "object_id": 1178804365,
+          "value": "Book(isbn=9780439554930, title=Harry Potter and the Sorcerer's Stone, synopsis=Harry Potter is an orphaned boy living with his abusive aunt and uncle. On his eleventh birthday, he discovers he is a wizard and is invited to attend the Hogwarts School of Witchcraft and Wizardry. There, Harry makes friends and enemies and learns the truth about his parents and his connection to the dark wizard Voldemort., price=19.99, discount=15.0, cover=http://images.cesguiro.es/books/9780439554930.webp, publisher=Publisher(id=6, name=Ofertas, slug=offers), category=Category(id=6, name=Ofertas, slug=offers), authors=null, genres=null)"
+        }
+      ],
+      "path": "com/fpmislata/basespring/controller/webMapper/book/BookMapperImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+        "object_id": 967273638,
+        "value": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl@39a76ca6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 168,
+      "parent_id": 167,
+      "return_value": {
+        "class": "com.fpmislata.basespring.controller.webModel.book.BookCollection",
+        "object_id": 1744794045,
+        "value": "BookCollection[isbn=9780439554930, title=Harry Potter and the Sorcerer's Stone, price=19.99, discount=15.0, cover=http://images.cesguiro.es/books/9780439554930.webp]"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+      "event": "call",
+      "id": 169,
+      "lineno": 31,
+      "method_id": "toBookCollection",
+      "parameters": [
+        {
+          "class": "com.fpmislata.basespring.domain.model.Book",
+          "kind": "req",
+          "name": "book",
+          "object_id": 1297952918,
+          "value": "Book(isbn=9781451673319, title=The Story of Ferdinand, synopsis=The Story of Ferdinand is a children's bookQuery written by Munro Leaf and illustrated by Robert Lawson. The bookQuery tells the story of a peaceful bull named Ferdinand who prefers to smell flowers rather than fight. When he is stung by a bee, his behavior changes and he is taken to a bullfight, but he eventually returns to his quiet life in the countryside., price=12.99, discount=5.0, cover=http://images.cesguiro.es/books/9781451673319.jpg, publisher=Publisher(id=7, name=Novedades, slug=new-releases), category=Category(id=7, name=Novedades, slug=new-releases), authors=null, genres=null)"
+        }
+      ],
+      "path": "com/fpmislata/basespring/controller/webMapper/book/BookMapperImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+        "object_id": 967273638,
+        "value": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl@39a76ca6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 170,
+      "parent_id": 169,
+      "return_value": {
+        "class": "com.fpmislata.basespring.controller.webModel.book.BookCollection",
+        "object_id": 1305902016,
+        "value": "BookCollection[isbn=9781451673319, title=The Story of Ferdinand, price=12.99, discount=5.0, cover=http://images.cesguiro.es/books/9781451673319.jpg]"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+      "event": "call",
+      "id": 171,
+      "lineno": 31,
+      "method_id": "toBookCollection",
+      "parameters": [
+        {
+          "class": "com.fpmislata.basespring.domain.model.Book",
+          "kind": "req",
+          "name": "book",
+          "object_id": 1793812105,
+          "value": "Book(isbn=9780064400558, title=Alice's Adventures in Wonderland, synopsis=Alice's Adventures in Wonderland is a novel written by Lewis Carroll. The story follows a young girl named Alice who falls down a rabbit hole and enters a fantastical world filled with peculiar creatures and absurd situations. Throughout her adventure, Alice must navigate this strange and surreal world as she tries to find her way back home., price=11.99, discount=0.0, cover=http://images.cesguiro.es/books/9780064400558.webp, publisher=Publisher(id=8, name=Recomendados, slug=recommended), category=Category(id=8, name=Recomendados, slug=recommended), authors=null, genres=null)"
+        }
+      ],
+      "path": "com/fpmislata/basespring/controller/webMapper/book/BookMapperImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+        "object_id": 967273638,
+        "value": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl@39a76ca6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 172,
+      "parent_id": 171,
+      "return_value": {
+        "class": "com.fpmislata.basespring.controller.webModel.book.BookCollection",
+        "object_id": 171009096,
+        "value": "BookCollection[isbn=9780064400558, title=Alice's Adventures in Wonderland, price=11.99, discount=0.0, cover=http://images.cesguiro.es/books/9780064400558.webp]"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+      "event": "call",
+      "id": 173,
+      "lineno": 31,
+      "method_id": "toBookCollection",
+      "parameters": [
+        {
+          "class": "com.fpmislata.basespring.domain.model.Book",
+          "kind": "req",
+          "name": "book",
+          "object_id": 1514058848,
+          "value": "Book(isbn=9780439023528, title=The Hunger Games, synopsis=In a dystopian future, young Katniss Everdeen must participate in The Hunger Games, a televised event where 24 teenagers fight to the death until only one remains. Katniss volunteers to save her younger sister and must use all her skills to survive., price=19.99, discount=0.0, cover=http://images.cesguiro.es/books/9780439023528.webp, publisher=Publisher(id=9, name=Más leídos, slug=best-sellers), category=Category(id=9, name=Más leídos, slug=best-sellers), authors=null, genres=null)"
+        }
+      ],
+      "path": "com/fpmislata/basespring/controller/webMapper/book/BookMapperImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+        "object_id": 967273638,
+        "value": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl@39a76ca6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 174,
+      "parent_id": 173,
+      "return_value": {
+        "class": "com.fpmislata.basespring.controller.webModel.book.BookCollection",
+        "object_id": 1575145004,
+        "value": "BookCollection[isbn=9780439023528, title=The Hunger Games, price=19.99, discount=0.0, cover=http://images.cesguiro.es/books/9780439023528.webp]"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+      "event": "call",
+      "id": 175,
+      "lineno": 31,
+      "method_id": "toBookCollection",
+      "parameters": [
+        {
+          "class": "com.fpmislata.basespring.domain.model.Book",
+          "kind": "req",
+          "name": "book",
+          "object_id": 504849,
+          "value": "Book(isbn=9781423103349, title=Percy Jackson and the Olympians: The Lightning Thief, synopsis=Percy Jackson discovers that he is a demigod, the son of Poseidon, and embarks on an adventure to prevent a war among the gods of Olympus. Along with his friends, Percy must retrieve Zeus' stolen lightning bolt before it's too late., price=17.99, discount=0.0, cover=http://images.cesguiro.es/books/9781423103349.webp, publisher=Publisher(id=10, name=Novedades, slug=new-releases), category=Category(id=10, name=Novedades, slug=new-releases), authors=null, genres=null)"
+        }
+      ],
+      "path": "com/fpmislata/basespring/controller/webMapper/book/BookMapperImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+        "object_id": 967273638,
+        "value": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl@39a76ca6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 176,
+      "parent_id": 175,
+      "return_value": {
+        "class": "com.fpmislata.basespring.controller.webModel.book.BookCollection",
+        "object_id": 1099710132,
+        "value": "BookCollection[isbn=9781423103349, title=Percy Jackson and the Olympians: The Lightning Thief, price=17.99, discount=0.0, cover=http://images.cesguiro.es/books/9781423103349.webp]"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+      "event": "call",
+      "id": 177,
+      "lineno": 31,
+      "method_id": "toBookCollection",
+      "parameters": [
+        {
+          "class": "com.fpmislata.basespring.domain.model.Book",
+          "kind": "req",
+          "name": "book",
+          "object_id": 544621973,
+          "value": "Book(isbn=9780316015844, title=Twilight, synopsis=Bella Swan moves to the rainy town of Forks and falls in love with Edward Cullen, a mysterious young man who turns out to be a vampire. As their relationship deepens, Bella becomes entangled in the dangerous world of vampires and must face the threats that loom over them., price=15.99, discount=0.0, cover=http://images.cesguiro.es/books/9780316015844.webp, publisher=Publisher(id=11, name=Recomendados, slug=recommended), category=Category(id=11, name=Recomendados, slug=recommended), authors=null, genres=null)"
+        }
+      ],
+      "path": "com/fpmislata/basespring/controller/webMapper/book/BookMapperImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+        "object_id": 967273638,
+        "value": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl@39a76ca6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 178,
+      "parent_id": 177,
+      "return_value": {
+        "class": "com.fpmislata.basespring.controller.webModel.book.BookCollection",
+        "object_id": 1073370430,
+        "value": "BookCollection[isbn=9780316015844, title=Twilight, price=15.99, discount=0.0, cover=http://images.cesguiro.es/books/9780316015844.webp]"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+      "event": "call",
+      "id": 179,
+      "lineno": 31,
+      "method_id": "toBookCollection",
+      "parameters": [
+        {
+          "class": "com.fpmislata.basespring.domain.model.Book",
+          "kind": "req",
+          "name": "book",
+          "object_id": 902976667,
+          "value": "Book(isbn=9780062024039, title=Divergent, synopsis=In a society divided into factions based on human virtues, Beatrice Prior discovers that she is Divergent, someone who does not fit into any faction. When she uncovers a conspiracy to destroy Divergents, Beatrice must find her place and protect those she loves., price=18.99, discount=10.0, cover=http://images.cesguiro.es/books/9780062024039.webp, publisher=Publisher(id=12, name=Más leídos, slug=best-sellers), category=Category(id=12, name=Más leídos, slug=best-sellers), authors=null, genres=null)"
+        }
+      ],
+      "path": "com/fpmislata/basespring/controller/webMapper/book/BookMapperImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+        "object_id": 967273638,
+        "value": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl@39a76ca6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 180,
+      "parent_id": 179,
+      "return_value": {
+        "class": "com.fpmislata.basespring.controller.webModel.book.BookCollection",
+        "object_id": 1047033261,
+        "value": "BookCollection[isbn=9780062024039, title=Divergent, price=18.99, discount=10.0, cover=http://images.cesguiro.es/books/9780062024039.webp]"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+      "event": "call",
+      "id": 181,
+      "lineno": 31,
+      "method_id": "toBookCollection",
+      "parameters": [
+        {
+          "class": "com.fpmislata.basespring.domain.model.Book",
+          "kind": "req",
+          "name": "book",
+          "object_id": 1594562130,
+          "value": "Book(isbn=9781416914280, title=The Mortal Instruments: City of Bones, synopsis=Clary Fray discovers that she belongs to a race of half-angel warriors called Shadowhunters, whose mission is to protect the world from demons. Alongside other Shadowhunters, Clary must unravel the mystery of her past and fight against the dark forces that threaten her world., price=17.99, discount=15.0, cover=http://images.cesguiro.es/books/9781416914280.webp, publisher=Publisher(id=13, name=Ofertas, slug=offers), category=Category(id=13, name=Ofertas, slug=offers), authors=null, genres=null)"
+        }
+      ],
+      "path": "com/fpmislata/basespring/controller/webMapper/book/BookMapperImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+        "object_id": 967273638,
+        "value": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl@39a76ca6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 182,
+      "parent_id": 181,
+      "return_value": {
+        "class": "com.fpmislata.basespring.controller.webModel.book.BookCollection",
+        "object_id": 1966100450,
+        "value": "BookCollection[isbn=9781416914280, title=The Mortal Instruments: City of Bones, price=17.99, discount=15.0, cover=http://images.cesguiro.es/books/9781416914280.webp]"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+      "event": "call",
+      "id": 183,
+      "lineno": 31,
+      "method_id": "toBookCollection",
+      "parameters": [
+        {
+          "class": "com.fpmislata.basespring.domain.model.Book",
+          "kind": "req",
+          "name": "book",
+          "object_id": 1348988005,
+          "value": "Book(isbn=9780385737951, title=The Maze Runner, synopsis=Thomas wakes up in a dark, ascending elevator with no memory except his name. When the doors open, he finds himself surrounded by other boys in a massive, deadly maze. Thomas must join forces with the others to escape and uncover the truth behind the maze., price=16.99, discount=15.0, cover=http://images.cesguiro.es/books/9780385737951.webp, publisher=Publisher(id=14, name=Ofertas, slug=offers), category=Category(id=14, name=Ofertas, slug=offers), authors=null, genres=null)"
+        }
+      ],
+      "path": "com/fpmislata/basespring/controller/webMapper/book/BookMapperImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+        "object_id": 967273638,
+        "value": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl@39a76ca6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 184,
+      "parent_id": 183,
+      "return_value": {
+        "class": "com.fpmislata.basespring.controller.webModel.book.BookCollection",
+        "object_id": 1441379950,
+        "value": "BookCollection[isbn=9780385737951, title=The Maze Runner, price=16.99, discount=15.0, cover=http://images.cesguiro.es/books/9780385737951.webp]"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+      "event": "call",
+      "id": 185,
+      "lineno": 31,
+      "method_id": "toBookCollection",
+      "parameters": [
+        {
+          "class": "com.fpmislata.basespring.domain.model.Book",
+          "kind": "req",
+          "name": "book",
+          "object_id": 693536468,
+          "value": "Book(isbn=9781250047819, title=Eleanor & Park, synopsis=Eleanor and Park are two misfit teenagers who meet on the school bus and form an unexpected connection through their love of music and comics. As their relationship grows, they must face the challenges and prejudices of life in their small town., price=14.99, discount=5.0, cover=http://images.cesguiro.es/books/9781250047819.webp, publisher=Publisher(id=15, name=Novedades, slug=new-releases), category=Category(id=15, name=Novedades, slug=new-releases), authors=null, genres=null)"
+        }
+      ],
+      "path": "com/fpmislata/basespring/controller/webMapper/book/BookMapperImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+        "object_id": 967273638,
+        "value": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl@39a76ca6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 186,
+      "parent_id": 185,
+      "return_value": {
+        "class": "com.fpmislata.basespring.controller.webModel.book.BookCollection",
+        "object_id": 953633352,
+        "value": "BookCollection[isbn=9781250047819, title=Eleanor & Park, price=14.99, discount=5.0, cover=http://images.cesguiro.es/books/9781250047819.webp]"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+      "event": "call",
+      "id": 187,
+      "lineno": 31,
+      "method_id": "toBookCollection",
+      "parameters": [
+        {
+          "class": "com.fpmislata.basespring.domain.model.Book",
+          "kind": "req",
+          "name": "book",
+          "object_id": 1625955334,
+          "value": "Book(isbn=9780142424180, title=The Fault in Our Stars, synopsis=Hazel Grace Lancaster is a teenager with terminal cancer who falls in love with Augustus Waters, a young man who attends her cancer patient support group. Together, they embark on a journey of love and bravery as they face the reality of their illness., price=15.99, discount=15.0, cover=http://images.cesguiro.es/books/9780142424180.webp, publisher=Publisher(id=16, name=Ofertas, slug=offers), category=Category(id=16, name=Ofertas, slug=offers), authors=null, genres=null)"
+        }
+      ],
+      "path": "com/fpmislata/basespring/controller/webMapper/book/BookMapperImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+        "object_id": 967273638,
+        "value": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl@39a76ca6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 188,
+      "parent_id": 187,
+      "return_value": {
+        "class": "com.fpmislata.basespring.controller.webModel.book.BookCollection",
+        "object_id": 1164940770,
+        "value": "BookCollection[isbn=9780142424180, title=The Fault in Our Stars, price=15.99, discount=15.0, cover=http://images.cesguiro.es/books/9780142424180.webp]"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+      "event": "call",
+      "id": 189,
+      "lineno": 31,
+      "method_id": "toBookCollection",
+      "parameters": [
+        {
+          "class": "com.fpmislata.basespring.domain.model.Book",
+          "kind": "req",
+          "name": "book",
+          "object_id": 132374026,
+          "value": "Book(isbn=9780618260400, title=The Hobbit, synopsis=The Hobbit tells the story of Bilbo Baggins, a hobbit who embarks on an unexpected adventure to help a group of dwarves reclaim their mountain and treasure from the dragon Smaug., price=14.99, discount=0.0, cover=http://images.cesguiro.es/books/9780618260400.jpg, publisher=Publisher(id=17, name=Recomendados, slug=recommended), category=Category(id=17, name=Recomendados, slug=recommended), authors=null, genres=null)"
+        }
+      ],
+      "path": "com/fpmislata/basespring/controller/webMapper/book/BookMapperImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+        "object_id": 967273638,
+        "value": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl@39a76ca6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 190,
+      "parent_id": 189,
+      "return_value": {
+        "class": "com.fpmislata.basespring.controller.webModel.book.BookCollection",
+        "object_id": 844598770,
+        "value": "BookCollection[isbn=9780618260400, title=The Hobbit, price=14.99, discount=0.0, cover=http://images.cesguiro.es/books/9780618260400.jpg]"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+      "event": "call",
+      "id": 191,
+      "lineno": 31,
+      "method_id": "toBookCollection",
+      "parameters": [
+        {
+          "class": "com.fpmislata.basespring.domain.model.Book",
+          "kind": "req",
+          "name": "book",
+          "object_id": 254525460,
+          "value": "Book(isbn=9780261103573, title=The Lord of the Rings: The Fellowship of the Ring, synopsis=The Fellowship of the Ring follows Frodo Baggins and his companions on their mission to destroy the One Ring, a powerful relic created by the dark lord Sauron., price=19.99, discount=0.0, cover=http://images.cesguiro.es/books/9780261103573.webp, publisher=Publisher(id=18, name=Más leídos, slug=best-sellers), category=Category(id=18, name=Más leídos, slug=best-sellers), authors=null, genres=null)"
+        }
+      ],
+      "path": "com/fpmislata/basespring/controller/webMapper/book/BookMapperImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+        "object_id": 967273638,
+        "value": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl@39a76ca6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 192,
+      "parent_id": 191,
+      "return_value": {
+        "class": "com.fpmislata.basespring.controller.webModel.book.BookCollection",
+        "object_id": 706025232,
+        "value": "BookCollection[isbn=9780261103573, title=The Lord of the Rings: The Fellowship of the Ring, price=19.99, discount=0.0, cover=http://images.cesguiro.es/books/9780261103573.webp]"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+      "event": "call",
+      "id": 193,
+      "lineno": 31,
+      "method_id": "toBookCollection",
+      "parameters": [
+        {
+          "class": "com.fpmislata.basespring.domain.model.Book",
+          "kind": "req",
+          "name": "book",
+          "object_id": 1660492923,
+          "value": "Book(isbn=9780261102361, title=The Lord of the Rings: The Two Towers, synopsis=The Two Towers continues Frodo and Sam's mission to destroy the One Ring, while Aragorn, Legolas, and Gimli search for Merry and Pippin, who have been captured by orcs., price=19.99, discount=0.0, cover=http://images.cesguiro.es/books/9780261102361.webp, publisher=Publisher(id=19, name=Novedades, slug=new-releases), category=Category(id=19, name=Novedades, slug=new-releases), authors=null, genres=null)"
+        }
+      ],
+      "path": "com/fpmislata/basespring/controller/webMapper/book/BookMapperImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+        "object_id": 967273638,
+        "value": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl@39a76ca6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 194,
+      "parent_id": 193,
+      "return_value": {
+        "class": "com.fpmislata.basespring.controller.webModel.book.BookCollection",
+        "object_id": 672308496,
+        "value": "BookCollection[isbn=9780261102361, title=The Lord of the Rings: The Two Towers, price=19.99, discount=0.0, cover=http://images.cesguiro.es/books/9780261102361.webp]"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+      "event": "call",
+      "id": 195,
+      "lineno": 31,
+      "method_id": "toBookCollection",
+      "parameters": [
+        {
+          "class": "com.fpmislata.basespring.domain.model.Book",
+          "kind": "req",
+          "name": "book",
+          "object_id": 401100621,
+          "value": "Book(isbn=9780316029186, title=The Last Wish, synopsis=The Last Wish is a collection of stories introducing the witcher Geralt of Rivia, a monster hunter in a fantasy world full of dangerous creatures and magic., price=18.99, discount=10.0, cover=http://images.cesguiro.es/books/9780316029186.jpg, publisher=Publisher(id=20, name=Recomendados, slug=recommended), category=Category(id=20, name=Recomendados, slug=recommended), authors=null, genres=null)"
+        }
+      ],
+      "path": "com/fpmislata/basespring/controller/webMapper/book/BookMapperImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+        "object_id": 967273638,
+        "value": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl@39a76ca6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 196,
+      "parent_id": 195,
+      "return_value": {
+        "class": "com.fpmislata.basespring.controller.webModel.book.BookCollection",
+        "object_id": 300666229,
+        "value": "BookCollection[isbn=9780316029186, title=The Last Wish, price=18.99, discount=10.0, cover=http://images.cesguiro.es/books/9780316029186.jpg]"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+      "event": "call",
+      "id": 197,
+      "lineno": 31,
+      "method_id": "toBookCollection",
+      "parameters": [
+        {
+          "class": "com.fpmislata.basespring.domain.model.Book",
+          "kind": "req",
+          "name": "book",
+          "object_id": 1569101916,
+          "value": "Book(isbn=9780316073797, title=Sword of Destiny, synopsis=Sword of Destiny is a collection of stories following Geralt of Rivia's adventures as he faces monsters and encounters important characters in his life., price=18.99, discount=5.0, cover=http://images.cesguiro.es/books/9780316073797.jpeg, publisher=Publisher(id=21, name=Más leídos, slug=best-sellers), category=Category(id=21, name=Más leídos, slug=best-sellers), authors=null, genres=null)"
+        }
+      ],
+      "path": "com/fpmislata/basespring/controller/webMapper/book/BookMapperImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+        "object_id": 967273638,
+        "value": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl@39a76ca6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 198,
+      "parent_id": 197,
+      "return_value": {
+        "class": "com.fpmislata.basespring.controller.webModel.book.BookCollection",
+        "object_id": 526252711,
+        "value": "BookCollection[isbn=9780316073797, title=Sword of Destiny, price=18.99, discount=5.0, cover=http://images.cesguiro.es/books/9780316073797.jpeg]"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+      "event": "call",
+      "id": 199,
+      "lineno": 31,
+      "method_id": "toBookCollection",
+      "parameters": [
+        {
+          "class": "com.fpmislata.basespring.domain.model.Book",
+          "kind": "req",
+          "name": "book",
+          "object_id": 791770082,
+          "value": "Book(isbn=9780060557912, title=Good Omens, synopsis=Good Omens tells the story of an angel and a demon who team up to prevent the apocalypse. Both have lived on Earth for centuries and have grown fond of humanity, so they will do everything possible to stop the end of the world., price=16.99, discount=0.0, cover=http://images.cesguiro.es/books/9780060557912.jpg, publisher=Publisher(id=22, name=Recomendados, slug=recommended), category=Category(id=22, name=Recomendados, slug=recommended), authors=null, genres=null)"
+        }
+      ],
+      "path": "com/fpmislata/basespring/controller/webMapper/book/BookMapperImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+        "object_id": 967273638,
+        "value": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl@39a76ca6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 200,
+      "parent_id": 199,
+      "return_value": {
+        "class": "com.fpmislata.basespring.controller.webModel.book.BookCollection",
+        "object_id": 494060491,
+        "value": "BookCollection[isbn=9780060557912, title=Good Omens, price=16.99, discount=0.0, cover=http://images.cesguiro.es/books/9780060557912.jpg]"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+      "event": "call",
+      "id": 201,
+      "lineno": 31,
+      "method_id": "toBookCollection",
+      "parameters": [
+        {
+          "class": "com.fpmislata.basespring.domain.model.Book",
+          "kind": "req",
+          "name": "book",
+          "object_id": 1971631721,
+          "value": "Book(isbn=9780060853983, title=American Gods, synopsis=American Gods follows Shadow Moon, an ex-convict who becomes the bodyguard of the enigmatic Mr. Wednesday. He soon discovers that his boss is an incarnation of Odin, and he becomes embroiled in a battle between the old gods and the new., price=17.99, discount=15.0, cover=http://images.cesguiro.es/books/9780060853983.webp, publisher=Publisher(id=23, name=Ofertas, slug=offers), category=Category(id=23, name=Ofertas, slug=offers), authors=null, genres=null)"
+        }
+      ],
+      "path": "com/fpmislata/basespring/controller/webMapper/book/BookMapperImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+        "object_id": 967273638,
+        "value": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl@39a76ca6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 202,
+      "parent_id": 201,
+      "return_value": {
+        "class": "com.fpmislata.basespring.controller.webModel.book.BookCollection",
+        "object_id": 565458792,
+        "value": "BookCollection[isbn=9780060853983, title=American Gods, price=17.99, discount=15.0, cover=http://images.cesguiro.es/books/9780060853983.webp]"
+      },
+      "thread_id": 60
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+      "event": "call",
+      "id": 203,
+      "lineno": 31,
+      "method_id": "toBookCollection",
+      "parameters": [
+        {
+          "class": "com.fpmislata.basespring.domain.model.Book",
+          "kind": "req",
+          "name": "book",
+          "object_id": 1431735519,
+          "value": "Book(isbn=9780060557812, title=Stardust, synopsis=Stardust tells the adventure of Tristran Thorn, who promises to bring his beloved a fallen star. His quest leads him to the magical realm of Faerie, where he discovers that the star is a woman and faces unexpected dangers., price=15.99, discount=5.0, cover=http://images.cesguiro.es/books/9780060557812.webp, publisher=Publisher(id=24, name=Recomendados, slug=recommended), category=Category(id=24, name=Recomendados, slug=recommended), authors=null, genres=null)"
+        }
+      ],
+      "path": "com/fpmislata/basespring/controller/webMapper/book/BookMapperImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl",
+        "object_id": 967273638,
+        "value": "com.fpmislata.basespring.controller.webMapper.book.BookMapperImpl@39a76ca6"
+      },
+      "static": false,
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 204,
+      "parent_id": 203,
+      "return_value": {
+        "class": "com.fpmislata.basespring.controller.webModel.book.BookCollection",
+        "object_id": 1861994062,
+        "value": "BookCollection[isbn=9780060557812, title=Stardust, price=15.99, discount=5.0, cover=http://images.cesguiro.es/books/9780060557812.webp]"
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0.04385153,
+      "event": "return",
+      "id": 205,
+      "parent_id": 4,
+      "return_value": {
+        "class": "org.springframework.http.ResponseEntity",
+        "object_id": 300275127,
+        "value": "<200 OK OK,[BookCollection[isbn=9780142424179, title=The Little Prince, price=15.99, discount=10.0, cover=http://images.cesguiro.es/books/9780142424179.webp], BookCollection[isbn=9780142410363, title=Matilda, price=14.99, discount=5.0, cover=http://images.cesguiro.es/books/9780142410363.webp], BookCollection[isbn=9780142418222, title=Charlie and the Chocolate Factory, price=13.99, discount=15.0, cover=http://images.cesguiro.es/books/9780142418222.jpeg], BookCollection[isbn=9780060256654, title=Where the Wild Things Are, price=16.99, discount=15.0, cover=http://images.cesguiro.es/books/9780060256654.webp], BookCollection[isbn=9780618260300, title=The Lion, the Witch and the Wardrobe, price=18.99, discount=0.0, cover=http://images.cesguiro.es/books/9780618260300.webp], BookCollection[isbn=9780439554930, title=Harry Potter and the Sorcerer's Stone, price=19.99, discount=15.0, cover=http://images.cesguiro.es/books/9780439554930.webp], BookCollection[isbn=9781451673319, title=The Story of Ferdinand, price=12.99..."
+      },
+      "thread_id": 60
+    },
+    {
+      "elapsed": 0.0458518,
+      "event": "return",
+      "http_server_response": {
+        "headers": {
+          "Transfer-Encoding": "chunked",
+          "Keep-Alive": "timeout=60",
+          "Connection": "keep-alive",
+          "Date": "Wed, 23 Oct 2024 08:37:59 GMT",
+          "Content-Type": "application/json"
+        },
+        "status": 200
+      },
+      "id": 206,
+      "parent_id": 1,
+      "thread_id": 60
+    }
+  ],
+  "version": "1.2",
+  "metadata": {
+    "name": "GET /api/books (200) - 10:37:59.083",
+    "app": "base-spring",
+    "language": {
+      "name": "java",
+      "version": "21.0.4+7-LTS",
+      "engine": "OpenJDK 64-Bit Server VM"
+    },
+    "client": {
+      "name": "appmap-java",
+      "url": "https://github.com/appland/appmap-java"
+    },
+    "recorder": {
+      "name": "request_recording",
+      "type": "requests"
+    },
+    "recording": {},
+    "git": {
+      "repository": "https://github.com/javferTec/2-DAW.git",
+      "branch": "main",
+      "commit": "5d1d2fc17416b33497b08f7e486653b5f0e0a3e8"
+    }
+  },
+  "classMap": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "name": "mapRow",
+                                          "type": "function",
+                                          "static": false,
+                                          "location": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/BookRowMapper.java:16"
+                                        }
+                                      ],
+                                      "name": "BookRowMapper",
+                                      "type": "class"
+                                    },
+                                    {
+                                      "children": [
+                                        {
+                                          "name": "mapRow",
+                                          "type": "function",
+                                          "static": false,
+                                          "location": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/CategoryRowMapper.java:13"
+                                        }
+                                      ],
+                                      "name": "CategoryRowMapper",
+                                      "type": "class"
+                                    },
+                                    {
+                                      "children": [
+                                        {
+                                          "name": "mapRow",
+                                          "type": "function",
+                                          "static": false,
+                                          "location": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper/PublisherRowMapper.java:13"
+                                        }
+                                      ],
+                                      "name": "PublisherRowMapper",
+                                      "type": "class"
+                                    }
+                                  ],
+                                  "name": "mapper",
+                                  "type": "package"
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "name": "findAll",
+                                      "type": "function",
+                                      "static": false,
+                                      "location": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/BookRepositoryImplJdbc.java:26"
+                                    }
+                                  ],
+                                  "name": "BookRepositoryImplJdbc",
+                                  "type": "class"
+                                }
+                              ],
+                              "name": "jdbc",
+                              "type": "package"
+                            }
+                          ],
+                          "name": "impl",
+                          "type": "package"
+                        }
+                      ],
+                      "name": "repository",
+                      "type": "package"
+                    }
+                  ],
+                  "name": "persistence",
+                  "type": "package"
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "name": "findAll",
+                                  "type": "function",
+                                  "static": false,
+                                  "location": "base-spring/src/main/java/com/fpmislata/basespring/domain/service/impl/BookServiceImpl.java:19"
+                                }
+                              ],
+                              "name": "BookServiceImpl",
+                              "type": "class"
+                            }
+                          ],
+                          "name": "impl",
+                          "type": "package"
+                        }
+                      ],
+                      "name": "service",
+                      "type": "package"
+                    }
+                  ],
+                  "name": "domain",
+                  "type": "package"
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "name": "toBookCollection",
+                                  "type": "function",
+                                  "static": false,
+                                  "location": "com/fpmislata/basespring/controller/webMapper/book/BookMapperImpl.java:31"
+                                }
+                              ],
+                              "name": "BookMapperImpl",
+                              "type": "class"
+                            }
+                          ],
+                          "name": "book",
+                          "type": "package"
+                        }
+                      ],
+                      "name": "webMapper",
+                      "type": "package"
+                    },
+                    {
+                      "children": [
+                        {
+                          "name": "findAll",
+                          "type": "function",
+                          "static": false,
+                          "location": "base-spring/src/main/java/com/fpmislata/basespring/controller/BookController.java:27"
+                        }
+                      ],
+                      "name": "BookController",
+                      "type": "class"
+                    }
+                  ],
+                  "name": "controller",
+                  "type": "package"
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "name": "preHandle",
+                              "type": "function",
+                              "static": false,
+                              "location": "base-spring/src/main/java/com/fpmislata/basespring/common/locale/CustomLocaleChangeInterceptor.java:20"
+                            }
+                          ],
+                          "name": "CustomLocaleChangeInterceptor",
+                          "type": "class"
+                        }
+                      ],
+                      "name": "locale",
+                      "type": "package"
+                    }
+                  ],
+                  "name": "common",
+                  "type": "package"
+                }
+              ],
+              "name": "basespring",
+              "type": "package"
+            }
+          ],
+          "name": "fpmislata",
+          "type": "package"
+        }
+      ],
+      "name": "com",
+      "type": "package"
+    },
+    {
+      "type": "http",
+      "name": "HTTP server requests",
+      "children": [
+        {
+          "type": "route",
+          "name": "GET /api/books"
+        }
+      ]
+    },
+    {
+      "type": "database",
+      "name": "Database",
+      "children": [
+        {
+          "type": "query",
+          "name": "SELECT @@session.tx_isolation"
+        },
+        {
+          "type": "query",
+          "name": "SELECT * FROM books LEFT JOIN categories ON books.category_id = categories.id LEFT JOIN publishers ON books.publisher_id = publishers.id"
+        }
+      ]
+    }
+  ]
+}
