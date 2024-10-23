@@ -4,6 +4,7 @@ let nombre = document.getElementById("name");
 let email = document.getElementById("email");
 let nameError = document.getElementById("nameError");
 let emailError = document.getElementById("emailError");
+let envioExitoso = document.getElementById("envioExitoso");
 
 function validarNombre() {
     if (nombre.value === "" || nombre.value.length < 5) {
@@ -37,8 +38,10 @@ function validarFormulario(event) {
     event.preventDefault();
 
     if (validarNombre() && validarEmail()) {
-        alert("Formulario enviado");
-        event.target.submit()
+        capturarUrl();
+        capturarUrlV2();
+        //event.target.submit(); // COMENTAR PARA PODER VER LOS DATOS DE LA URL EN LA CONSOLA
+        envioExitoso.innerHTML = "Formulario enviado con éxito";
         nameError.innerHTML = "";
         emailError.innerHTML = "";
         nombre.value = "";
@@ -49,3 +52,25 @@ function validarFormulario(event) {
     return false;
 }
 
+function capturarUrl() {
+    let url = new URLSearchParams(window.location.search);
+    let nombre = url.get("name");
+    let email = url.get("email");
+
+    console.log("Nombre: " + nombre);
+    console.log("Email: " + email);
+}
+
+function capturarUrlV2() {
+    let url = window.location.href;
+    let paramsString = url.split("?")[1];
+    let paramsArray = paramsString.split("&");
+    let paramsObject = {};
+    paramsArray.forEach(param => {
+        let [key, value] = param.split("=");
+        paramsObject[key] = value;
+    });
+    let nombre = paramsObject.name.split("+").join(" ");
+    let email = paramsObject.email.split("%40").join("@");
+    console.log(nombre + " - " + email);
+}
