@@ -8,26 +8,31 @@ let emailError = document.getElementById("emailError");
 function validarNombre() {
     if (nombre.value === "" || nombre.value.length < 5) {
         nameError.innerHTML = "Por favor, pon un nombre válido, al menos 5 caracteres";
-    } else {
-        nameError.innerHTML = "";
+        return false;
     }
+    nameError.innerHTML = "";
+    return true;
+
 }
 
 function validarEmail() {
-    let regexEmail =   /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    let regexEmail = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
-    if (email.value === "" || email.value.length < 8) {
-        emailError.innerHTML = "Por favor, pon un email válido al menos 5 caracteres";
-    } else {
+    if (email.value === "" || email.value.length > 8) {
+        if (!regexEmail.test(email.value)) {
+            emailError.innerHTML = "Por favor, pon un formato de email válido";
+        }
         emailError.innerHTML = "";
-    }
+        return true;
+    } else {
+        emailError.innerHTML = "Por favor, pon un email válido al menos 8 caracteres";
 
-    if (!regexEmail.test(email.value)) {
-        emailError.innerHTML = "Por favor, pon un formato de email válido";
     }
+    return false;
 }
 
 formulario.addEventListener("submit", validarFormulario);
+
 function validarFormulario(event) {
     event.preventDefault();
 
@@ -38,8 +43,9 @@ function validarFormulario(event) {
         emailError.innerHTML = "";
         nombre.value = "";
         email.value = "";
+        return true;
     }
 
-
+    return false;
 }
 
