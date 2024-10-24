@@ -22,9 +22,16 @@ public class BookRepositoryImplJdbc implements BookRepository {
 
 
     @Override
-    public List<Book> findAll() {
-        String sql = "SELECT * FROM books LEFT JOIN categories ON books.category_id = categories.id LEFT JOIN publishers ON books.publisher_id = publishers.id";
-        return jdbcTemplate.query(sql, new BookRowMapper());
+    public List<Book> findAll(int page, int size) {
+        String sql = "SELECT * FROM books LIMIT ? OFFSET ?";
+        return jdbcTemplate.query(sql, new BookRowMapper(), size, page * size);
+    }
+
+    @Override
+    public int count() {
+        String sql = "SELECT COUNT(*) FROM books";
+        Integer count = jdbcTemplate.queryForObject(sql, Integer.class);
+        return (count != null) ? count : 0;
     }
 
     @Override

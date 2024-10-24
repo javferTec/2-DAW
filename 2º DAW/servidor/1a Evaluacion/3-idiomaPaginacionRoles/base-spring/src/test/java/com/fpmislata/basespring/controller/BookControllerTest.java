@@ -41,7 +41,7 @@ public class BookControllerTest {
     @DisplayName("Test getAll method")
     void testGetAllMethod() throws Exception {
         // Arrange
-        when(bookService.findAll()).thenReturn(BookTestData.getBooks());
+        when(bookService.findAll(1, 10)).thenReturn(BookTestData.getBooks());
 
         // Act & Assert
         mockMvc.perform(get("/api/books")

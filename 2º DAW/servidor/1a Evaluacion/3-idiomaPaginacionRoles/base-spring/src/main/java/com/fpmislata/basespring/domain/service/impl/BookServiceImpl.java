@@ -15,13 +15,16 @@ public class BookServiceImpl implements BookService {
 
     private final BookRepository bookRepository;
 
-    public List<Book> findAll() {
-        System.out.println("findAll");
-        return bookRepository.findAll();
+    public List<Book> findAll(int page, int size) {
+        return bookRepository.findAll(page,size);
+    }
+
+    @Override
+    public int count() {
+        return bookRepository.count();
     }
 
     public Book findByIsbn(String isbn) {
-        System.out.println("findByIsbn");
         return bookRepository.findByIsbn(isbn).orElseThrow(() -> new ResourceNotFoundException("Book with ISBN " + isbn + " not found"));
     }
 }
