@@ -1,0 +1,5 @@
+idioma -> crear un interceptor (componente que se ejecuta antes de ejecutar la petición y antes de enviarla, son filtros), mira a ver si existe parámetro en la cabecera (AssertLanguage). Si está crear lenguage útil, creamos local para configurar más cosas.
+
+paginacion -> pasarle por la url pasarle parametros, el tamaño y la página. Y despues modificar los metodos del servicio y repositorio.
+
+roles (admin/user) ->

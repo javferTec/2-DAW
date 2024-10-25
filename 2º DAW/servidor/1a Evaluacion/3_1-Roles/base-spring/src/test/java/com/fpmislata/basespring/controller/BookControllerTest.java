@@ -1,8 +1,9 @@
 package com.fpmislata.basespring.controller;
 
 import com.fpmislata.basespring.data.BookTestData;
-import com.fpmislata.basespring.domain.exception.ResourceNotFoundException;
-import com.fpmislata.basespring.domain.service.BookService;
+import com.fpmislata.basespring.common.layers.domain.exception.ResourceNotFoundException;
+import com.fpmislata.basespring.roles.user.domain.service.BookService;
+import com.fpmislata.basespring.roles.user.controller.BookController;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

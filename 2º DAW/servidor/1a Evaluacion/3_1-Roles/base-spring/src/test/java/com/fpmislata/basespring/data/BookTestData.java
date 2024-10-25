@@ -1,6 +1,6 @@
 package com.fpmislata.basespring.data;
 
-import com.fpmislata.basespring.domain.model.*;
+import com.fpmislata.basespring.roles.user.domain.model.*;
 
 import java.math.BigDecimal;
 import java.util.List;

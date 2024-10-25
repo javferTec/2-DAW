@@ -1,6 +1,6 @@
 package com.fpmislata.basespring.data;
 
-import com.fpmislata.basespring.domain.model.Author;
+import com.fpmislata.basespring.roles.user.domain.model.Author;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.fpmislata.basespring.common.http_errors;
 
-import com.fpmislata.basespring.domain.exception.ResourceNotFoundException;
+import com.fpmislata.basespring.common.layers.domain.exception.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

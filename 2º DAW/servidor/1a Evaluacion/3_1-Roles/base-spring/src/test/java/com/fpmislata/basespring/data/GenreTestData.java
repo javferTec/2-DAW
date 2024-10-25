@@ -1,6 +1,6 @@
 package com.fpmislata.basespring.data;
 
-import com.fpmislata.basespring.domain.model.Genre;
+import com.fpmislata.basespring.roles.user.domain.model.Genre;
 
 import java.util.List;
 

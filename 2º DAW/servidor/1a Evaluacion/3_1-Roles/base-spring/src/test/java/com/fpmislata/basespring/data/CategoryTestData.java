@@ -1,7 +1,6 @@
 package com.fpmislata.basespring.data;
 
-import com.fpmislata.basespring.domain.model.Category;
-import com.fpmislata.basespring.domain.model.Publisher;
+import com.fpmislata.basespring.roles.user.domain.model.Category;
 
 import java.util.List;
 
