@@ -6,7 +6,7 @@ import com.fpmislata.basespring.controller.webModel.book.BookCollection;
 import com.fpmislata.basespring.controller.webModel.book.BookDetail;
 import com.fpmislata.basespring.domain.service.BookService;
 import lombok.RequiredArgsConstructor;
-import lombok.Value;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,11 +20,11 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping(BookController.URL)
 public class BookController {
-    //@Value("${app.base.url}")
-    private String baseUrl = "http://localhost:8080";
+    @Value("${app.base.url}")
+    private String baseUrl;
 
-    //@Value("${app.pageSize.default}")
-    private String defaultPageSize = "10";
+    @Value("${app.pageSize.default}")
+    private String defaultPageSize;
 
     public static final String URL = "/api/books";
     private final BookService bookService;

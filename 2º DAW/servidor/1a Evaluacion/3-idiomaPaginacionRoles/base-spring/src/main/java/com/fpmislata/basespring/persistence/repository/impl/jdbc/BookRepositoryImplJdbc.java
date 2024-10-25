@@ -20,6 +20,11 @@ public class BookRepositoryImplJdbc implements BookRepository {
     private final AuthorRepository authorRepository;
     private final GenreRepository genreRepository;
 
+    @Override
+    public List<Book> findAll() {
+        String sql = "SELECT * FROM books";
+        return jdbcTemplate.query(sql, new BookRowMapper());
+    }
 
     @Override
     public List<Book> findAll(int page, int size) {
