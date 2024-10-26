@@ -1,0 +1,28 @@
+package com.fpmislata.basespring.roles.admin.persistence.impl.jdbc;
+
+import com.fpmislata.basespring.roles.admin.domain.model.GenreAdmin;
+import com.fpmislata.basespring.roles.admin.domain.repository.GenreAdminRepository;
+import com.fpmislata.basespring.roles.admin.persistence.impl.jdbc.mapper.GenreAdminRowMapper;
+import lombok.RequiredArgsConstructor;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+@RequiredArgsConstructor
+public class GenreAdminRepositoryImpl implements GenreAdminRepository {
+
+    private final JdbcTemplate jdbcTemplate;
+
+    @Override
+    public List<GenreAdmin> getByIsbnBook(String isbn) {
+        String sql = """
+                SELECT genreUsers.* FROM genreUsers
+                JOIN books_genres ON genreUsers.id = books_genres.genre_id
+                JOIN books ON books_genres.book_id = books.id
+                AND books.isbn = ?
+           """;
+        return jdbcTemplate.query(sql, new GenreAdminRowMapper(),isbn);
+    }
+}
