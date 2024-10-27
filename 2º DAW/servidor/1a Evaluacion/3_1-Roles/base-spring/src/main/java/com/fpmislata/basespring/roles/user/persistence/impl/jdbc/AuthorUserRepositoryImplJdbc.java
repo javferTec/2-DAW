@@ -18,8 +18,8 @@ public class AuthorUserRepositoryImplJdbc implements AuthorUserRepository {
     @Override
     public List<AuthorUser> getByIsbnBook(String isbn) {
         String sql = """
-                    SELECT authorUsers.* FROM authorUsers
-                                    JOIN books_authors ON authorUsers.id = books_authors.author_id
+                    SELECT authors.* FROM authors
+                                    JOIN books_authors ON authors.id = books_authors.author_id
                                     JOIN books ON books_authors.book_id = books.id
                                     AND books.isbn = ?
                 """;
