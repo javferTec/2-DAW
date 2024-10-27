@@ -1,6 +1,6 @@
 package com.fpmislata.basespring.domain.service.impl;
 
-import com.fpmislata.basespring.domain.exception.ResourceNotFoundException;
+import com.fpmislata.basespring.common.exception.ResourceNotFoundException;
 import com.fpmislata.basespring.domain.model.Book;
 import com.fpmislata.basespring.domain.service.BookService;
 import com.fpmislata.basespring.persistence.repository.BookRepository;

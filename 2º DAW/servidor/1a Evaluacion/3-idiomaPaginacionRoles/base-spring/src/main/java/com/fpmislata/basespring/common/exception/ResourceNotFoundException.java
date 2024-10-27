@@ -1,4 +1,4 @@
-package com.fpmislata.basespring.domain.exception;
+package com.fpmislata.basespring.common.exception;
 
 public class ResourceNotFoundException extends RuntimeException {
 

@@ -1,7 +1,7 @@
 package com.fpmislata.basespring.controller;
 
 import com.fpmislata.basespring.data.BookTestData;
-import com.fpmislata.basespring.domain.exception.ResourceNotFoundException;
+import com.fpmislata.basespring.common.exception.ResourceNotFoundException;
 import com.fpmislata.basespring.domain.service.BookService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

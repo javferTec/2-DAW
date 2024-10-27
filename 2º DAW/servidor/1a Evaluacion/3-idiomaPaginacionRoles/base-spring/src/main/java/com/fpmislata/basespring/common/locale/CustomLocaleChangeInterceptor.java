@@ -7,7 +7,7 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 import java.util.Locale;
 
-public class CustomLocaleChangeInterceptor extends LocaleChangeInterceptor {
+public class CustomLocaleChangeInterceptor extends LocaleChangeInterceptor { // La clase se encarga de cambiar el idioma de la aplicacion. Lee el "Accept-Language" de la cabecera, si es nulo usa el por defecto, sino establece el idioma que se le proporciona.
 
     private final String defaultLanguage;
 

@@ -13,7 +13,7 @@ public interface GenreMapper {
 
     List<String> toGenreNameList(List<Genre> genres);
 
-    default String toGenreName(Genre genre) {
+    default String toGenreName(Genre genre) { // Metodo para mapear un objeto Genre a un String que MapStruct usara por defecto.
         return genre.getName();
     }
 }

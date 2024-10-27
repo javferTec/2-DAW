@@ -1,4 +1,4 @@
-package com.fpmislata.basespring.controller.webModel;
+package com.fpmislata.basespring.controller.webPagination;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 @AllArgsConstructor
-public class PaginatedResponse<T> {
+public class PaginatedResponse<T> { // Clase encargada de devolver una respuesta paginada con los datos solicitados por el cliente
     private List<T> data;
     private int total;
     private int currentPage;

@@ -11,14 +11,16 @@ import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 @Mapper(uses = {PublisherMapper.class, AuthorMapper.class, GenreMapper.class})
+// @Mapper -> Indica que esta interfaz es un mapeador
+// uses -> Indica otros mapeadores que se van a utilizar
 public interface BookMapper {
 
-    BookMapper INSTANCE = Mappers.getMapper(BookMapper.class);
+    BookMapper INSTANCE = Mappers.getMapper(BookMapper.class); // Obtiene una instancia del mapeador BookMapper (Singleton) para usarlo en esta clase
 
-    BookCollection toBookCollection(Book book);
+    BookCollection toBookCollection(Book book); // Mapea un objeto Book a un objeto BookCollection
 
-    @Mapping(target ="publisherCollection", source = "publisher")
-    @Mapping(target="authorsCollection", source = "authors")
+    @Mapping(target ="publisherCollection", source = "publisher") // Mapea el atributo publisher de Book a publisherCollection de BookDetail
+    @Mapping(target="authorsCollection", source = "authors") // El primer elemento es el atributo de BookDetail y el segundo es el atributo de Book
     @Mapping(target = "category", source = "category.name")
     @Mapping(target = "genres", source = "genres")
     BookDetail toBookDetail(Book book);
