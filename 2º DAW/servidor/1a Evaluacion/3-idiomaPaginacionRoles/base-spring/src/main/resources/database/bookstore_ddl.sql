@@ -5,7 +5,7 @@ DATABASE bookstore;
 USE
 bookstore;
 
-CREATE TABLE genres
+CREATE TABLE genreUsers
 (
     id      INT PRIMARY KEY AUTO_INCREMENT,
     name_es VARCHAR(255) NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE categories
     slug    VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE publishers
+CREATE TABLE publisherUsers
 (
     id   INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE books
     cover        VARCHAR(255),
     publisher_id INT,
     category_id  INT,
-    FOREIGN KEY (publisher_id) REFERENCES publishers (id),
+    FOREIGN KEY (publisher_id) REFERENCES publisherUsers (id),
     FOREIGN KEY (category_id) REFERENCES categories (id)
 );
 
@@ -51,10 +51,10 @@ CREATE TABLE books_genres
     book_id  INT,
     genre_id INT,
     FOREIGN KEY (book_id) REFERENCES books (id),
-    FOREIGN KEY (genre_id) REFERENCES genres (id)
+    FOREIGN KEY (genre_id) REFERENCES genreUsers (id)
 );
 
-CREATE TABLE authors
+CREATE TABLE authorUsers
 (
     id           INT PRIMARY KEY AUTO_INCREMENT,
     name         VARCHAR(255) NOT NULL,
@@ -71,7 +71,7 @@ CREATE TABLE books_authors
     book_id   INT,
     author_id INT,
     FOREIGN KEY (book_id) REFERENCES books (id),
-    FOREIGN KEY (author_id) REFERENCES authors (id)
+    FOREIGN KEY (author_id) REFERENCES authorUsers (id)
 );
 
 CREATE TABLE users

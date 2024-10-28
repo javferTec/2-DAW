@@ -7,18 +7,18 @@ TRUNCATE TABLE orders_details;
 TRUNCATE TABLE orders;
 TRUNCATE TABLE reviews;
 TRUNCATE TABLE books_authors;
-TRUNCATE TABLE authors;
+TRUNCATE TABLE authorUsers;
 TRUNCATE TABLE books_genres;
 TRUNCATE TABLE books;
-TRUNCATE TABLE publishers;
+TRUNCATE TABLE publisherUsers;
 TRUNCATE TABLE categories;
-TRUNCATE TABLE genres;
+TRUNCATE TABLE genreUsers;
 TRUNCATE TABLE users;
 
 SET FOREIGN_KEY_CHECKS = 1;
 
--- Insert genres
-INSERT INTO genres (name_es, name_en, slug)
+-- Insert genreUsers
+INSERT INTO genreUsers (name_es, name_en, slug)
 VALUES ('Infantil', 'Children\'s', 'childrens'),
        ('Juvenil', 'Young adult', 'young-adult'),
        ('Ficción', 'Fiction', 'fiction'),
@@ -34,8 +34,8 @@ VALUES ('Novedades', 'New Releases', 'new-releases'),
        ('Ofertas', 'Offers', 'offers');
 
 
--- Insert publishers
-INSERT INTO publishers (name, slug)
+-- Insert publisherUsers
+INSERT INTO publisherUsers (name, slug)
 VALUES ('Editorial Sudamericana', 'editorial-sudamericana'),
        ('Anagrama', 'anagrama'),
        ('Penguin Random House', 'penguin-random-house'),
@@ -154,8 +154,8 @@ VALUES ('9780316073797', 'La espada del destino', 'Sword of Destiny',
         'Stardust tells the adventure of Tristran Thorn, who promises to bring his beloved a fallen star. His quest leads him to the magical realm of Faerie, where he discovers that the star is a woman and faces unexpected dangers.',
         15.99, 5.00, 'http://images.cesguiro.es/books/9780060557812.webp', 5, 2);
 
--- Insert authors
-INSERT INTO authors (name, nationality, biography_en, biography_es, birth_year, death_year)
+-- Insert authorUsers
+INSERT INTO authorUsers (name, nationality, biography_en, biography_es, birth_year, death_year)
 VALUES ('Antoine de Saint-Exupéry', 'French',
         'Antoine de Saint-Exupéry was a French writer, poet, aristocrat, journalist, and pioneering aviator. He is best remembered for his novella The Little Prince and for his lyrical aviation writings.',
         'Antoine de Saint-Exupéry fue un escritor, poeta, aristócrata, periodista y aviador pionero francés. Es recordado por su novela corta El principito y por sus escritos líricos sobre la aviación.',
