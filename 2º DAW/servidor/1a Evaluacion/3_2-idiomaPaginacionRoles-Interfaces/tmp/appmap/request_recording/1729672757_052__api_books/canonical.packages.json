@@ -1,0 +1,8 @@
+[
+  "com/fpmislata/basespring/common/locale",
+  "com/fpmislata/basespring/controller",
+  "com/fpmislata/basespring/controller/webMapper/book",
+  "com/fpmislata/basespring/domain/service/impl",
+  "com/fpmislata/basespring/persistence/repository/impl/jdbc",
+  "com/fpmislata/basespring/persistence/repository/impl/jdbc/mapper"
+]
