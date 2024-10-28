@@ -18,8 +18,8 @@ public class GenreAdminRepositoryImpl implements GenreAdminRepository {
     @Override
     public List<GenreAdmin> getByIsbnBook(String isbn) {
         String sql = """
-                SELECT genreUsers.* FROM genreUsers
-                JOIN books_genres ON genreUsers.id = books_genres.genre_id
+                SELECT genres.* FROM genres
+                JOIN books_genres ON genres.id = books_genres.genre_id
                 JOIN books ON books_genres.book_id = books.id
                 AND books.isbn = ?
            """;

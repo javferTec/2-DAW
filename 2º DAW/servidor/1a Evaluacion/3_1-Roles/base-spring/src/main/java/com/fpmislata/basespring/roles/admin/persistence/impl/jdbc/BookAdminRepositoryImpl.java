@@ -51,7 +51,7 @@ public class BookAdminRepositoryImpl implements BookAdminRepository {
         String sql = """
                 SELECT * FROM books
                 LEFT JOIN categories ON books.category_id = categories.id
-                LEFT JOIN publisherUsers ON books.publisher_id = publisherUsers.id
+                LEFT JOIN publishers ON books.publisher_id = publishers.id
                 WHERE books.isbn = ?
            """;
         try {
