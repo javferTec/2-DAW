@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/3-idiomaPaginacionRoles.iml" filepath="$PROJECT_DIR$/.idea/3-idiomaPaginacionRoles.iml" />
+      <module fileurl="file://$PROJECT_DIR$/base-spring/base-spring.iml" filepath="$PROJECT_DIR$/base-spring/base-spring.iml" />
     </modules>
   </component>
 </project>

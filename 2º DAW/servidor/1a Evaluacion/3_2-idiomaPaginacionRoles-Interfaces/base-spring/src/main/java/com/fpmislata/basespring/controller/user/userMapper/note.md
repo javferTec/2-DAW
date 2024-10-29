@@ -1,4 +1,0 @@
-- Para mappear de los modelos de dominio al controlador utilizamos el framework MapStruct.
-- Para que MapStruct funcione necesita los getters, setters y un constructor vacío.
-- Los nombres de los atributos deben ser iguales. En el caso de no serlo y no poder realizar el mapeo automáticamente, utilizamos la anotación @Mapping.
-- En BookMapper y GenreMapper hay explicaciones.

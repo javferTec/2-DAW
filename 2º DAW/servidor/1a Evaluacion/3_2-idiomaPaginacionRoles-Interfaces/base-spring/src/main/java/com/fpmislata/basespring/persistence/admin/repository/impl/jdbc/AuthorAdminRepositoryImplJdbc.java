@@ -12,7 +12,7 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class AuthorAdminRepositoryImpl implements AuthorAdminRepository {
+public class AuthorAdminRepositoryImplJdbc implements AuthorAdminRepository {
 
     private final JdbcTemplate jdbcTemplate;
 

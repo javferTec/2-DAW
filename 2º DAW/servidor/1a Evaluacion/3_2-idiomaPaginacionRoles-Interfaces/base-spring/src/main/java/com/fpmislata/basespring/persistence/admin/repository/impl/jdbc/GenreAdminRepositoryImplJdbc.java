@@ -12,7 +12,7 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class GenreAdminRepositoryImpl implements GenreAdminRepository {
+public class GenreAdminRepositoryImplJdbc implements GenreAdminRepository {
 
     private final JdbcTemplate jdbcTemplate;
 

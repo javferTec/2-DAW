@@ -1,10 +1,12 @@
 package com.fpmislata.basespring.domain.user.service.impl;
 
-import com.fpmislata.basespring.common.exception.ResourceNotFoundException;
+import com.fpmislata.basespring.domain.common.helper.BookServiceHelper;
 import com.fpmislata.basespring.domain.user.model.BookUser;
 import com.fpmislata.basespring.domain.user.service.BookUserService;
-import com.fpmislata.basespring.persistence.user.repository.BookUserRepository;
+import com.fpmislata.basespring.persistence.user.repository.impl.jdbc.BookUserRepositoryImplJdbc;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,24 +15,33 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BookUserServiceImpl implements BookUserService {
 
-    private final BookUserRepository bookUserRepository;
+    @Getter
+    private final BookUserRepositoryImplJdbc repository;
+    private final BookServiceHelper<BookUser, BookUserRepositoryImplJdbc> helper;
 
-    @Override
-    public List<BookUser> findAll() {
-        return bookUserRepository.findAll();
+    @Autowired
+    public BookUserServiceImpl(BookUserRepositoryImplJdbc repository) {
+        this.repository = repository;
+        this.helper = new BookServiceHelper<>(repository);
     }
 
     @Override
-    public List<BookUser> findAll(int page, int size) {
-        return bookUserRepository.findAll(page, size);
+    public List<BookUser> getAll() {
+        return helper.getAll();
+    }
+
+    @Override
+    public List<BookUser> getAll(int page, int size) {
+        return helper.getAll(page, size);
     }
 
     @Override
     public int count() {
-        return bookUserRepository.count();
+        return helper.count();
     }
 
+    @Override
     public BookUser findByIsbn(String isbn) {
-        return bookUserRepository.findByIsbn(isbn).orElseThrow(() -> new ResourceNotFoundException("Book with ISBN " + isbn + " not found"));
+        return helper.findByIsbn(isbn);
     }
 }

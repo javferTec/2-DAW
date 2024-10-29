@@ -6,6 +6,7 @@ import com.fpmislata.basespring.persistence.admin.repository.AuthorAdminReposito
 import com.fpmislata.basespring.persistence.admin.repository.BookAdminRepository;
 import com.fpmislata.basespring.persistence.admin.repository.GenreAdminRepository;
 import com.fpmislata.basespring.persistence.admin.repository.impl.jdbc.mapper.BookAdminRowMapper;
+import com.fpmislata.basespring.persistence.common.generic.GenericBookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -15,7 +16,7 @@ import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
-public class BookAdminRepositoryImpl implements BookAdminRepository {
+public class BookAdminRepositoryImplJdbc implements GenericBookRepository<BookAdmin>, BookAdminRepository {
 
     private final JdbcTemplate jdbcTemplate;
 

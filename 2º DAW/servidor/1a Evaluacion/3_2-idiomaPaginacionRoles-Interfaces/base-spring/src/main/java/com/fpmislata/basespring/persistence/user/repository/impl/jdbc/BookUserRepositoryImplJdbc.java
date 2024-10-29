@@ -1,6 +1,7 @@
 package com.fpmislata.basespring.persistence.user.repository.impl.jdbc;
 
 import com.fpmislata.basespring.domain.user.model.BookUser;
+import com.fpmislata.basespring.persistence.common.generic.GenericBookRepository;
 import com.fpmislata.basespring.persistence.user.repository.AuthorUserRepository;
 import com.fpmislata.basespring.persistence.user.repository.BookUserRepository;
 import com.fpmislata.basespring.persistence.user.repository.GenreUserRepository;
@@ -14,20 +15,20 @@ import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
-public class BookUserRepositoryImplJdbc implements BookUserRepository {
+public class BookUserRepositoryImplJdbc implements GenericBookRepository<BookUser>, BookUserRepository {
 
     private final JdbcTemplate jdbcTemplate;
     private final AuthorUserRepository authorUserRepository;
     private final GenreUserRepository genreUserRepository;
 
     @Override
-    public List<BookUser> findAll() {
+    public List<BookUser> getAll() {
         String sql = "SELECT * FROM books";
         return jdbcTemplate.query(sql, new BookUserRowMapper());
     }
 
     @Override
-    public List<BookUser> findAll(int page, int size) {
+    public List<BookUser> getAll(int page, int size) {
         String sql = "SELECT * FROM books LIMIT ? OFFSET ?";
         return jdbcTemplate.query(sql, new BookUserRowMapper(), size, page * size);
     }

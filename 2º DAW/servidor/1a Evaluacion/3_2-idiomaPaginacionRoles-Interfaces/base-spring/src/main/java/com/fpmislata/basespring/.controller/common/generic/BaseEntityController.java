@@ -1,4 +1,4 @@
-package com.fpmislata.basespring.controller.common.base;
+package com.fpmislata.basespring.controller.common.generic;
 
 import com.fpmislata.basespring.controller.common.pagination.PaginatedResponse;
 import org.springframework.beans.factory.annotation.Value;

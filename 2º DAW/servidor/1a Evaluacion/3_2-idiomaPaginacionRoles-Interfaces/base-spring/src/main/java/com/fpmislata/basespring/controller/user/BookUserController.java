@@ -1,12 +1,14 @@
 package com.fpmislata.basespring.controller.user;
 
-import com.fpmislata.basespring.controller.common.base.BaseEntityController;
+import com.fpmislata.basespring.controller.common.helper.BaseControllerHelper;
+import com.fpmislata.basespring.controller.common.pagination.PaginatedResponse;
 import com.fpmislata.basespring.controller.user.userMapper.book.BookUserMapper;
 import com.fpmislata.basespring.controller.user.userModel.book.BookUserCollection;
 import com.fpmislata.basespring.controller.user.userModel.book.BookUserDetail;
-import com.fpmislata.basespring.domain.user.model.BookUser;
 import com.fpmislata.basespring.domain.user.service.BookUserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,35 +16,34 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(BookUserController.URL)
-public class BookUserController extends BaseEntityController<BookUserCollection, BookUserDetail, BookUser> {
+public class BookUserController {
 
     public static final String URL = "/api/books";
     private final BookUserService bookUserService;
+    private final BaseControllerHelper baseControllerHelper;
 
+    @GetMapping
+    public ResponseEntity<PaginatedResponse<BookUserCollection>> getAll(
+            @RequestParam(defaultValue = "1") int page,
+            @RequestParam(required = false) Integer size) {
 
-    @Override
-    public String getUrlController() {
-        return URL;
+        int pageSize = baseControllerHelper.getPageSize(size);
+
+        List<BookUserCollection> books = bookUserService.getAll(page - 1, pageSize)
+                .stream()
+                .map(BookUserMapper.INSTANCE::toBookCollection)
+                .toList();
+
+        return baseControllerHelper.createPaginatedResponse(books, bookUserService.count(), page, pageSize, URL);
     }
 
-    @Override
-    public List<BookUser> getAll(int page, int pageSize) {
-        return bookUserService.findAll(page, pageSize);
+    @GetMapping("/{isbn}")
+    public ResponseEntity<BookUserDetail> findByIsbn(@PathVariable String isbn) {
+        return new ResponseEntity<>(
+                BookUserMapper.INSTANCE.toBookDetail(bookUserService.findByIsbn(isbn)),
+                HttpStatus.OK
+        );
     }
 
-    @Override
-    public int count() {
-        return bookUserService.count();
-    }
-
-    @Override
-    public BookUserCollection toCollection(BookUser book) {
-        return BookUserMapper.INSTANCE.toBookCollection(book);
-    }
-
-    @Override
-    public BookUserDetail toDetail(String isbn) {
-        return BookUserMapper.INSTANCE.toBookDetail(bookUserService.findByIsbn(isbn));
-    }
 }
 
