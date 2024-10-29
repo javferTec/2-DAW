@@ -1,7 +1,7 @@
 package com.fpmislata.basespring.persistence.user.repository.impl.jdbc;
 
 import com.fpmislata.basespring.domain.user.model.BookUser;
-import com.fpmislata.basespring.persistence.common.generic.GenericBookRepository;
+import com.fpmislata.basespring.persistence.common.generic.GenericRepository;
 import com.fpmislata.basespring.persistence.user.repository.AuthorUserRepository;
 import com.fpmislata.basespring.persistence.user.repository.BookUserRepository;
 import com.fpmislata.basespring.persistence.user.repository.GenreUserRepository;
@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
-public class BookUserRepositoryImplJdbc implements GenericBookRepository<BookUser>, BookUserRepository {
+public class BookUserRepositoryImplJdbc implements GenericRepository<BookUser>, BookUserRepository {
 
     private final JdbcTemplate jdbcTemplate;
     private final AuthorUserRepository authorUserRepository;

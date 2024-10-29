@@ -1,6 +1,6 @@
 package com.fpmislata.basespring.domain.user.service.impl;
 
-import com.fpmislata.basespring.domain.common.helper.BookServiceHelper;
+import com.fpmislata.basespring.domain.common.helper.BaseServiceHelper;
 import com.fpmislata.basespring.domain.user.model.BookUser;
 import com.fpmislata.basespring.domain.user.service.BookUserService;
 import com.fpmislata.basespring.persistence.user.repository.impl.jdbc.BookUserRepositoryImplJdbc;
@@ -17,12 +17,12 @@ public class BookUserServiceImpl implements BookUserService {
 
     @Getter
     private final BookUserRepositoryImplJdbc repository;
-    private final BookServiceHelper<BookUser, BookUserRepositoryImplJdbc> helper;
+    private final BaseServiceHelper<BookUser, BookUserRepositoryImplJdbc> helper;
 
     @Autowired
     public BookUserServiceImpl(BookUserRepositoryImplJdbc repository) {
         this.repository = repository;
-        this.helper = new BookServiceHelper<>(repository);
+        this.helper = new BaseServiceHelper<>(repository);
     }
 
     @Override

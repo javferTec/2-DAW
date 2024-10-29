@@ -2,7 +2,7 @@ package com.fpmislata.basespring.domain.admin.service.impl;
 
 import com.fpmislata.basespring.domain.admin.model.BookAdmin;
 import com.fpmislata.basespring.domain.admin.service.BookAdminService;
-import com.fpmislata.basespring.domain.common.helper.BookServiceHelper;
+import com.fpmislata.basespring.domain.common.helper.BaseServiceHelper;
 import com.fpmislata.basespring.persistence.admin.repository.impl.jdbc.BookAdminRepositoryImplJdbc;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -17,12 +17,12 @@ public class BookAdminServiceImpl implements BookAdminService {
 
     @Getter
     private final BookAdminRepositoryImplJdbc repository;
-    private final BookServiceHelper<BookAdmin, BookAdminRepositoryImplJdbc> helper;
+    private final BaseServiceHelper<BookAdmin, BookAdminRepositoryImplJdbc> helper;
 
     @Autowired
     public BookAdminServiceImpl(BookAdminRepositoryImplJdbc repository) {
         this.repository = repository;
-        this.helper = new BookServiceHelper<>(repository);
+        this.helper = new BaseServiceHelper<>(repository);
     }
 
     @Override

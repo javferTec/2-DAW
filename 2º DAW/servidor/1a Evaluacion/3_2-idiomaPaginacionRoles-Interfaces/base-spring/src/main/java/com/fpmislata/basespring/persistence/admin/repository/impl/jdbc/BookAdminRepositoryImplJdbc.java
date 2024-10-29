@@ -6,7 +6,7 @@ import com.fpmislata.basespring.persistence.admin.repository.AuthorAdminReposito
 import com.fpmislata.basespring.persistence.admin.repository.BookAdminRepository;
 import com.fpmislata.basespring.persistence.admin.repository.GenreAdminRepository;
 import com.fpmislata.basespring.persistence.admin.repository.impl.jdbc.mapper.BookAdminRowMapper;
-import com.fpmislata.basespring.persistence.common.generic.GenericBookRepository;
+import com.fpmislata.basespring.persistence.common.generic.GenericRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -16,7 +16,7 @@ import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
-public class BookAdminRepositoryImplJdbc implements GenericBookRepository<BookAdmin>, BookAdminRepository {
+public class BookAdminRepositoryImplJdbc implements GenericRepository<BookAdmin>, BookAdminRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
@@ -25,9 +25,7 @@ public class BookAdminRepositoryImplJdbc implements GenericBookRepository<BookAd
 
     @Override
     public List<BookAdmin> getAll() {
-        String sql = """
-                        SELECT * FROM books
-                     """;
+        String sql = "SELECT * FROM books";
         return jdbcTemplate.query(sql, new BookAdminRowMapper());
     }
 
@@ -39,9 +37,7 @@ public class BookAdminRepositoryImplJdbc implements GenericBookRepository<BookAd
 
     @Override
     public int count() {
-        String sql = """
-                        SELECT COUNT(*) FROM books
-                     """;
+        String sql = "SELECT COUNT(*) FROM books";
         return jdbcTemplate.queryForObject(sql, Integer.class);
     }
 
