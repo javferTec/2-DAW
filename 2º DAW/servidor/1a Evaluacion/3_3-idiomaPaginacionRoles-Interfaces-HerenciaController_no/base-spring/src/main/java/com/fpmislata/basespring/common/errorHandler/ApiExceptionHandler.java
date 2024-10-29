@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ControllerAdvice // Anotación que permite definir un controlador de excepciones que se aplicara a todos los controladores.
+@ControllerAdvice
+// Anotación que permite definir un controlador de excepciones que se aplicara a todos los controladores.
 public class ApiExceptionHandler {
 
     @ResponseStatus(HttpStatus.NOT_FOUND) // Devuelve codigo 404 cuando no se encuentra el recurso.

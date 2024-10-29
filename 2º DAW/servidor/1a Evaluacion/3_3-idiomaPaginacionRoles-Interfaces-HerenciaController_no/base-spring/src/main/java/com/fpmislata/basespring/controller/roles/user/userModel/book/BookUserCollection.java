@@ -1,4 +1,4 @@
-package com.fpmislata.basespring.controller.roles.user.userModel.book;
+package com.fpmislata.basespring.controller.user.userModel.book;
 
 import java.math.BigDecimal;
 

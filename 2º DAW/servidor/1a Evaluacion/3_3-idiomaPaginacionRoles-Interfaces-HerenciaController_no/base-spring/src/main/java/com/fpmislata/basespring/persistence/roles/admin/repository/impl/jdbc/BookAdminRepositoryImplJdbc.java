@@ -1,14 +1,14 @@
 package com.fpmislata.basespring.persistence.roles.admin.repository.impl.jdbc;
 
 
+import com.fpmislata.basespring.domain.roles.admin.model.BookAdmin;
+import com.fpmislata.basespring.persistence.common.GenericRepository;
 import com.fpmislata.basespring.persistence.common.JdbcHelper;
 import com.fpmislata.basespring.persistence.common.SQLQueryGenerator;
-import com.fpmislata.basespring.domain.roles.admin.model.BookAdmin;
 import com.fpmislata.basespring.persistence.roles.admin.repository.AuthorAdminRepository;
 import com.fpmislata.basespring.persistence.roles.admin.repository.BookAdminRepository;
 import com.fpmislata.basespring.persistence.roles.admin.repository.GenreAdminRepository;
 import com.fpmislata.basespring.persistence.roles.admin.repository.impl.jdbc.mapper.BookAdminRowMapper;
-import com.fpmislata.basespring.persistence.common.GenericRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

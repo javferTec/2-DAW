@@ -1,6 +1,6 @@
-package com.fpmislata.basespring.controller.roles.admin.adminMapper.book;
+package com.fpmislata.basespring.controller.admin.adminMapper.book;
 
-import com.fpmislata.basespring.controller.roles.admin.adminModel.book.BookAdminCollection;
+import com.fpmislata.basespring.controller.admin.adminModel.book.BookAdminCollection;
 import com.fpmislata.basespring.domain.roles.admin.model.BookAdmin;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

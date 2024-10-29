@@ -19,11 +19,11 @@ public class AuthorAdminRepositoryImplJdbc implements AuthorAdminRepository {
     @Override
     public List<AuthorAdmin> getByIsbnBook(String isbn) {
         String sql = """
-                SELECT authors.* FROM authors
-                JOIN books_authors ON authors.id = books_authors.author_id
-                JOIN books ON books_authors.book_id = books.id
-                AND books.isbn = ?
-           """;
+                     SELECT authors.* FROM authors
+                     JOIN books_authors ON authors.id = books_authors.author_id
+                     JOIN books ON books_authors.book_id = books.id
+                     AND books.isbn = ?
+                """;
         return jdbcTemplate.query(sql, new AuthorAdminRowMapper(), isbn);
     }
 }

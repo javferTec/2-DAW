@@ -1,4 +1,4 @@
-package com.fpmislata.basespring.controller.common.entity.mapper.genre;
+package com.fpmislata.basespring.controller.common.userAdminMapper.genre;
 
 import com.fpmislata.basespring.domain.roles.user.model.GenreUser;
 import org.mapstruct.Mapper;

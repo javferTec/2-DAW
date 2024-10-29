@@ -23,10 +23,10 @@ public class BookUserRowMapper implements CustomRowMapper<BookUser> {
         bookUser.setPrice(new BigDecimal(resultSet.getString("books.price")));
         bookUser.setDiscount(resultSet.getFloat("books.discount"));
         bookUser.setCover(resultSet.getString("books.cover"));
-        if(this.existsColumn(resultSet, "publishers.id")) {
+        if (this.existsColumn(resultSet, "publishers.id")) {
             bookUser.setPublisherUser(publisherUserRowMapper.mapRow(resultSet, rowNum));
         }
-        if(this.existsColumn(resultSet, "categories.id")) {
+        if (this.existsColumn(resultSet, "categories.id")) {
             bookUser.setCategoryUser(categoryUserRowMapper.mapRow(resultSet, rowNum));
         }
         return bookUser;

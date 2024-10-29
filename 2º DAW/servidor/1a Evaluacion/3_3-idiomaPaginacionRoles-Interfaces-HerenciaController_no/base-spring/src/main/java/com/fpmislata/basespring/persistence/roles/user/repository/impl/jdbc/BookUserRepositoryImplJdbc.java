@@ -1,9 +1,9 @@
 package com.fpmislata.basespring.persistence.roles.user.repository.impl.jdbc;
 
-import com.fpmislata.basespring.persistence.common.SQLQueryGenerator;
 import com.fpmislata.basespring.domain.roles.user.model.BookUser;
-import com.fpmislata.basespring.persistence.common.JdbcHelper;
 import com.fpmislata.basespring.persistence.common.GenericRepository;
+import com.fpmislata.basespring.persistence.common.JdbcHelper;
+import com.fpmislata.basespring.persistence.common.SQLQueryGenerator;
 import com.fpmislata.basespring.persistence.roles.user.repository.AuthorUserRepository;
 import com.fpmislata.basespring.persistence.roles.user.repository.BookUserRepository;
 import com.fpmislata.basespring.persistence.roles.user.repository.GenreUserRepository;

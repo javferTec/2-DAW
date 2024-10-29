@@ -19,9 +19,13 @@ public abstract class BaseEntityController<CollectionType, DetailType, ModelType
     private String defaultPageSize;
 
     public abstract String getUrlController();
+
     public abstract List<ModelType> getAll(int page, int pageSize);
+
     public abstract int count();
+
     public abstract CollectionType toCollection(ModelType model);
+
     public abstract DetailType toDetail(String isbn);
 
     @GetMapping

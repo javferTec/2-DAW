@@ -25,14 +25,14 @@ public class PaginatedResponse<T> { // Clase encargada de devolver una respuesta
     }
 
     private String createNextLink(String baseUrl) {
-        if(currentPage * pageSize < total) {
+        if (currentPage * pageSize < total) {
             return baseUrl + "?page=" + (currentPage + 1) + "&size=" + pageSize;
         }
         return null;
     }
 
     private String createPreviousLink(String baseUrl) {
-        if(currentPage > 1) {
+        if (currentPage > 1) {
             return baseUrl + "?page=" + (currentPage - 1) + "&size=" + pageSize;
         }
         return null;

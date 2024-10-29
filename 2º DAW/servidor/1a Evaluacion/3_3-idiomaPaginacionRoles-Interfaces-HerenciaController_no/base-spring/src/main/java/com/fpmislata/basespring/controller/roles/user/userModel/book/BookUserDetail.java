@@ -1,8 +1,8 @@
-package com.fpmislata.basespring.controller.roles.user.userModel.book;
+package com.fpmislata.basespring.controller.user.userModel.book;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fpmislata.basespring.controller.common.entity.model.publisher.PublisherCollection;
-import com.fpmislata.basespring.controller.common.entity.model.author.AuthorCollection;
+import com.fpmislata.basespring.controller.common.userAdminModel.author.AuthorCollection;
+import com.fpmislata.basespring.controller.common.userAdminModel.publisher.PublisherCollection;
 
 import java.math.BigDecimal;
 import java.util.List;

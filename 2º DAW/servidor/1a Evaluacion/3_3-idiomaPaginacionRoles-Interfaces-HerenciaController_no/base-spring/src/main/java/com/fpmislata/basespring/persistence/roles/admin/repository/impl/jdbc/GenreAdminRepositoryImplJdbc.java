@@ -19,11 +19,11 @@ public class GenreAdminRepositoryImplJdbc implements GenreAdminRepository {
     @Override
     public List<GenreAdmin> getByIsbnBook(String isbn) {
         String sql = """
-                SELECT genres.* FROM genres
-                JOIN books_genres ON genres.id = books_genres.genre_id
-                JOIN books ON books_genres.book_id = books.id
-                AND books.isbn = ?
-           """;
-        return jdbcTemplate.query(sql, new GenreAdminRowMapper(),isbn);
+                     SELECT genres.* FROM genres
+                     JOIN books_genres ON genres.id = books_genres.genre_id
+                     JOIN books ON books_genres.book_id = books.id
+                     AND books.isbn = ?
+                """;
+        return jdbcTemplate.query(sql, new GenreAdminRowMapper(), isbn);
     }
 }
