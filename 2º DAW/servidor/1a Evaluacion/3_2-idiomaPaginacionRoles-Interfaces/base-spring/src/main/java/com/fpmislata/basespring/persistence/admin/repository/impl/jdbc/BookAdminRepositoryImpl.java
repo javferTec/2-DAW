@@ -23,7 +23,7 @@ public class BookAdminRepositoryImpl implements BookAdminRepository {
     private final GenreAdminRepository genreAdminRepository;
 
     @Override
-    public List<BookAdmin> findAll() {
+    public List<BookAdmin> getAll() {
         String sql = """
                         SELECT * FROM books
                      """;
@@ -31,11 +31,8 @@ public class BookAdminRepositoryImpl implements BookAdminRepository {
     }
 
     @Override
-    public List<BookAdmin> findAll(int page, int size) {
-        String sql = """
-                        SELECT * FROM books
-                        LIMIT ? OFFSET ?
-                     """;
+    public List<BookAdmin> getAll(int page, int size) {
+        String sql = "SELECT * FROM books LIMIT ? OFFSET ?";
         return jdbcTemplate.query(sql, new BookAdminRowMapper(), size, page * size);
     }
 

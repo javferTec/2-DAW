@@ -1,45 +1,48 @@
 package com.fpmislata.basespring.controller.user;
 
-import com.fpmislata.basespring.controller.admin.adminModel.book.BookAdminCollection;
-import com.fpmislata.basespring.controller.common.base.BaseBookController;
-import com.fpmislata.basespring.controller.common.base.Mapper;
+import com.fpmislata.basespring.controller.common.base.BaseEntityController;
 import com.fpmislata.basespring.controller.user.userMapper.book.BookUserMapper;
 import com.fpmislata.basespring.controller.user.userModel.book.BookUserCollection;
 import com.fpmislata.basespring.controller.user.userModel.book.BookUserDetail;
-import com.fpmislata.basespring.domain.admin.model.BookAdmin;
-import com.fpmislata.basespring.domain.common.base.BaseBookService;
 import com.fpmislata.basespring.domain.user.model.BookUser;
 import com.fpmislata.basespring.domain.user.service.BookUserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(BookUserController.URL)
-public class BookUserController extends BaseBookController<BookUser, BookUserCollection, BookUserDetail> {
+public class BookUserController extends BaseEntityController<BookUserCollection, BookUserDetail, BookUser> {
 
     public static final String URL = "/api/books";
     private final BookUserService bookUserService;
-    private final BookUserMapper bookUserMapper;
+
 
     @Override
-    protected BaseBookService<BookUser> getService() {
-        return bookUserService;
-    }
-
-    @Override
-    protected Mapper<BookUser, BookUserCollection, BookUserDetail> getMapper() {
-        return (Mapper<BookUser, BookUserCollection, BookUserDetail>) bookUserMapper;
-    }
-
-    @Override
-    protected Mapper<BookAdmin, BookAdminCollection> getMapper() {
-        return bookUserMapper;
-    }
-
-    @Override
-    protected String getUrl() {
+    public String getUrlController() {
         return URL;
     }
+
+    @Override
+    public List<BookUser> getAll(int page, int pageSize) {
+        return bookUserService.findAll(page, pageSize);
+    }
+
+    @Override
+    public int count() {
+        return bookUserService.count();
+    }
+
+    @Override
+    public BookUserCollection toCollection(BookUser book) {
+        return BookUserMapper.INSTANCE.toBookCollection(book);
+    }
+
+    @Override
+    public BookUserDetail toDetail(String isbn) {
+        return BookUserMapper.INSTANCE.toBookDetail(bookUserService.findByIsbn(isbn));
+    }
 }
+

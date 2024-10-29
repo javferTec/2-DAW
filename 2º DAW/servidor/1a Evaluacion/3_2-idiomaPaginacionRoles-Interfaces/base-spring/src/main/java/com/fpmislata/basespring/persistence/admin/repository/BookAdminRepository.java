@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface BookAdminRepository {
-    List<BookAdmin> findAll();
-    List<BookAdmin> findAll(int page, int size);
+    List<BookAdmin> getAll();
+    List<BookAdmin> getAll(int page, int size);
     int count();
     Optional<BookAdmin> findByIsbn(String isbn);
 }

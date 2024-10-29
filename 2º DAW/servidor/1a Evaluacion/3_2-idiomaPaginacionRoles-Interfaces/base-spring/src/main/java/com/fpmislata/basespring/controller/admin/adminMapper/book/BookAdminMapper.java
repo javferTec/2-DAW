@@ -13,5 +13,4 @@ public interface BookAdminMapper {
 
     @Mapping(target = "title", source = "title")
     BookAdminCollection toBookCollection(BookAdmin bookAdmin);
-
 }
