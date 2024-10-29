@@ -1,0 +1,7 @@
+[
+  "com/fpmislata/basespring/common/http_errors",
+  "com/fpmislata/basespring/common/locale",
+  "com/fpmislata/basespring/controller",
+  "com/fpmislata/basespring/domain/service/impl",
+  "com/fpmislata/basespring/persistence/repository/impl/jdbc"
+]

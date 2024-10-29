@@ -1,0 +1,14 @@
+[
+  {
+    "caller": "GET /api/books",
+    "callee": "com/fpmislata"
+  },
+  {
+    "caller": "com/fpmislata",
+    "callee": "SELECT * FROM books LEFT JOIN categories ON books.category_id = categories.id LEFT JOIN publishers ON books.publisher_id = publishers.id"
+  },
+  {
+    "caller": "com/fpmislata",
+    "callee": "SELECT @@session.tx_isolation"
+  }
+]

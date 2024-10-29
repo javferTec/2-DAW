@@ -1,17 +1,15 @@
 package com.fpmislata.basespring.domain.common.helper;
 
 import com.fpmislata.basespring.common.exception.ResourceNotFoundException;
-import com.fpmislata.basespring.persistence.common.generic.GenericRepository;
+import com.fpmislata.basespring.persistence.common.GenericRepository;
+import lombok.AllArgsConstructor;
 
 import java.util.List;
 
+@AllArgsConstructor
 public class BaseServiceHelper<Model, Repository extends GenericRepository<Model>> {
 
     private final Repository repository;
-
-    public BaseServiceHelper(Repository repository) {
-        this.repository = repository;
-    }
 
     public List<Model> getAll() {
         return repository.getAll();
