@@ -1,0 +1,23 @@
+{
+  "name": "GET /favicon.ico (500) - 10:37:42.406",
+  "app": "base-spring",
+  "language": {
+    "name": "java",
+    "version": "21.0.4+7-LTS",
+    "engine": "OpenJDK 64-Bit Server VM"
+  },
+  "client": {
+    "name": "appmap-java",
+    "url": "https://github.com/appland/appmap-java"
+  },
+  "recorder": {
+    "name": "request_recording",
+    "type": "requests"
+  },
+  "recording": {},
+  "git": {
+    "repository": "https://github.com/javferTec/2-DAW.git",
+    "branch": "main",
+    "commit": "5d1d2fc17416b33497b08f7e486653b5f0e0a3e8"
+  }
+}

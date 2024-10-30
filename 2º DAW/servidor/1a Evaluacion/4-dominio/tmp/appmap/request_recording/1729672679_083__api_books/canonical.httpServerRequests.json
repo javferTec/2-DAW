@@ -1,0 +1,7 @@
+[
+  {
+    "route": "GET /api/books",
+    "parameters": "()",
+    "status": 200
+  }
+]
