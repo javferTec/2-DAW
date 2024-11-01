@@ -20,6 +20,10 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class BookRepositoryJdbc implements BookRepository {
 
+    private final JdbcOperations jdbcOperations;
+    private final SqlBuilder sqlBuilder;
+    private final BookRowMapper bookRowMapper;
+
     // Constantes para nombres de tabla y columnas
     private static final String TABLE_NAME = "books";
     private static final String ID_COLUMN = "id";
@@ -55,37 +59,36 @@ public class BookRepositoryJdbc implements BookRepository {
             {"categories", TABLE_NAME + "." + CATEGORY_ID_COLUMN, "categories.id"},
             {"publishers", TABLE_NAME + "." + PUBLISHER_ID_COLUMN, "publishers.id"}
     };
-    private final JdbcOperations jdbcOperations;
 
     @Override
     public List<Book> getAll() {
-        String sql = SqlBuilder.getAll(TABLE_NAME);
-        return jdbcOperations.getAll(sql, new Object[]{}, new BookRowMapper());
+        String sql = sqlBuilder.getAll(TABLE_NAME);
+        return jdbcOperations.getAll(sql, new Object[]{}, bookRowMapper);
     }
 
     @Override
     public List<Book> getAll(int page, int size) {
-        String baseQuery = SqlBuilder.getAll(TABLE_NAME);
-        String sql = SqlBuilder.paginatedQuery(baseQuery, page, size);
-        return jdbcOperations.getAll(sql, new Object[]{}, new BookRowMapper());
+        String baseQuery = sqlBuilder.getAll(TABLE_NAME);
+        String sql = sqlBuilder.paginatedQuery(baseQuery, page, size);
+        return jdbcOperations.getAll(sql, new Object[]{}, bookRowMapper);
     }
 
     @Override
     public int count() {
-        String sql = SqlBuilder.count(TABLE_NAME);
+        String sql = sqlBuilder.count(TABLE_NAME);
         return jdbcOperations.count(sql);
     }
 
     @Override
     public Optional<Book> findByIsbn(String isbn) {
-        String sql = SqlBuilder.findWithJoins(TABLE_NAME, JOIN_CLAUSES, ISBN_COLUMN);
-        return jdbcOperations.findByIsbn(sql, isbn, new BookRowMapper());
+        String sql = sqlBuilder.findWithJoins(TABLE_NAME, JOIN_CLAUSES, ISBN_COLUMN);
+        return jdbcOperations.findByIsbn(sql, isbn, bookRowMapper);
     }
 
     @Override
     public Optional<Book> findById(long id) {
-        String sql = SqlBuilder.findWithJoins(TABLE_NAME, JOIN_CLAUSES, ID_COLUMN);
-        return jdbcOperations.findById(sql, id, new BookRowMapper());
+        String sql = sqlBuilder.findWithJoins(TABLE_NAME, JOIN_CLAUSES, ID_COLUMN);
+        return jdbcOperations.findById(sql, id, bookRowMapper);
     }
 
     @Override
@@ -103,7 +106,7 @@ public class BookRepositoryJdbc implements BookRepository {
     }
 
     private void update(Book book) {
-        String sql = SqlBuilder.update(TABLE_NAME, ALL_COLUMNS, ID_COLUMN);
+        String sql = sqlBuilder.update(TABLE_NAME, ALL_COLUMNS, ID_COLUMN);
         jdbcOperations.save(sql, new Object[]{
                 book.getIsbn(),
                 book.getTitleEs(),
@@ -120,7 +123,7 @@ public class BookRepositoryJdbc implements BookRepository {
     }
 
     private long insert(Book book) {
-        String sql = SqlBuilder.insert(TABLE_NAME, ALL_COLUMNS);
+        String sql = sqlBuilder.insert(TABLE_NAME, ALL_COLUMNS);
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
         jdbcOperations.insertAndReturnId(sql, new Object[]{
@@ -140,22 +143,22 @@ public class BookRepositoryJdbc implements BookRepository {
     }
 
     private void deleteAuthors(long id) {
-        String sql = SqlBuilder.delete(BOOKS_AUTHORS_TABLE, BOOK_ID_COLUMN);
+        String sql = sqlBuilder.delete(BOOKS_AUTHORS_TABLE, BOOK_ID_COLUMN);
         jdbcOperations.delete(sql, new Object[]{id});
     }
 
     private void insertAuthors(long id, List<Author> authors) {
-        String sql = SqlBuilder.insertManyToMany(BOOKS_AUTHORS_TABLE, BOOK_ID_COLUMN, AUTHOR_ID_COLUMN);
+        String sql = sqlBuilder.insertManyToMany(BOOKS_AUTHORS_TABLE, BOOK_ID_COLUMN, AUTHOR_ID_COLUMN);
         authors.forEach(a -> jdbcOperations.save(sql, new Object[]{id, a.getId()}));
     }
 
     private void deleteGenres(long id) {
-        String sql = SqlBuilder.delete(BOOKS_GENRES_TABLE, BOOK_ID_COLUMN);
+        String sql = sqlBuilder.delete(BOOKS_GENRES_TABLE, BOOK_ID_COLUMN);
         jdbcOperations.delete(sql, new Object[]{id});
     }
 
     private void insertGenres(long id, List<Genre> genres) {
-        String sql = SqlBuilder.insertManyToMany(BOOKS_GENRES_TABLE, BOOK_ID_COLUMN, GENRE_ID_COLUMN);
+        String sql = sqlBuilder.insertManyToMany(BOOKS_GENRES_TABLE, BOOK_ID_COLUMN, GENRE_ID_COLUMN);
         genres.forEach(g -> jdbcOperations.save(sql, new Object[]{id, g.getId()}));
     }
 }

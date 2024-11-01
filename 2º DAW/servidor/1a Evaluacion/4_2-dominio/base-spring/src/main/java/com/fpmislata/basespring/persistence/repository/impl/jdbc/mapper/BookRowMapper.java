@@ -1,11 +1,13 @@
 package com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper;
 
 import com.fpmislata.basespring.domain.model.Book;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@Component
 public class BookRowMapper implements CustomRowMapper<Book> {
 
     private final PublisherRowMapper publisherRowMapper = new PublisherRowMapper();

@@ -15,15 +15,18 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class CategoryRepositoryJdbc implements CategoryRepository {
 
+    private final JdbcOperations jdbcOperations;
+    private final SqlBuilder sqlBuilder;
+    private final CategoryRowMapper categoryRowMapper;
+
     // Constantes para nombres de tabla y columnas
     private static final String TABLE_NAME = "categories";
     private static final String ID_COLUMN = "id";
-    private final JdbcOperations jdbcOperations;
 
     @Override
     public Optional<Category> findById(Long id) {
-        String sql = SqlBuilder.findByColumn(TABLE_NAME, ID_COLUMN);
-        return jdbcOperations.findById(sql, id, new CategoryRowMapper());
+        String sql = sqlBuilder.findByColumn(TABLE_NAME, ID_COLUMN);
+        return jdbcOperations.findById(sql, id, categoryRowMapper);
     }
 }
 

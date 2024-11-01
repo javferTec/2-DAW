@@ -14,13 +14,16 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class PublisherRepositoryJdbc implements PublisherRepository {
 
+    private final JdbcOperations jdbcOperations;
+    private final SqlBuilder sqlBuilder;
+    private final PublisherRowMapper publisherRowMapper;
+
     public static final String TABLE_NAME = "publishers";
     public static final String ID_COLUMN = "id";
-    private final JdbcOperations jdbcOperations;
 
     @Override
     public Optional<Publisher> findById(Long id) {
-        String sql = SqlBuilder.findByColumn(TABLE_NAME, ID_COLUMN);
-        return jdbcOperations.findById(sql, id, new PublisherRowMapper());
+        String sql = sqlBuilder.findByColumn(TABLE_NAME, ID_COLUMN);
+        return jdbcOperations.findById(sql, id, publisherRowMapper);
     }
 }

@@ -16,6 +16,10 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class AuthorRepositoryJdbc implements AuthorRepository {
 
+    private final JdbcOperations jdbcOperations;
+    private final SqlBuilder sqlBuilder;
+    private final AuthorRowMapper authorRowMapper;
+
     private static final String TABLE_NAME = "authors";
     private static final String ID_COLUMN = "id";
     private static final String ISBN_COLUMN = "books.isbn";
@@ -23,24 +27,23 @@ public class AuthorRepositoryJdbc implements AuthorRepository {
             {"books_authors", "authors.id", "books_authors.author_id"},
             {"books", "books_authors.book_id", "books.id"}
     };
-    private final JdbcOperations jdbcOperations;
 
     @Override
     public List<Author> getByIsbnBook(String isbn) {
-        String sql = SqlBuilder.findWithJoins(TABLE_NAME, JOIN_CLAUSES, ISBN_COLUMN);
-        return jdbcOperations.getAll(sql, new Object[]{isbn}, new AuthorRowMapper());
+        String sql = sqlBuilder.findWithJoins(TABLE_NAME, JOIN_CLAUSES, ISBN_COLUMN);
+        return jdbcOperations.getAll(sql, new Object[]{isbn}, authorRowMapper);
     }
 
     @Override
     public List<Author> getByIdBook(long idBook) {
-        String sql = SqlBuilder.findWithJoins(TABLE_NAME, JOIN_CLAUSES, ID_COLUMN);
-        return jdbcOperations.getAll(sql, new Object[]{idBook}, new AuthorRowMapper());
+        String sql = sqlBuilder.findWithJoins(TABLE_NAME, JOIN_CLAUSES, ID_COLUMN);
+        return jdbcOperations.getAll(sql, new Object[]{idBook}, authorRowMapper);
     }
 
     @Override
     public List<Author> findAllById(Long[] ids) {
-        String sql = SqlBuilder.findByColumn(TABLE_NAME, ID_COLUMN);
+        String sql = sqlBuilder.findByColumn(TABLE_NAME, ID_COLUMN);
         Map<String, List<Long>> params = Map.of("ids", Arrays.asList(ids));
-        return jdbcOperations.getAll(sql, params.values().toArray(), new AuthorRowMapper());
+        return jdbcOperations.getAll(sql, params.values().toArray(), authorRowMapper);
     }
 }

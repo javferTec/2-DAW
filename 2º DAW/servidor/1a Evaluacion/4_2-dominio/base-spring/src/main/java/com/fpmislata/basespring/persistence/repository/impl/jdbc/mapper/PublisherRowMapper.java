@@ -2,10 +2,12 @@ package com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper;
 
 import com.fpmislata.basespring.domain.model.Publisher;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@Component
 public class PublisherRowMapper implements RowMapper<Publisher> {
 
     @Override
