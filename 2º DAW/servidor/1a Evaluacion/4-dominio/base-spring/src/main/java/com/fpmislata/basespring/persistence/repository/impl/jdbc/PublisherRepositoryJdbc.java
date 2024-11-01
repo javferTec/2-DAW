@@ -2,25 +2,41 @@ package com.fpmislata.basespring.persistence.repository.impl.jdbc;
 
 import com.fpmislata.basespring.domain.model.Publisher;
 import com.fpmislata.basespring.domain.repository.PublisherRepository;
-import com.fpmislata.basespring.persistence.repository.impl.jdbc.common.JdbcOperations;
-import com.fpmislata.basespring.persistence.repository.impl.jdbc.common.SqlBuilder;
+import com.fpmislata.basespring.persistence.repository.impl.jdbc.common.DynamicSQLBuilder;
 import com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.PublisherRowMapper;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
+@Getter
 @Repository
 @RequiredArgsConstructor
 public class PublisherRepositoryJdbc implements PublisherRepository {
 
-    public static final String TABLE_NAME = "publishers";
-    public static final String ID_COLUMN = "id";
-    private final JdbcOperations jdbcOperations;
+    private final DynamicSQLBuilder<Publisher> dynamicSQLBuilder;
+
+    private static final String TABLE_NAME = "publishers";
+    private static final String ID_COLUMN = "id";
+
+    @Autowired
+    public PublisherRepositoryJdbc(JdbcTemplate jdbcTemplate, NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
+        this.dynamicSQLBuilder = new DynamicSQLBuilder<>(
+                jdbcTemplate,
+                namedParameterJdbcTemplate,
+                TABLE_NAME,
+                List.of(ID_COLUMN),
+                new PublisherRowMapper()
+        );
+    }
 
     @Override
     public Optional<Publisher> findById(Long id) {
-        String sql = SqlBuilder.findByColumn(TABLE_NAME, ID_COLUMN);
-        return jdbcOperations.findById(sql, id, new PublisherRowMapper());
+        return dynamicSQLBuilder.findById(ID_COLUMN, id);
     }
 }

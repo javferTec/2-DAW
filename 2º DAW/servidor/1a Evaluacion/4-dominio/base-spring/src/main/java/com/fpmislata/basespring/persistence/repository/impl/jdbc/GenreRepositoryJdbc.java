@@ -2,45 +2,55 @@ package com.fpmislata.basespring.persistence.repository.impl.jdbc;
 
 import com.fpmislata.basespring.domain.model.Genre;
 import com.fpmislata.basespring.domain.repository.GenreRepository;
-import com.fpmislata.basespring.persistence.repository.impl.jdbc.common.JdbcOperations;
-import com.fpmislata.basespring.persistence.repository.impl.jdbc.common.SqlBuilder;
+import com.fpmislata.basespring.persistence.repository.impl.jdbc.common.DynamicSQLBuilder;
 import com.fpmislata.basespring.persistence.repository.impl.jdbc.mapper.GenreRowMapper;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
+@Getter
 @Repository
 @RequiredArgsConstructor
 public class GenreRepositoryJdbc implements GenreRepository {
 
-    // Constantes para nombres de tabla y columnas
-    public static final String TABLE_NAME = "genres";
-    public static final String JOIN_TABLE = "books_genres";
-    public static final String BOOKS_TABLE = "books";
-    public static final String ISBN_COLUMN = "isbn";
-    public static final String ID_COLUMN = "id";
-    public static final String GENRE_ID_COLUMN = "genre_id";
-    private final JdbcOperations jdbcOperations;
+    private final DynamicSQLBuilder<Genre> dynamicSQLBuilder;
+
+    private static final String TABLE_NAME = "genres";
+    private static final String ID_COLUMN = "id";
+    private static final String ISBN_COLUMN = "isbn";
+    private static final String SELECT_GENRES = "SELECT genres.*";
+    private static final String JOIN_CLAUSE_ISBN = "JOIN books_genres ON genres.id = books_genres.genre_id JOIN books ON books_genres.book_id = books.id";
+    private static final String JOIN_CLAUSE_ID_BOOK = "JOIN books_genres ON genres.id = books_genres.genre_id";
+
+    @Autowired
+    public GenreRepositoryJdbc(JdbcTemplate jdbcTemplate, NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
+        this.dynamicSQLBuilder = new DynamicSQLBuilder<>(
+                jdbcTemplate,
+                namedParameterJdbcTemplate,
+                TABLE_NAME,
+                List.of(ID_COLUMN),
+                new GenreRowMapper()
+        );
+    }
 
     @Override
     public List<Genre> getByIsbnBook(String isbn) {
-        String sql = SqlBuilder.findByRelation(TABLE_NAME, JOIN_TABLE, BOOKS_TABLE, ISBN_COLUMN, GENRE_ID_COLUMN);
-        return jdbcOperations.getAll(sql, new Object[]{isbn}, new GenreRowMapper());
+        return dynamicSQLBuilder.findByCriteria(SELECT_GENRES, JOIN_CLAUSE_ISBN, Collections.singletonMap(ISBN_COLUMN, isbn));
     }
 
     @Override
     public List<Genre> getByIdBook(long idBook) {
-        String sql = SqlBuilder.findByRelation(TABLE_NAME, JOIN_TABLE, BOOKS_TABLE, ID_COLUMN, GENRE_ID_COLUMN);
-        return jdbcOperations.getAll(sql, new Object[]{idBook}, new GenreRowMapper());
+        return dynamicSQLBuilder.findByCriteria(SELECT_GENRES, JOIN_CLAUSE_ID_BOOK, Collections.singletonMap(ID_COLUMN, idBook));
     }
 
     @Override
     public List<Genre> findAllById(Long[] ids) {
-        String sql = SqlBuilder.findByColumn(TABLE_NAME, ID_COLUMN);
-        Map<String, List<Long>> params = Map.of("ids", Arrays.asList(ids));
-        return jdbcOperations.getAll(sql, params.values().toArray(), new GenreRowMapper());
+        return dynamicSQLBuilder.findByIds(List.of(ids));
     }
 }
