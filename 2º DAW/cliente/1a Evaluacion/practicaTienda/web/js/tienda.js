@@ -5,12 +5,10 @@ let carrito = new Carrito();
 function creaListaCriterios() {
     let lista = document.getElementById("criteriosOrdenacion");
 
-    let iterable = 1;
-
-    criterios.forEach((criterio) => {
+    criterios.forEach((criterio, indice) => {
         let opcion = document.createElement("option");
         opcion.text = criterio;
-        opcion.value = iterable++;
+        opcion.value = indice
         lista.add(opcion);
     });
 
@@ -42,7 +40,7 @@ function pintaArticulos(listaArticulosOrdenados) {
     contenedor.innerHTML = "";
 
     listaArticulosOrdenados.forEach(articulos => {
-        let card = `
+        card += `
               <div class="col mb-4">
                 <div class="card mb-2">
                   <img src="./assets/${articulos.codigo}.jpg" class="card-img-top" alt="">
@@ -58,15 +56,17 @@ function pintaArticulos(listaArticulosOrdenados) {
               </div>
         `;
 
-        contenedor.innerHTML += card;
+        contenedor.innerHTML = card;
     });
 
     let botones = document.getElementsByClassName("ponArticuloEnCarrito");
-    for (let boton of botones) {
+    /*for (let boton of botones) {
         boton.addEventListener("click", () => {
             ponArticuloEnCarrito();
         });
-    }
+    }*/
+
+    Array.from(botones.forEach(boton => {boton.addEventListener("click", () => {ponArticuloEnCarrito();})}));
 
 }
 
