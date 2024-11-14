@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumnos</title>
+    <!-- Enlace al CSS de Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Listado de Alumnos</h1>
+
+    <button class="btn btn-primary mb-2" id="nuevoAlumno">Nuevo Alumno</button>
+
+    <form id="formulario" class="shadow-sm p-4" action="http://localhost:3000/alumnos" method="post">
+        <!-- Campo de ID (solo lectura) -->
+        <div class="mb-3">
+            <label for="id" class="form-label">ID</label>
+            <input type="number" class="form-control" id="id" name="id" placeholder="100">
+        </div>
+
+        <!-- Campo de Nombre -->
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Jack Sparrow">
+        </div>
+
+        <!-- Campo de Edad -->
+        <div class="mb-3">
+            <label for="edad" class="form-label">Edad</label>
+            <input type="number" class="form-control" id="edad" name="edad" placeholder="56">
+        </div>
+
+        <!-- Campo de Curso -->
+        <div class="mb-3">
+            <label for="curso" class="form-label">Curso</label>
+            <input type="text" class="form-control" id="curso" name="curso" placeholder="Castellano">
+        </div>
+
+        <!-- Campo de Email -->
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="jack@example.com">
+        </div>
+
+        <!-- Campo de Promedio -->
+        <div class="mb-3">
+            <label for="promedio" class="form-label">Promedio</label>
+            <input type="number" step="0.1" class="form-control" id="promedio" name="promedio" placeholder="7.1">
+        </div>
+
+        <!-- Botón de Enviar -->
+        <button id="enviarFormulario" type="submit" class="btn btn-outline-primary mb-4">Guardar</button>
+    </form>
+
+    <table class="table table-striped table-hover mt-4" id="tablaAlumnos">
+        <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Curso</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<script src="./alumnosV2.js"></script>
+<script src="./fetch.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+{
+  "alumnos": [
+    {
+      "id": 1,
+      "nombre": "Juan Pérez",
+      "edad": 20,
+      "curso": "Matemáticas",
+      "email": "juan.perez@example.com",
+      "promedio": 8.5
+    },
+    {
+      "id": 2,
+      "nombre": "Ana García",
+      "edad": 22,
+      "curso": "Literatura",
+      "email": "ana.garcia@example.com",
+      "promedio": 9.2
+    },
+    {
+      "id": 3,
+      "nombre": "Luis López",
+      "edad": 21,
+      "curso": "Física",
+      "email": "luis.lopez@example.com",
+      "promedio": 7.8
+    },
+    {
+      "id": 4,
+      "nombre": "Carla Ruiz",
+      "edad": 23,
+      "curso": "Historia",
+      "email": "carla.ruiz@example.com",
+      "promedio": 8.9
+    },
+    {
+      "id": 5,
+      "nombre": "Miguel Torres",
+      "edad": 20,
+      "curso": "Química",
+      "email": "miguel.torres@example.com",
+      "promedio": 7.5
+    },
+    {
+      "id": 6,
+      "nombre": "Laura Fernández",
+      "edad": 24,
+      "curso": "Biología",
+      "email": "laura.fernandez@example.com",
+      "promedio": 9.1
+    },
+    {
+      "id": 7,
+      "nombre": "Roberto Gómez",
+      "edad": 22,
+      "curso": "Informática",
+      "email": "roberto.gomez@example.com",
+      "promedio": 8.3
+    },
+    {
+      "id": 8,
+      "nombre": "Sara Martínez",
+      "edad": 21,
+      "curso": "Arte",
+      "email": "sara.martinez@example.com",
+      "promedio": 8.7
+    },
+    {
+      "id": 9,
+      "nombre": "Jorge Herrera",
+      "edad": 23,
+      "curso": "Economía",
+      "email": "jorge.herrera@example.com",
+      "promedio": 7.9
+    },
+    {
+      "id": 10,
+      "nombre": "Elena Ríos",
+      "edad": 20,
+      "curso": "Filosofía",
+      "email": "elena.rios@example.com",
+      "promedio": 8.4
+    },
+    {
+      "id": 11,
+      "nombre": "Manuel Santana",
+      "curso": "Desarrollo",
+      "email": "manuel@daw.es",
+      "promedio": 8.5
+    }
+  ]
+}
