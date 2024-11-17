@@ -1,5 +1,7 @@
 package com.fpmislata.basespring.domain.model;
 
+import com.fpmislata.basespring.common.annotation.persistence.Column;
+import com.fpmislata.basespring.common.annotation.persistence.PrimaryKey;
 import com.fpmislata.basespring.common.locale.LanguageUtils;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,9 +12,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Category {
 
+    @PrimaryKey
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "name_es")
     private String nameEs;
+
+    @Column(name = "name_en")
     private String nameEn;
+
+    @Column(name = "slug")
     private String slug;
 
     public String getName() {
@@ -22,5 +32,4 @@ public class Category {
         }
         return nameEs;
     }
-
 }

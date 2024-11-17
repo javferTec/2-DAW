@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
-@Mapper
+//@Mapper
 @RequiredArgsConstructor
 public class GenericRowMapper<T> implements RowMapper<T> {
 

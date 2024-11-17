@@ -4,6 +4,7 @@ import com.fpmislata.basespring.common.annotation.persistence.Dao;
 import com.fpmislata.basespring.domain.model.Category;
 import com.fpmislata.basespring.persistence.dao.db.CategoryDaoDb;
 import com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.CategoryRowMapper;
+import com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.GenericRowMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -23,7 +24,9 @@ public class CategoryDaoJdbc implements CategoryDaoDb {
                         WHERE id = ?
                      """;
         try {
-            return Optional.ofNullable(jdbcTemplate.queryForObject(sql,new CategoryRowMapper(), id));
+            // Usamos el GenericRowMapper para mapear la fila a la entidad Category
+            Category category = jdbcTemplate.queryForObject(sql, new GenericRowMapper<>(Category.class, jdbcTemplate), id);
+            return Optional.ofNullable(category);
         } catch (Exception e) {
             return Optional.empty();
         }
