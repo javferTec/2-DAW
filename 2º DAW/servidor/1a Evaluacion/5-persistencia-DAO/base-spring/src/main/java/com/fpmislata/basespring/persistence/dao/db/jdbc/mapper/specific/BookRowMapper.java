@@ -1,6 +1,7 @@
-package com.fpmislata.basespring.persistence.dao.db.jdbc.mapper;
+package com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.specific;
 
 import com.fpmislata.basespring.domain.model.Book;
+import com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.generic.CustomRowMapper;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;

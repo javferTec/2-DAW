@@ -3,7 +3,9 @@ package com.fpmislata.basespring.persistence.dao.db.jdbc;
 import com.fpmislata.basespring.common.annotation.persistence.Dao;
 import com.fpmislata.basespring.domain.model.Author;
 import com.fpmislata.basespring.persistence.dao.db.AuthorDaoDb;
-import com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.AuthorRowMapper;
+import com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.factory.GenericRowMapperFactory;
+import com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.generic.GenericRowMapper;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -19,6 +21,13 @@ public class AuthorDaoJdbc implements AuthorDaoDb {
 
     private final JdbcTemplate jdbcTemplate;
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+    private final GenericRowMapperFactory rowMapperFactory;
+    private GenericRowMapper<Author> authorRowMapper;
+
+    @PostConstruct
+    public void init() {
+        this.authorRowMapper = rowMapperFactory.createRowMapper(Author.class);
+    }
 
     @Override
     public List<Author> getByIsbnBook(String isbn) {
@@ -28,7 +37,7 @@ public class AuthorDaoJdbc implements AuthorDaoDb {
                 JOIN books ON books_authors.book_id = books.id
                 AND books.isbn = ?
            """;
-        return jdbcTemplate.query(sql, new AuthorRowMapper(), isbn);
+        return jdbcTemplate.query(sql, authorRowMapper, isbn);
     }
 
     @Override
@@ -38,7 +47,7 @@ public class AuthorDaoJdbc implements AuthorDaoDb {
                 JOIN books_authors ON authors.id = books_authors.author_id
                 AND books_authors.book_id = ?
            """;
-        return jdbcTemplate.query(sql, new AuthorRowMapper(), idBook);
+        return jdbcTemplate.query(sql, authorRowMapper, idBook);
     }
 
     @Override
@@ -48,7 +57,7 @@ public class AuthorDaoJdbc implements AuthorDaoDb {
                WHERE id IN (:ids)   
            """;
         Map<String, List<Long>> params = Map.of("ids", Arrays.asList(ids));
-        return namedParameterJdbcTemplate.query(sql, params, new AuthorRowMapper());
+        return namedParameterJdbcTemplate.query(sql, params, authorRowMapper);
     }
 
 

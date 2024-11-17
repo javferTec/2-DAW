@@ -1,4 +1,4 @@
-package com.fpmislata.basespring.persistence.dao.db.jdbc.mapper;
+package com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.specific;
 
 import com.fpmislata.basespring.domain.model.Category;
 import org.springframework.jdbc.core.RowMapper;

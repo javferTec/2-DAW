@@ -5,7 +5,9 @@ import com.fpmislata.basespring.domain.model.Author;
 import com.fpmislata.basespring.domain.model.Book;
 import com.fpmislata.basespring.domain.model.Genre;
 import com.fpmislata.basespring.persistence.dao.db.BookDaoDb;
-import com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.BookRowMapper;
+import com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.factory.GenericRowMapperFactory;
+import com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.generic.GenericRowMapper;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -20,13 +22,20 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class BookDaoJdbc implements BookDaoDb {
     private final JdbcTemplate jdbcTemplate;
+    private final GenericRowMapperFactory rowMapperFactory;
+    private GenericRowMapper<Book> bookRowMapper;
+    
+    @PostConstruct
+    public void init() {
+        this.bookRowMapper = rowMapperFactory.createRowMapper(Book.class);
+    }
 
     @Override
     public List<Book> getAll() {
         String sql = """
                         SELECT * FROM books
                      """;
-        return jdbcTemplate.query(sql, new BookRowMapper());
+        return jdbcTemplate.query(sql, bookRowMapper);
     }
 
     @Override
@@ -35,7 +44,7 @@ public class BookDaoJdbc implements BookDaoDb {
                         SELECT * FROM books
                         LIMIT ? OFFSET ?
                      """;
-        return jdbcTemplate.query(sql, new BookRowMapper(), size, page * size);
+        return jdbcTemplate.query(sql, bookRowMapper, size, page * size);
     }
 
     @Override
@@ -55,7 +64,7 @@ public class BookDaoJdbc implements BookDaoDb {
                 WHERE books.isbn = ?
            """;
         try {
-            Book book = jdbcTemplate.queryForObject(sql, new BookRowMapper(), isbn);
+            Book book = jdbcTemplate.queryForObject(sql, bookRowMapper, isbn);
             return Optional.of(book);
         } catch (EmptyResultDataAccessException e) {
             return Optional.empty();
@@ -71,7 +80,7 @@ public class BookDaoJdbc implements BookDaoDb {
                 WHERE books.id = ?
            """;
         try {
-            Book book = jdbcTemplate.queryForObject(sql, new BookRowMapper(), id);
+            Book book = jdbcTemplate.queryForObject(sql, bookRowMapper, id);
             return Optional.ofNullable(book);
         } catch (EmptyResultDataAccessException e) {
             return Optional.empty();

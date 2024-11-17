@@ -3,7 +3,9 @@ package com.fpmislata.basespring.persistence.dao.db.jdbc;
 import com.fpmislata.basespring.common.annotation.persistence.Dao;
 import com.fpmislata.basespring.domain.model.Publisher;
 import com.fpmislata.basespring.persistence.dao.db.PublisherDaoDb;
-import com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.PublisherRowMapper;
+import com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.factory.GenericRowMapperFactory;
+import com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.generic.GenericRowMapper;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -15,6 +17,13 @@ import java.util.Optional;
 public class PublisherDaoJdbc implements PublisherDaoDb {
 
     private final JdbcTemplate jdbcTemplate;
+    private final GenericRowMapperFactory rowMapperFactory;
+    private GenericRowMapper<Publisher> publisherRowMapper;
+
+    @PostConstruct
+    public void init() {
+        this.publisherRowMapper = rowMapperFactory.createRowMapper(Publisher.class);
+    }
 
     @Override
     public Optional<Publisher> findById(long id) {
@@ -22,9 +31,12 @@ public class PublisherDaoJdbc implements PublisherDaoDb {
                 SELECT * FROM publishers
                 WHERE id = ?
                 """;
+
+        //return Optional.ofNullable(jdbcTemplate.queryForObject(sql, publisherRowMapper, id));
+
         try
         {
-            return Optional.of(jdbcTemplate.queryForObject(sql, new PublisherRowMapper(), id));
+            return Optional.of(jdbcTemplate.queryForObject(sql, publisherRowMapper, id));
         }
         catch (Exception e)
         {

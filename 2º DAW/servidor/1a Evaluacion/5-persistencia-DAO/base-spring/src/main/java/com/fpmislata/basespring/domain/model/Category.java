@@ -2,6 +2,7 @@ package com.fpmislata.basespring.domain.model;
 
 import com.fpmislata.basespring.common.annotation.persistence.Column;
 import com.fpmislata.basespring.common.annotation.persistence.PrimaryKey;
+import com.fpmislata.basespring.common.annotation.persistence.Table;
 import com.fpmislata.basespring.common.locale.LanguageUtils;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "categories")
 public class Category {
 
     @PrimaryKey

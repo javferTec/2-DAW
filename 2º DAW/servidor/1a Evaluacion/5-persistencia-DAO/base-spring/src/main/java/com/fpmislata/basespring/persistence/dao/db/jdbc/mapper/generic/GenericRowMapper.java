@@ -1,4 +1,4 @@
-package com.fpmislata.basespring.persistence.dao.db.jdbc.mapper;
+package com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.generic;
 
 import com.fpmislata.basespring.common.annotation.persistence.*;
 import com.fpmislata.basespring.common.exception.MappingException;
@@ -14,7 +14,6 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
-//@Mapper
 @RequiredArgsConstructor
 public class GenericRowMapper<T> implements RowMapper<T> {
 
@@ -30,6 +29,12 @@ public class GenericRowMapper<T> implements RowMapper<T> {
             for (Map.Entry<String, Field> entry : fields.entrySet()) {
                 String columnName = entry.getKey();
                 Field field = entry.getValue();
+
+                // Obtener el nombre de la columna desde la anotación @Column
+                Column columnAnnotation = field.getAnnotation(Column.class);
+                if (columnAnnotation != null) {
+                    columnName = columnAnnotation.name(); // Usar el nombre de columna de la anotación
+                }
 
                 String setterName = "set" + capitalize(field.getName());
                 try {
@@ -100,7 +105,8 @@ public class GenericRowMapper<T> implements RowMapper<T> {
         String inverseJoinColumn = annotation.inverseJoinColumn();
 
         String query = String.format("SELECT t.* FROM %s t INNER JOIN %s jt ON t.id = jt.%s WHERE jt.%s = ?",
-                targetEntity.getSimpleName().toLowerCase(), joinTable, inverseJoinColumn, joinColumn);
+                getTableName(targetEntity), joinTable, inverseJoinColumn, joinColumn);
+
 
         executeQueryForRelatedEntities(instance, field, targetEntity, query);
     }
@@ -113,6 +119,14 @@ public class GenericRowMapper<T> implements RowMapper<T> {
             }
         }
         throw new MappingException("No primary key found in " + instance.getClass());
+    }
+
+    private String getTableName(Class<?> entityClass) {
+        Table tableAnnotation = entityClass.getAnnotation(Table.class);
+        if (tableAnnotation != null) {
+            return tableAnnotation.name(); // Devuelve el nombre de la tabla desde la anotación
+        }
+        return entityClass.getSimpleName().toLowerCase(); // Por defecto usa el nombre de la clase
     }
 
     //@SuppressWarnings("deprecation")

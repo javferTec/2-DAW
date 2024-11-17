@@ -3,7 +3,9 @@ package com.fpmislata.basespring.persistence.dao.db.jdbc;
 import com.fpmislata.basespring.common.annotation.persistence.Dao;
 import com.fpmislata.basespring.domain.model.Genre;
 import com.fpmislata.basespring.persistence.dao.db.GenreDaoDb;
-import com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.GenreRowMapper;
+import com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.factory.GenericRowMapperFactory;
+import com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.generic.GenericRowMapper;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -19,36 +21,43 @@ public class GenreDaoJdbc implements GenreDaoDb {
 
     private final JdbcTemplate jdbcTemplate;
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+    private final GenericRowMapperFactory rowMapperFactory;
+    private GenericRowMapper<Genre> genreRowMapper;
+
+    @PostConstruct
+    public void init() {
+        this.genreRowMapper = rowMapperFactory.createRowMapper(Genre.class);
+    }
 
     @Override
     public List<Genre> getByIsbnBook(String isbn) {
         String sql = """
-                SELECT genres.* FROM genres
-                JOIN books_genres ON genres.id = books_genres.genre_id
+                SELECT genre.* FROM genre
+                JOIN books_genres ON genre.id = books_genres.genre_id
                 JOIN books ON books_genres.book_id = books.id
                 AND books.isbn = ?
            """;
-        return jdbcTemplate.query(sql, new GenreRowMapper(),isbn);
+        return jdbcTemplate.query(sql, genreRowMapper,isbn);
     }
 
     @Override
     public List<Genre> getByIdBook(long idBook) {
         String sql = """
-                SELECT genres.* FROM genres
-                JOIN books_genres ON genres.id = books_genres.genre_id
+                SELECT genre.* FROM genre
+                JOIN books_genres ON genre.id = books_genres.genre_id
                 AND books_genres.book_id = ?
            """;
-        return jdbcTemplate.query(sql, new GenreRowMapper(),idBook);
+        return jdbcTemplate.query(sql, genreRowMapper,idBook);
     }
 
     @Override
     public List<Genre> findAllById(Long[] ids) {
         String sql = """
-                SELECT * FROM genres
+                SELECT * FROM genre
                 WHERE id IN (:ids)
            """;
         Map<String, List<Long>> params = Map.of("ids", Arrays.asList(ids));
-        return namedParameterJdbcTemplate.query(sql, params, new GenreRowMapper());
+        return namedParameterJdbcTemplate.query(sql, params, genreRowMapper);
     }
 
     @Override
