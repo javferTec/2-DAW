@@ -5,9 +5,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
+@Retention(RetentionPolicy.RUNTIME)
 public @interface OneToOne {
     Class<?> targetEntity(); // La clase de la entidad relacionada
-    String prefix(); // Prefijo usado en las columnas del ResultSet para la relación
+    //String prefix(); // Prefijo usado en las columnas del ResultSet para la relación
 }

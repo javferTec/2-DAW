@@ -7,6 +7,5 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Column {
-    String name(); // Nombre de la columna en el ResultSet
+public @interface PrimaryKey {
 }

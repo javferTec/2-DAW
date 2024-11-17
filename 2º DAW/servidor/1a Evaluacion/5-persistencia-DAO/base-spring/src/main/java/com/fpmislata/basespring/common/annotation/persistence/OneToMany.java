@@ -5,8 +5,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
+@Retention(RetentionPolicy.RUNTIME)
 public @interface OneToMany {
     Class<?> targetEntity(); // La clase de la entidad relacionada
     String mappedBy(); // Columna en la tabla relacionada que referencia esta entidad
