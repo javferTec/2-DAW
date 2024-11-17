@@ -1,0 +1,92 @@
+[
+  {
+    "class": "java.net.ConnectException",
+    "message": "Connection refused: getsockopt",
+    "stack": [
+      "Net.java:-2",
+      "base-spring/src/main/java/com/fpmislata/basespring/controller/BookController.java:27"
+    ],
+    "location": "Net.java:-2"
+  },
+  {
+    "class": "java.net.ConnectException",
+    "message": "Connection refused: getsockopt",
+    "stack": [
+      "Net.java:-2",
+      "base-spring/src/main/java/com/fpmislata/basespring/domain/service/impl/BookServiceImpl.java:19",
+      "base-spring/src/main/java/com/fpmislata/basespring/controller/BookController.java:27"
+    ],
+    "location": "Net.java:-2"
+  },
+  {
+    "class": "java.net.ConnectException",
+    "message": "Connection refused: getsockopt",
+    "stack": [
+      "Net.java:-2",
+      "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/BookRepositoryImplJdbc.java:26",
+      "base-spring/src/main/java/com/fpmislata/basespring/domain/service/impl/BookServiceImpl.java:19",
+      "base-spring/src/main/java/com/fpmislata/basespring/controller/BookController.java:27"
+    ],
+    "location": "Net.java:-2"
+  },
+  {
+    "class": "java.sql.SQLNonTransientConnectionException",
+    "message": "Socket fail to connect to host:address=(host=localhost)(port=3306)(type=primary). Connection refused: getsockopt",
+    "stack": [
+      "ConnectionHelper.java:140",
+      "base-spring/src/main/java/com/fpmislata/basespring/controller/BookController.java:27"
+    ],
+    "location": "ConnectionHelper.java:140"
+  },
+  {
+    "class": "java.sql.SQLNonTransientConnectionException",
+    "message": "Socket fail to connect to host:address=(host=localhost)(port=3306)(type=primary). Connection refused: getsockopt",
+    "stack": [
+      "ConnectionHelper.java:140",
+      "base-spring/src/main/java/com/fpmislata/basespring/domain/service/impl/BookServiceImpl.java:19",
+      "base-spring/src/main/java/com/fpmislata/basespring/controller/BookController.java:27"
+    ],
+    "location": "ConnectionHelper.java:140"
+  },
+  {
+    "class": "java.sql.SQLNonTransientConnectionException",
+    "message": "Socket fail to connect to host:address=(host=localhost)(port=3306)(type=primary). Connection refused: getsockopt",
+    "stack": [
+      "ConnectionHelper.java:140",
+      "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/BookRepositoryImplJdbc.java:26",
+      "base-spring/src/main/java/com/fpmislata/basespring/domain/service/impl/BookServiceImpl.java:19",
+      "base-spring/src/main/java/com/fpmislata/basespring/controller/BookController.java:27"
+    ],
+    "location": "ConnectionHelper.java:140"
+  },
+  {
+    "class": "org.springframework.jdbc.CannotGetJdbcConnectionException",
+    "message": "Failed to obtain JDBC Connection",
+    "stack": [
+      "DataSourceUtils.java:84",
+      "base-spring/src/main/java/com/fpmislata/basespring/controller/BookController.java:27"
+    ],
+    "location": "DataSourceUtils.java:84"
+  },
+  {
+    "class": "org.springframework.jdbc.CannotGetJdbcConnectionException",
+    "message": "Failed to obtain JDBC Connection",
+    "stack": [
+      "DataSourceUtils.java:84",
+      "base-spring/src/main/java/com/fpmislata/basespring/domain/service/impl/BookServiceImpl.java:19",
+      "base-spring/src/main/java/com/fpmislata/basespring/controller/BookController.java:27"
+    ],
+    "location": "DataSourceUtils.java:84"
+  },
+  {
+    "class": "org.springframework.jdbc.CannotGetJdbcConnectionException",
+    "message": "Failed to obtain JDBC Connection",
+    "stack": [
+      "DataSourceUtils.java:84",
+      "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/BookRepositoryImplJdbc.java:26",
+      "base-spring/src/main/java/com/fpmislata/basespring/domain/service/impl/BookServiceImpl.java:19",
+      "base-spring/src/main/java/com/fpmislata/basespring/controller/BookController.java:27"
+    ],
+    "location": "DataSourceUtils.java:84"
+  }
+]

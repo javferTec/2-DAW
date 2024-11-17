@@ -1,0 +1,449 @@
+{
+  "events": [
+    {
+      "event": "call",
+      "http_server_request": {
+        "headers": {
+          "sec-fetch-mode": "navigate",
+          "sec-fetch-site": "none",
+          "accept-language": "es,en-US;q=0.9,en;q=0.8",
+          "cookie": "Webstorm-a27517ec=cdd9fa11-846a-4d20-a4a1-f0fb2bf3797f",
+          "sec-fetch-user": "?1",
+          "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+          "sec-ch-ua": "\"Chromium\";v=\"130\", \"Google Chrome\";v=\"130\", \"Not?A_Brand\";v=\"99\"",
+          "sec-ch-ua-mobile": "?0",
+          "sec-ch-ua-platform": "\"Windows\"",
+          "host": "localhost:8080",
+          "upgrade-insecure-requests": "1",
+          "connection": "keep-alive",
+          "accept-encoding": "gzip, deflate, br, zstd",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+          "sec-fetch-dest": "document"
+        },
+        "normalized_path_info": "/api/books",
+        "path_info": "/api/books",
+        "protocol": "HTTP/1.1",
+        "request_method": "GET"
+      },
+      "id": 1,
+      "thread_id": 52
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.common.locale.CustomLocaleChangeInterceptor",
+      "event": "call",
+      "id": 2,
+      "lineno": 20,
+      "method_id": "preHandle",
+      "parameters": [
+        {
+          "class": "org.apache.catalina.connector.RequestFacade",
+          "kind": "req",
+          "name": "request",
+          "object_id": 621373130,
+          "value": "org.apache.catalina.connector.RequestFacade@250966ca"
+        },
+        {
+          "class": "org.apache.catalina.connector.ResponseFacade",
+          "kind": "req",
+          "name": "response",
+          "object_id": 224665251,
+          "value": "org.apache.catalina.connector.ResponseFacade@d641ea3"
+        },
+        {
+          "class": "org.springframework.web.method.HandlerMethod",
+          "kind": "req",
+          "name": "handler",
+          "object_id": 1712348500,
+          "value": "com.fpmislata.basespring.controller.BookController#findAll()"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/common/locale/CustomLocaleChangeInterceptor.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.common.locale.CustomLocaleChangeInterceptor",
+        "object_id": 370997834,
+        "value": "com.fpmislata.basespring.common.locale.CustomLocaleChangeInterceptor@161cfa4a"
+      },
+      "static": false,
+      "thread_id": 52
+    },
+    {
+      "elapsed": 0.00371279,
+      "event": "return",
+      "id": 3,
+      "parent_id": 2,
+      "return_value": {
+        "class": "java.lang.Boolean",
+        "object_id": 1196937698,
+        "value": "true"
+      },
+      "thread_id": 52
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.controller.BookController",
+      "event": "call",
+      "id": 4,
+      "lineno": 27,
+      "method_id": "findAll",
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/controller/BookController.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.controller.BookController",
+        "object_id": 2011756986,
+        "value": "com.fpmislata.basespring.controller.BookController@77e8f9ba"
+      },
+      "static": false,
+      "thread_id": 52
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.domain.service.impl.BookServiceImpl",
+      "event": "call",
+      "id": 5,
+      "lineno": 19,
+      "method_id": "findAll",
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/domain/service/impl/BookServiceImpl.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.domain.service.impl.BookServiceImpl",
+        "object_id": 1737452477,
+        "value": "com.fpmislata.basespring.domain.service.impl.BookServiceImpl@678f6bbd"
+      },
+      "static": false,
+      "thread_id": 52
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.BookRepositoryImplJdbc",
+      "event": "call",
+      "id": 6,
+      "lineno": 26,
+      "method_id": "findAll",
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/BookRepositoryImplJdbc.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.persistence.repository.impl.jdbc.BookRepositoryImplJdbc",
+        "object_id": 182196914,
+        "value": "com.fpmislata.basespring.persistence.repository.impl.jdbc.BookRepositoryImplJdbc@adc1ab2"
+      },
+      "static": false,
+      "thread_id": 52
+    },
+    {
+      "elapsed": 0.11063335,
+      "event": "return",
+      "exceptions": [
+        {
+          "class": "org.springframework.jdbc.CannotGetJdbcConnectionException",
+          "lineno": 84,
+          "message": "Failed to obtain JDBC Connection",
+          "object_id": 1272994665,
+          "path": "DataSourceUtils.java"
+        },
+        {
+          "class": "java.sql.SQLNonTransientConnectionException",
+          "lineno": 140,
+          "message": "Socket fail to connect to host:address=(host=localhost)(port=3306)(type=primary). Connection refused: getsockopt",
+          "object_id": 153684640,
+          "path": "ConnectionHelper.java"
+        },
+        {
+          "class": "java.net.ConnectException",
+          "lineno": -2,
+          "message": "Connection refused: getsockopt",
+          "object_id": 448384050,
+          "path": "Net.java"
+        }
+      ],
+      "id": 7,
+      "parent_id": 6,
+      "thread_id": 52
+    },
+    {
+      "elapsed": 0.11137383,
+      "event": "return",
+      "exceptions": [
+        {
+          "class": "org.springframework.jdbc.CannotGetJdbcConnectionException",
+          "lineno": 84,
+          "message": "Failed to obtain JDBC Connection",
+          "object_id": 1272994665,
+          "path": "DataSourceUtils.java"
+        },
+        {
+          "class": "java.sql.SQLNonTransientConnectionException",
+          "lineno": 140,
+          "message": "Socket fail to connect to host:address=(host=localhost)(port=3306)(type=primary). Connection refused: getsockopt",
+          "object_id": 153684640,
+          "path": "ConnectionHelper.java"
+        },
+        {
+          "class": "java.net.ConnectException",
+          "lineno": -2,
+          "message": "Connection refused: getsockopt",
+          "object_id": 448384050,
+          "path": "Net.java"
+        }
+      ],
+      "id": 8,
+      "parent_id": 5,
+      "thread_id": 52
+    },
+    {
+      "elapsed": 0.11197223,
+      "event": "return",
+      "exceptions": [
+        {
+          "class": "org.springframework.jdbc.CannotGetJdbcConnectionException",
+          "lineno": 84,
+          "message": "Failed to obtain JDBC Connection",
+          "object_id": 1272994665,
+          "path": "DataSourceUtils.java"
+        },
+        {
+          "class": "java.sql.SQLNonTransientConnectionException",
+          "lineno": 140,
+          "message": "Socket fail to connect to host:address=(host=localhost)(port=3306)(type=primary). Connection refused: getsockopt",
+          "object_id": 153684640,
+          "path": "ConnectionHelper.java"
+        },
+        {
+          "class": "java.net.ConnectException",
+          "lineno": -2,
+          "message": "Connection refused: getsockopt",
+          "object_id": 448384050,
+          "path": "Net.java"
+        }
+      ],
+      "id": 9,
+      "parent_id": 4,
+      "thread_id": 52
+    },
+    {
+      "defined_class": "com.fpmislata.basespring.common.http_errors.ApiExceptionHandler",
+      "event": "call",
+      "id": 10,
+      "lineno": 26,
+      "method_id": "handleGeneralException",
+      "parameters": [
+        {
+          "class": "org.springframework.jdbc.CannotGetJdbcConnectionException",
+          "kind": "req",
+          "name": "exception",
+          "object_id": 1272994665,
+          "value": "org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection"
+        }
+      ],
+      "path": "base-spring/src/main/java/com/fpmislata/basespring/common/http_errors/ApiExceptionHandler.java",
+      "receiver": {
+        "class": "com.fpmislata.basespring.common.http_errors.ApiExceptionHandler",
+        "object_id": 1208840018,
+        "value": "com.fpmislata.basespring.common.http_errors.ApiExceptionHandler@480d6f52"
+      },
+      "static": false,
+      "thread_id": 52
+    },
+    {
+      "elapsed": 0,
+      "event": "return",
+      "id": 11,
+      "parent_id": 10,
+      "return_value": {
+        "class": "com.fpmislata.basespring.common.http_errors.ErrorMessage",
+        "object_id": 1254630601,
+        "value": "ErrorMessage(error=CannotGetJdbcConnectionException, message=Failed to obtain JDBC Connection)"
+      },
+      "thread_id": 52
+    },
+    {
+      "elapsed": 0.13355175,
+      "event": "return",
+      "http_server_response": {
+        "headers": {
+          "Transfer-Encoding": "chunked",
+          "Connection": "close",
+          "Date": "Wed, 23 Oct 2024 08:37:41 GMT",
+          "Content-Type": "application/json"
+        },
+        "status": 500
+      },
+      "id": 12,
+      "parent_id": 1,
+      "thread_id": 52
+    }
+  ],
+  "version": "1.2",
+  "metadata": {
+    "name": "GET /api/books (500) - 10:37:40.447",
+    "app": "base-spring",
+    "language": {
+      "name": "java",
+      "version": "21.0.4+7-LTS",
+      "engine": "OpenJDK 64-Bit Server VM"
+    },
+    "client": {
+      "name": "appmap-java",
+      "url": "https://github.com/appland/appmap-java"
+    },
+    "recorder": {
+      "name": "request_recording",
+      "type": "requests"
+    },
+    "recording": {},
+    "git": {
+      "repository": "https://github.com/javferTec/2-DAW.git",
+      "branch": "main",
+      "commit": "5d1d2fc17416b33497b08f7e486653b5f0e0a3e8"
+    }
+  },
+  "classMap": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "name": "findAll",
+                                  "type": "function",
+                                  "static": false,
+                                  "location": "base-spring/src/main/java/com/fpmislata/basespring/domain/service/impl/BookServiceImpl.java:19"
+                                }
+                              ],
+                              "name": "BookServiceImpl",
+                              "type": "class"
+                            }
+                          ],
+                          "name": "impl",
+                          "type": "package"
+                        }
+                      ],
+                      "name": "service",
+                      "type": "package"
+                    }
+                  ],
+                  "name": "domain",
+                  "type": "package"
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "name": "handleGeneralException",
+                              "type": "function",
+                              "static": false,
+                              "location": "base-spring/src/main/java/com/fpmislata/basespring/common/http_errors/ApiExceptionHandler.java:26"
+                            }
+                          ],
+                          "name": "ApiExceptionHandler",
+                          "type": "class"
+                        }
+                      ],
+                      "name": "http_errors",
+                      "type": "package"
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "name": "preHandle",
+                              "type": "function",
+                              "static": false,
+                              "location": "base-spring/src/main/java/com/fpmislata/basespring/common/locale/CustomLocaleChangeInterceptor.java:20"
+                            }
+                          ],
+                          "name": "CustomLocaleChangeInterceptor",
+                          "type": "class"
+                        }
+                      ],
+                      "name": "locale",
+                      "type": "package"
+                    }
+                  ],
+                  "name": "common",
+                  "type": "package"
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "name": "findAll",
+                                      "type": "function",
+                                      "static": false,
+                                      "location": "base-spring/src/main/java/com/fpmislata/basespring/persistence/repository/impl/jdbc/BookRepositoryImplJdbc.java:26"
+                                    }
+                                  ],
+                                  "name": "BookRepositoryImplJdbc",
+                                  "type": "class"
+                                }
+                              ],
+                              "name": "jdbc",
+                              "type": "package"
+                            }
+                          ],
+                          "name": "impl",
+                          "type": "package"
+                        }
+                      ],
+                      "name": "repository",
+                      "type": "package"
+                    }
+                  ],
+                  "name": "persistence",
+                  "type": "package"
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "name": "findAll",
+                          "type": "function",
+                          "static": false,
+                          "location": "base-spring/src/main/java/com/fpmislata/basespring/controller/BookController.java:27"
+                        }
+                      ],
+                      "name": "BookController",
+                      "type": "class"
+                    }
+                  ],
+                  "name": "controller",
+                  "type": "package"
+                }
+              ],
+              "name": "basespring",
+              "type": "package"
+            }
+          ],
+          "name": "fpmislata",
+          "type": "package"
+        }
+      ],
+      "name": "com",
+      "type": "package"
+    },
+    {
+      "type": "http",
+      "name": "HTTP server requests",
+      "children": [
+        {
+          "type": "route",
+          "name": "GET /api/books"
+        }
+      ]
+    }
+  ]
+}

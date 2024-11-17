@@ -1,0 +1,4 @@
+[
+  "com/fpmislata/basespring/common/http_errors/ApiExceptionHandler",
+  "com/fpmislata/basespring/common/locale/CustomLocaleChangeInterceptor"
+]
