@@ -1,6 +1,6 @@
 package com.fpmislata.basespring.controller.common.entity.mapper.genre;
 
-import com.fpmislata.basespring.domain.useCase.book.roles.user.model.GenreUser;
+import com.fpmislata.basespring.domain.model.Genre;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -11,9 +11,9 @@ public interface GenreMapper {
 
     GenreMapper INSTANCE = Mappers.getMapper(GenreMapper.class);
 
-    List<String> toGenreNameList(List<GenreUser> genreUsers);
+    List<String> toGenreNameList(List<Genre> genreUsers);
 
-    default String toGenreName(GenreUser genreUser) {
+    default String toGenreName(Genre genreUser) {
         return genreUser.getName();
     }
 }
