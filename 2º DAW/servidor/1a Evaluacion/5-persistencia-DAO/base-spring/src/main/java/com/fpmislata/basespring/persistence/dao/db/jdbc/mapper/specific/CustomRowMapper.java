@@ -1,4 +1,4 @@
-package com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.generic;
+package com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.specific;
 
 import com.fpmislata.basespring.common.locale.LanguageUtils;
 import org.springframework.jdbc.core.RowMapper;

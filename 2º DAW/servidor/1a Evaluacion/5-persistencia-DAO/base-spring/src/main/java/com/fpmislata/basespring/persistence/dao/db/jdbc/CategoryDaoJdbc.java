@@ -3,26 +3,21 @@ package com.fpmislata.basespring.persistence.dao.db.jdbc;
 import com.fpmislata.basespring.common.annotation.persistence.Dao;
 import com.fpmislata.basespring.domain.model.Category;
 import com.fpmislata.basespring.persistence.dao.db.CategoryDaoDb;
-import com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.factory.GenericRowMapperFactory;
 import com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.generic.GenericRowMapper;
-import jakarta.annotation.PostConstruct;
-import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
 import java.util.Optional;
 
 @Dao
-@RequiredArgsConstructor
 public class CategoryDaoJdbc implements CategoryDaoDb {
 
     private final JdbcTemplate jdbcTemplate;
-    private final GenericRowMapperFactory rowMapperFactory;
-    private GenericRowMapper<Category> categoryRowMapper;
+    private final GenericRowMapper<Category> categoryRowMapper;
 
-    @PostConstruct
-    public void init() {
-        this.categoryRowMapper = rowMapperFactory.createRowMapper(Category.class);
+    public CategoryDaoJdbc(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+        this.categoryRowMapper = new GenericRowMapper<>(Category.class, jdbcTemplate);
     }
 
     @Override

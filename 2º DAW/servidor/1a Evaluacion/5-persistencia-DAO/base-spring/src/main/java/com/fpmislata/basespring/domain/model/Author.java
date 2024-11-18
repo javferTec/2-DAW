@@ -31,10 +31,10 @@ public class Author {
     private String biographyEn;
 
     @Column(name = "birth_year")
-    private int birthYear;
+    private Integer birthYear;
 
     @Column(name = "death_year")
-    private int deathYear;
+    private Integer deathYear;
 
     public String getBiography() {
         String language = LanguageUtils.getCurrentLanguage();

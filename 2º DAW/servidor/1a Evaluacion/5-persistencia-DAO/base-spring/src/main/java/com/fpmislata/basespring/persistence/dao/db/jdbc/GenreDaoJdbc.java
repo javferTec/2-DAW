@@ -3,10 +3,7 @@ package com.fpmislata.basespring.persistence.dao.db.jdbc;
 import com.fpmislata.basespring.common.annotation.persistence.Dao;
 import com.fpmislata.basespring.domain.model.Genre;
 import com.fpmislata.basespring.persistence.dao.db.GenreDaoDb;
-import com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.factory.GenericRowMapperFactory;
 import com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.generic.GenericRowMapper;
-import jakarta.annotation.PostConstruct;
-import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
@@ -16,24 +13,24 @@ import java.util.Map;
 import java.util.Optional;
 
 @Dao
-@RequiredArgsConstructor
 public class GenreDaoJdbc implements GenreDaoDb {
 
     private final JdbcTemplate jdbcTemplate;
+    private final GenericRowMapper<Genre> genreRowMapper;
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-    private final GenericRowMapperFactory rowMapperFactory;
-    private GenericRowMapper<Genre> genreRowMapper;
 
-    @PostConstruct
-    public void init() {
-        this.genreRowMapper = rowMapperFactory.createRowMapper(Genre.class);
+    public GenreDaoJdbc(JdbcTemplate jdbcTemplate, NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+        this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
+        this.genreRowMapper = new GenericRowMapper<>(Genre.class, jdbcTemplate);
     }
+
 
     @Override
     public List<Genre> getByIsbnBook(String isbn) {
         String sql = """
-                SELECT genre.* FROM genre
-                JOIN books_genres ON genre.id = books_genres.genre_id
+                SELECT genres.* FROM genres
+                JOIN books_genres ON genres.id = books_genres.genre_id
                 JOIN books ON books_genres.book_id = books.id
                 AND books.isbn = ?
            """;
@@ -43,8 +40,8 @@ public class GenreDaoJdbc implements GenreDaoDb {
     @Override
     public List<Genre> getByIdBook(long idBook) {
         String sql = """
-                SELECT genre.* FROM genre
-                JOIN books_genres ON genre.id = books_genres.genre_id
+                SELECT genres.* FROM genres
+                JOIN books_genres ON genres.id = books_genres.genre_id
                 AND books_genres.book_id = ?
            """;
         return jdbcTemplate.query(sql, genreRowMapper,idBook);
@@ -53,7 +50,7 @@ public class GenreDaoJdbc implements GenreDaoDb {
     @Override
     public List<Genre> findAllById(Long[] ids) {
         String sql = """
-                SELECT * FROM genre
+                SELECT * FROM genres
                 WHERE id IN (:ids)
            """;
         Map<String, List<Long>> params = Map.of("ids", Arrays.asList(ids));

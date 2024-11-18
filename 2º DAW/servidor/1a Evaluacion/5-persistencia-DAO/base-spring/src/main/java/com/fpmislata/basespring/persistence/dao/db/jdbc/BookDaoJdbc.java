@@ -5,10 +5,7 @@ import com.fpmislata.basespring.domain.model.Author;
 import com.fpmislata.basespring.domain.model.Book;
 import com.fpmislata.basespring.domain.model.Genre;
 import com.fpmislata.basespring.persistence.dao.db.BookDaoDb;
-import com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.factory.GenericRowMapperFactory;
 import com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.generic.GenericRowMapper;
-import jakarta.annotation.PostConstruct;
-import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -19,52 +16,47 @@ import java.util.List;
 import java.util.Optional;
 
 @Dao
-@RequiredArgsConstructor
 public class BookDaoJdbc implements BookDaoDb {
     private final JdbcTemplate jdbcTemplate;
-    private final GenericRowMapperFactory rowMapperFactory;
-    private GenericRowMapper<Book> bookRowMapper;
-    
-    @PostConstruct
-    public void init() {
-        this.bookRowMapper = rowMapperFactory.createRowMapper(Book.class);
+    private final GenericRowMapper<Book> bookMapper;
+
+    public BookDaoJdbc(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+        this.bookMapper = new GenericRowMapper<>(Book.class, jdbcTemplate);
     }
 
     @Override
     public List<Book> getAll() {
         String sql = """
-                        SELECT * FROM books
-                     """;
-        return jdbcTemplate.query(sql, bookRowMapper);
+                   SELECT * FROM books
+                """;
+        return jdbcTemplate.query(sql, bookMapper);
     }
 
     @Override
     public List<Book> getAll(int page, int size) {
-        String sql = """
-                        SELECT * FROM books
-                        LIMIT ? OFFSET ?
-                     """;
-        return jdbcTemplate.query(sql, bookRowMapper, size, page * size);
+        String sql = "SELECT * FROM books LIMIT ? OFFSET ?";
+        return jdbcTemplate.query(sql, bookMapper);
     }
 
     @Override
     public int count() {
         String sql = """
-                        SELECT COUNT(*) FROM books
-                     """;
+                   SELECT COUNT(*) FROM books
+                """;
         return jdbcTemplate.queryForObject(sql, Integer.class);
     }
 
     @Override
     public Optional<Book> findByIsbn(String isbn) {
         String sql = """
-                SELECT * FROM books
-                LEFT JOIN categories ON books.category_id = categories.id
-                LEFT JOIN publishers ON books.publisher_id = publishers.id
-                WHERE books.isbn = ?
-           """;
+                     SELECT * FROM books
+                     LEFT JOIN categories ON books.category_id = categories.id
+                     LEFT JOIN publishers ON books.publisher_id = publishers.id
+                     WHERE books.isbn = ?
+                """;
         try {
-            Book book = jdbcTemplate.queryForObject(sql, bookRowMapper, isbn);
+            Book book = jdbcTemplate.queryForObject(sql, bookMapper, isbn);
             return Optional.of(book);
         } catch (EmptyResultDataAccessException e) {
             return Optional.empty();
@@ -74,13 +66,13 @@ public class BookDaoJdbc implements BookDaoDb {
     @Override
     public Optional<Book> findById(long id) {
         String sql = """
-                SELECT * FROM books
-                LEFT JOIN categories ON books.category_id = categories.id
-                LEFT JOIN publishers ON books.publisher_id = publishers.id
-                WHERE books.id = ?
-           """;
+                     SELECT * FROM books
+                     LEFT JOIN categories ON books.category_id = categories.id
+                     LEFT JOIN publishers ON books.publisher_id = publishers.id
+                     WHERE books.id = ?
+                """;
         try {
-            Book book = jdbcTemplate.queryForObject(sql, bookRowMapper, id);
+            Book book = jdbcTemplate.queryForObject(sql, bookMapper, id);
             return Optional.ofNullable(book);
         } catch (EmptyResultDataAccessException e) {
             return Optional.empty();
@@ -143,7 +135,7 @@ public class BookDaoJdbc implements BookDaoDb {
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
         jdbcTemplate.update(connection -> {
-            PreparedStatement ps = connection.prepareStatement(sql, new String[] {"id"});
+            PreparedStatement ps = connection.prepareStatement(sql, new String[]{"id"});
             ps.setString(1, book.getIsbn());
             ps.setString(2, book.getTitleEs());
             ps.setString(3, book.getTitleEn());
@@ -195,6 +187,4 @@ public class BookDaoJdbc implements BookDaoDb {
                 """;
         genres.stream().forEach(g -> jdbcTemplate.update(sql, id, g.getId()));
     }
-
-
 }

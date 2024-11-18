@@ -3,26 +3,21 @@ package com.fpmislata.basespring.persistence.dao.db.jdbc;
 import com.fpmislata.basespring.common.annotation.persistence.Dao;
 import com.fpmislata.basespring.domain.model.Publisher;
 import com.fpmislata.basespring.persistence.dao.db.PublisherDaoDb;
-import com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.factory.GenericRowMapperFactory;
 import com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.generic.GenericRowMapper;
-import jakarta.annotation.PostConstruct;
-import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
 import java.util.Optional;
 
 @Dao
-@RequiredArgsConstructor
 public class PublisherDaoJdbc implements PublisherDaoDb {
 
     private final JdbcTemplate jdbcTemplate;
-    private final GenericRowMapperFactory rowMapperFactory;
-    private GenericRowMapper<Publisher> publisherRowMapper;
+    private final GenericRowMapper<Publisher> publisherRowMapper;
 
-    @PostConstruct
-    public void init() {
-        this.publisherRowMapper = rowMapperFactory.createRowMapper(Publisher.class);
+    public PublisherDaoJdbc(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+        this.publisherRowMapper = new GenericRowMapper<>(Publisher.class, jdbcTemplate);
     }
 
     @Override

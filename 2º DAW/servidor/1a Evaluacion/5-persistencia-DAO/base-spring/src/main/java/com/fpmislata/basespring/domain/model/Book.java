@@ -43,10 +43,10 @@ public class Book {
     @Column(name = "cover")
     private String cover;
 
-    @OneToOne(targetEntity = Publisher.class)
+    @OneToOne(targetEntity = Publisher.class, joinColumn = "publisher_id")
     private Publisher publisher;
 
-    @OneToOne(targetEntity = Category.class)
+    @OneToOne(targetEntity = Category.class, joinColumn = "category_id")
     private Category category;
 
     @ManyToMany(targetEntity = Genre.class,

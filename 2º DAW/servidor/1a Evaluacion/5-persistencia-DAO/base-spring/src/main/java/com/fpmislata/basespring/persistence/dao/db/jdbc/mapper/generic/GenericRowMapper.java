@@ -4,6 +4,8 @@ import com.fpmislata.basespring.common.annotation.persistence.*;
 import com.fpmislata.basespring.common.exception.MappingException;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -11,12 +13,15 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 public class GenericRowMapper<T> implements RowMapper<T> {
 
+    private static final Logger logger = LoggerFactory.getLogger(GenericRowMapper.class);
     private final Class<T> type;
     private final JdbcTemplate jdbcTemplate;
 
@@ -26,116 +31,128 @@ public class GenericRowMapper<T> implements RowMapper<T> {
             T instance = type.getDeclaredConstructor().newInstance();
             Map<String, Field> fields = FieldCache.getCachedFields(type);
 
+            // Mapeo de los campos normales (no relaciones)
             for (Map.Entry<String, Field> entry : fields.entrySet()) {
-                String columnName = entry.getKey();
-                Field field = entry.getValue();
-
-                // Obtener el nombre de la columna desde la anotación @Column
-                Column columnAnnotation = field.getAnnotation(Column.class);
-                if (columnAnnotation != null) {
-                    columnName = columnAnnotation.name(); // Usar el nombre de columna de la anotación
-                }
-
-                String setterName = "set" + capitalize(field.getName());
-                try {
-                    Method setter = type.getMethod(setterName, field.getType());
-                    if (columnExists(resultSet, columnName)) {
-                        Object value = resultSet.getObject(columnName, field.getType());
-                        setter.invoke(instance, value);
-                    }
-                } catch (NoSuchMethodException e) {
-                    throw new MappingException("No setter found for field: " + field.getName(), e);
-                }
+                String columnName = getColumnName(entry.getValue());
+                setFieldValue(instance, resultSet, entry.getValue(), columnName);
             }
 
-            // Procesa las relaciones
-            for (Field field : type.getDeclaredFields()) {
-                if (field.isAnnotationPresent(OneToOne.class)) {
-                    mapOneToOne(resultSet, instance, field);
-                } else if (field.isAnnotationPresent(OneToMany.class)) {
-                    mapOneToMany(instance, field);
-                } else if (field.isAnnotationPresent(ManyToMany.class)) {
-                    mapManyToMany(instance, field);
-                }
-            }
+            // Procesar las relaciones
+            processRelationships(resultSet, instance);
 
             return instance;
-
         } catch (Exception e) {
+            logger.error("Error mapping row to {}: {}", type.getSimpleName(), e.getMessage(), e);
             throw new MappingException("Error mapping row to " + type.getSimpleName(), e);
         }
     }
 
-    private boolean columnExists(ResultSet rs, String columnName) {
+    private String getColumnName(Field field) {
+        Column columnAnnotation = field.getAnnotation(Column.class);
+        return columnAnnotation != null ? columnAnnotation.name() : field.getName();
+    }
+
+    private void setFieldValue(T instance, ResultSet resultSet, Field field, String columnName) throws Exception {
+        String setterName = "set" + capitalize(field.getName());
+        Method setter = type.getMethod(setterName, field.getType());
+
+        if (columnExists(resultSet, columnName)) {
+            Object value = resultSet.getObject(columnName, field.getType());
+            logger.debug("Setting field '{}' with value '{}' from column '{}'", field.getName(), value, columnName);
+            setter.invoke(instance, value);
+        } else {
+            logger.warn("Column '{}' does not exist in result set for field '{}'", columnName, field.getName());
+        }
+    }
+
+    private boolean columnExists(ResultSet resultSet, String columnName) {
         try {
-            rs.findColumn(columnName);
+            resultSet.findColumn(columnName);
             return true;
         } catch (SQLException e) {
             return false;
         }
     }
 
+    private void processRelationships(ResultSet resultSet, Object instance) throws Exception {
+        for (Field field : type.getDeclaredFields()) {
+            if (field.isAnnotationPresent(OneToOne.class)) {
+                mapOneToOne(resultSet, instance, field);
+            } else if (field.isAnnotationPresent(OneToMany.class)) {
+                mapOneToMany(instance, field);
+            } else if (field.isAnnotationPresent(ManyToMany.class)) {
+                mapManyToMany(instance, field);
+            }
+        }
+    }
+
     private void mapOneToOne(ResultSet resultSet, Object instance, Field field) throws Exception {
         OneToOne annotation = field.getAnnotation(OneToOne.class);
         Class<?> targetEntity = annotation.targetEntity();
-
         GenericRowMapper<?> relatedMapper = new GenericRowMapper<>(targetEntity, jdbcTemplate);
-        Object relatedInstance = relatedMapper.mapRow(resultSet, resultSet.getRow());
 
+        Object relatedInstance = relatedMapper.mapRow(resultSet, resultSet.getRow());
         if (relatedInstance != null) {
-            Method setter = type.getMethod("set" + capitalize(field.getName()), field.getType());
-            setter.invoke(instance, relatedInstance);
+            setRelatedField(instance, field, relatedInstance);
         }
     }
 
     private void mapOneToMany(Object instance, Field field) throws Exception {
         OneToMany annotation = field.getAnnotation(OneToMany.class);
-        Class<?> targetEntity = annotation.targetEntity();
-        String mappedBy = annotation.mappedBy();
+        List<?> relatedList = mapRelatedEntities(annotation.targetEntity(), buildOneToManyQuery(annotation), instance);
 
-        String query = String.format("SELECT * FROM %s WHERE %s = ?", targetEntity.getSimpleName().toLowerCase(), mappedBy);
-        executeQueryForRelatedEntities(instance, field, targetEntity, query);
+        setRelatedField(instance, field, relatedList);
     }
 
     private void mapManyToMany(Object instance, Field field) throws Exception {
         ManyToMany annotation = field.getAnnotation(ManyToMany.class);
-        Class<?> targetEntity = annotation.targetEntity();
-        String joinTable = annotation.joinTable();
-        String joinColumn = annotation.joinColumn();
-        String inverseJoinColumn = annotation.inverseJoinColumn();
+        List<?> relatedList = mapRelatedEntities(annotation.targetEntity(), buildManyToManyQuery(annotation), instance);
 
-        String query = String.format("SELECT t.* FROM %s t INNER JOIN %s jt ON t.id = jt.%s WHERE jt.%s = ?",
-                getTableName(targetEntity), joinTable, inverseJoinColumn, joinColumn);
-
-
-        executeQueryForRelatedEntities(instance, field, targetEntity, query);
+        setRelatedField(instance, field, relatedList);
     }
 
-    private Object getPrimaryKey(Object instance) throws Exception {
-        for (Field field : instance.getClass().getDeclaredFields()) {
-            if (field.isAnnotationPresent(PrimaryKey.class)) {
-                field.setAccessible(true);
-                return field.get(instance);
-            }
-        }
-        throw new MappingException("No primary key found in " + instance.getClass());
+    private List<?> mapRelatedEntities(Class<?> targetEntity, String query, Object instance) {
+        return jdbcTemplate.query(query, new Object[]{getPrimaryKey(instance)},
+                (rs, rowNum) -> new GenericRowMapper<>(targetEntity, jdbcTemplate).mapRow(rs, rowNum));
+    }
+
+    private String buildOneToManyQuery(OneToMany annotation) {
+        return String.format("SELECT * FROM %s WHERE %s = ?",
+                annotation.targetEntity().getSimpleName().toLowerCase(), annotation.mappedBy());
+    }
+
+    private String buildManyToManyQuery(ManyToMany annotation) {
+        return String.format("SELECT t.* FROM %s t INNER JOIN %s jt ON t.id = jt.%s WHERE jt.%s = ?",
+                getTableName(annotation.targetEntity()), annotation.joinTable(), annotation.inverseJoinColumn(), annotation.joinColumn());
+    }
+
+    private void setRelatedField(Object instance, Field field, Object value) throws Exception {
+        Method setter = type.getMethod("set" + capitalize(field.getName()), field.getType());
+        setter.invoke(instance, value);
+    }
+
+    private Object getPrimaryKey(Object instance) {
+        return getPrimaryKeyField(instance)
+                .map(field -> {
+                    try {
+                        field.setAccessible(true);
+                        return field.get(instance);
+                    } catch (IllegalAccessException e) {
+                        throw new MappingException("Failed to access primary key field", e);
+                    }
+                })
+                .orElseThrow(() -> new MappingException("No primary key found in " + instance.getClass()));
+    }
+
+    private Optional<Field> getPrimaryKeyField(Object instance) {
+        return Arrays.stream(instance.getClass().getDeclaredFields())
+                .filter(field -> field.isAnnotationPresent(PrimaryKey.class))
+                .findFirst();
     }
 
     private String getTableName(Class<?> entityClass) {
         Table tableAnnotation = entityClass.getAnnotation(Table.class);
-        if (tableAnnotation != null) {
-            return tableAnnotation.name(); // Devuelve el nombre de la tabla desde la anotación
-        }
-        return entityClass.getSimpleName().toLowerCase(); // Por defecto usa el nombre de la clase
-    }
-
-    //@SuppressWarnings("deprecation")
-    private void executeQueryForRelatedEntities(Object instance, Field field, Class<?> targetEntity, String query) throws Exception {
-        List<?> relatedList = jdbcTemplate.query(query, new Object[]{getPrimaryKey(instance)},
-                (rs, rowNum) -> new GenericRowMapper<>(targetEntity, jdbcTemplate).mapRow(rs, rowNum));
-
-        Method setter = type.getMethod("set" + capitalize(field.getName()), field.getType());
-        setter.invoke(instance, relatedList);
+        return tableAnnotation != null ? tableAnnotation.name() : entityClass.getSimpleName().toLowerCase();
     }
 
     private String capitalize(String str) {

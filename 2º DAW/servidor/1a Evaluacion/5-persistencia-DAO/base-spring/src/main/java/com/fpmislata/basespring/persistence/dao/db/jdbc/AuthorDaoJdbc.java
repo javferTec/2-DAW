@@ -3,10 +3,7 @@ package com.fpmislata.basespring.persistence.dao.db.jdbc;
 import com.fpmislata.basespring.common.annotation.persistence.Dao;
 import com.fpmislata.basespring.domain.model.Author;
 import com.fpmislata.basespring.persistence.dao.db.AuthorDaoDb;
-import com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.factory.GenericRowMapperFactory;
 import com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.generic.GenericRowMapper;
-import jakarta.annotation.PostConstruct;
-import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
@@ -16,18 +13,18 @@ import java.util.Map;
 import java.util.Optional;
 
 @Dao
-@RequiredArgsConstructor
 public class AuthorDaoJdbc implements AuthorDaoDb {
 
     private final JdbcTemplate jdbcTemplate;
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-    private final GenericRowMapperFactory rowMapperFactory;
-    private GenericRowMapper<Author> authorRowMapper;
+    private final GenericRowMapper<Author> authorRowMapper;
 
-    @PostConstruct
-    public void init() {
-        this.authorRowMapper = rowMapperFactory.createRowMapper(Author.class);
+    public AuthorDaoJdbc(JdbcTemplate jdbcTemplate, NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+        this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
+        this.authorRowMapper = new GenericRowMapper<>(Author.class, jdbcTemplate);
     }
+
 
     @Override
     public List<Author> getByIsbnBook(String isbn) {
