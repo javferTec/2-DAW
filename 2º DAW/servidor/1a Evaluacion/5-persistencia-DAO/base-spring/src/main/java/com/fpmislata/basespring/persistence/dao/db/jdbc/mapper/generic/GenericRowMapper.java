@@ -12,11 +12,9 @@ import org.springframework.jdbc.core.RowMapper;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @RequiredArgsConstructor
 public class GenericRowMapper<T> implements RowMapper<T> {
@@ -31,13 +29,13 @@ public class GenericRowMapper<T> implements RowMapper<T> {
             T instance = type.getDeclaredConstructor().newInstance();
             Map<String, Field> fields = FieldCache.getCachedFields(type);
 
-            // Mapeo de los campos normales (no relaciones)
+            // Mapeo de campos simples
             for (Map.Entry<String, Field> entry : fields.entrySet()) {
                 String columnName = getColumnName(entry.getValue());
                 setFieldValue(instance, resultSet, entry.getValue(), columnName);
             }
 
-            // Procesar las relaciones
+            // Procesar relaciones
             processRelationships(resultSet, instance);
 
             return instance;
@@ -61,23 +59,33 @@ public class GenericRowMapper<T> implements RowMapper<T> {
             logger.debug("Setting field '{}' with value '{}' from column '{}'", field.getName(), value, columnName);
             setter.invoke(instance, value);
         } else {
-            logger.warn("Column '{}' does not exist in result set for field '{}'", columnName, field.getName());
+            logger.warn("Column '{}' does not exist in result set for field '{}' of entity {}", columnName, field.getName(), type.getSimpleName());
         }
     }
 
     private boolean columnExists(ResultSet resultSet, String columnName) {
         try {
-            resultSet.findColumn(columnName);
-            return true;
+            ResultSetMetaData metaData = resultSet.getMetaData();
+            int columnCount = metaData.getColumnCount();
+            for (int i = 1; i <= columnCount; i++) {
+                if (metaData.getColumnName(i).equalsIgnoreCase(columnName)) {
+                    return true;
+                }
+            }
         } catch (SQLException e) {
-            return false;
+            logger.error("Error checking if column '{}' exists: {}", columnName, e.getMessage(), e);
         }
+        return false;
     }
 
     private void processRelationships(ResultSet resultSet, Object instance) throws Exception {
         for (Field field : type.getDeclaredFields()) {
             if (field.isAnnotationPresent(OneToOne.class)) {
-                mapOneToOne(resultSet, instance, field);
+                try {
+                    mapOneToOne(resultSet, instance, field);
+                } catch (Exception e) {
+                    logger.warn("Error mapping OneToOne relationship for field '{}': {}", field.getName(), e.getMessage());
+                }
             } else if (field.isAnnotationPresent(OneToMany.class)) {
                 mapOneToMany(instance, field);
             } else if (field.isAnnotationPresent(ManyToMany.class)) {
@@ -88,17 +96,26 @@ public class GenericRowMapper<T> implements RowMapper<T> {
 
     private void mapOneToOne(ResultSet resultSet, Object instance, Field field) throws Exception {
         OneToOne annotation = field.getAnnotation(OneToOne.class);
+        String joinColumn = annotation.joinColumn(); // Nombre de la columna FK
         Class<?> targetEntity = annotation.targetEntity();
-        GenericRowMapper<?> relatedMapper = new GenericRowMapper<>(targetEntity, jdbcTemplate);
 
-        Object relatedInstance = relatedMapper.mapRow(resultSet, resultSet.getRow());
-        if (relatedInstance != null) {
+        // Obtener el valor de la clave foránea (FK) desde el ResultSet
+        Object foreignKeyValue = resultSet.getObject(joinColumn);
+        if (foreignKeyValue != null) {
+            String query = String.format("SELECT * FROM %s WHERE id = ?", getTableName(targetEntity));
+            Object relatedInstance = jdbcTemplate.queryForObject(query, new Object[]{foreignKeyValue}, new GenericRowMapper<>(targetEntity, jdbcTemplate));
             setRelatedField(instance, field, relatedInstance);
         }
     }
 
     private void mapOneToMany(Object instance, Field field) throws Exception {
         OneToMany annotation = field.getAnnotation(OneToMany.class);
+
+        // Verificar que el campo sea una colección
+        if (!Collection.class.isAssignableFrom(field.getType())) {
+            throw new MappingException("Field " + field.getName() + " must be a Collection for @OneToMany");
+        }
+
         List<?> relatedList = mapRelatedEntities(annotation.targetEntity(), buildOneToManyQuery(annotation), instance);
 
         setRelatedField(instance, field, relatedList);
@@ -112,8 +129,13 @@ public class GenericRowMapper<T> implements RowMapper<T> {
     }
 
     private List<?> mapRelatedEntities(Class<?> targetEntity, String query, Object instance) {
-        return jdbcTemplate.query(query, new Object[]{getPrimaryKey(instance)},
-                (rs, rowNum) -> new GenericRowMapper<>(targetEntity, jdbcTemplate).mapRow(rs, rowNum));
+        try {
+            return jdbcTemplate.query(query, new Object[]{getPrimaryKey(instance)},
+                    (rs, rowNum) -> new GenericRowMapper<>(targetEntity, jdbcTemplate).mapRow(rs, rowNum));
+        } catch (Exception e) {
+            logger.error("Error mapping related entities: {}", e.getMessage(), e);
+            return Collections.emptyList(); // Devuelve una lista vacía en caso de error
+        }
     }
 
     private String buildOneToManyQuery(OneToMany annotation) {
