@@ -96,30 +96,6 @@ public class BaseDaoJdbc<T> implements GenericDaoDb<T> {
         }
     }
 
-    protected String getSelectSql() {
-        String tableName = getTableName();
-        return "SELECT * FROM " + tableName;
-    }
-
-    private String buildSqlWithCriteria(String baseSql, Map<String, Object> criteria) {
-        if (criteria.isEmpty()) {
-            return baseSql;
-        }
-
-        StringBuilder sql = new StringBuilder(baseSql);
-        sql.append(" WHERE ");
-
-        criteria.forEach((key, value) -> sql.append(key).append(" = :").append(key).append(" AND "));
-        sql.delete(sql.length() - 4, sql.length());
-
-        return sql.toString();
-    }
-
-    private String getTableName() {
-        Table tableAnnotation = entityClass.getAnnotation(Table.class);
-        return tableAnnotation != null ? tableAnnotation.name() : entityClass.getSimpleName().toLowerCase();
-    }
-
     public int count() {
         String sql = "SELECT COUNT(*) FROM " + getTableName();
         Integer result = jdbcTemplate.queryForObject(sql, Integer.class);
@@ -197,5 +173,29 @@ public class BaseDaoJdbc<T> implements GenericDaoDb<T> {
 
     protected String getColumnName(Field field) {
         return field.getAnnotation(Column.class).name();
+    }
+
+    private String getTableName() {
+        Table tableAnnotation = entityClass.getAnnotation(Table.class);
+        return tableAnnotation != null ? tableAnnotation.name() : entityClass.getSimpleName().toLowerCase();
+    }
+
+    protected String getSelectSql() {
+        String tableName = getTableName();
+        return "SELECT * FROM " + tableName;
+    }
+
+    private String buildSqlWithCriteria(String baseSql, Map<String, Object> criteria) {
+        if (criteria.isEmpty()) {
+            return baseSql;
+        }
+
+        StringBuilder sql = new StringBuilder(baseSql);
+        sql.append(" WHERE ");
+
+        criteria.forEach((key, value) -> sql.append(key).append(" = :").append(key).append(" AND "));
+        sql.delete(sql.length() - 4, sql.length());
+
+        return sql.toString();
     }
 }
