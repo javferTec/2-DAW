@@ -17,10 +17,11 @@ import java.util.Optional;
 
 @Dao
 public class BookDaoJdbc extends BaseDaoJdbc<Book> implements BookDaoDb {
-    private final JdbcTemplate jdbcTemplate = new JdbcTemplate();
+    private final JdbcTemplate jdbcTemplate;
 
     public BookDaoJdbc(DataSource dataSource) {
         super(dataSource);
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
     @Override

@@ -1,15 +1,16 @@
 package com.fpmislata.basespring.controller.admin;
 
-import com.fpmislata.basespring.controller.common.pagination.PaginatedResponse;
-import com.fpmislata.basespring.controller.common.pagination.ResponseBuilder;
 import com.fpmislata.basespring.controller.admin.adminMapper.book.BookAdminMapper;
 import com.fpmislata.basespring.controller.admin.adminModel.book.BookAdminCollection;
+import com.fpmislata.basespring.controller.common.pagination.PaginatedResponse;
+import com.fpmislata.basespring.controller.common.pagination.ResponseBuilder;
 import com.fpmislata.basespring.domain.model.Author;
 import com.fpmislata.basespring.domain.model.Book;
 import com.fpmislata.basespring.domain.model.Genre;
 import com.fpmislata.basespring.domain.useCase.book.admin.BookInsertAuthorsUseCase;
 import com.fpmislata.basespring.domain.useCase.book.admin.BookInsertGenresUseCase;
 import com.fpmislata.basespring.domain.useCase.book.admin.BookInsertUseCase;
+import com.fpmislata.basespring.domain.useCase.book.admin.impl.BookUpdateUseCaseImpl;
 import com.fpmislata.basespring.domain.useCase.book.common.BookCountUseCase;
 import com.fpmislata.basespring.domain.useCase.book.common.BookFindByIsbnUseCase;
 import com.fpmislata.basespring.domain.useCase.book.common.BookGetAllUseCase;
@@ -34,6 +35,7 @@ public class BookAdminController {
     private final BookInsertAuthorsUseCase bookInsertAuthorsUseCase;
     private final BookInsertGenresUseCase bookInsertGenresUseCase;
     private final BookInsertUseCase bookInsertUseCase;
+    private final BookUpdateUseCaseImpl bookUpdateUseCase;
 
     @GetMapping
     public ResponseEntity<PaginatedResponse<BookAdminCollection>> getAll(
@@ -74,6 +76,12 @@ public class BookAdminController {
     public ResponseEntity<Void> insert(@RequestBody Book book) {
         bookInsertUseCase.execute(book);
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> update(@RequestBody Book book) {
+        bookUpdateUseCase.execute(book);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }
