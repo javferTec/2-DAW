@@ -4,11 +4,16 @@ import com.fpmislata.basespring.common.annotation.persistence.Dao;
 import com.fpmislata.basespring.domain.model.Publisher;
 import com.fpmislata.basespring.persistence.dao.db.PublisherDaoDb;
 
+import javax.sql.DataSource;
 import java.util.List;
 import java.util.Optional;
 
 @Dao
 public class PublisherDaoJdbc extends BaseDaoJdbc<Publisher> implements PublisherDaoDb {
+
+    public PublisherDaoJdbc(DataSource dataSource) {
+        super(dataSource);
+    }
 
     @Override
     public Optional<Publisher> getById(long id) {

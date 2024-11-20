@@ -4,12 +4,17 @@ import com.fpmislata.basespring.common.annotation.persistence.Dao;
 import com.fpmislata.basespring.domain.model.Author;
 import com.fpmislata.basespring.persistence.dao.db.AuthorDaoDb;
 
+import javax.sql.DataSource;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 @Dao
 public class AuthorDaoJdbc extends BaseDaoJdbc<Author> implements AuthorDaoDb {
+
+    public AuthorDaoJdbc(DataSource dataSource) {
+        super(dataSource);
+    }
 
     @Override
     public List<Author> getByIsbnBook(String isbn) {

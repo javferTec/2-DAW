@@ -2,6 +2,7 @@ package com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.generic;
 
 import com.fpmislata.basespring.common.annotation.persistence.*;
 import com.fpmislata.basespring.common.exception.MappingException;
+import com.fpmislata.basespring.persistence.dao.db.jdbc.cache.FieldCache;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;

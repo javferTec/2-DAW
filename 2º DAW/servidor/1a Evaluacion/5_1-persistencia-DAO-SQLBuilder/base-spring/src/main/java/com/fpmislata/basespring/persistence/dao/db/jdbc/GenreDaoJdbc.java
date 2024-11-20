@@ -4,12 +4,17 @@ import com.fpmislata.basespring.common.annotation.persistence.Dao;
 import com.fpmislata.basespring.domain.model.Genre;
 import com.fpmislata.basespring.persistence.dao.db.GenreDaoDb;
 
+import javax.sql.DataSource;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 @Dao
 public class GenreDaoJdbc extends BaseDaoJdbc<Genre> implements GenreDaoDb {
+
+    public GenreDaoJdbc(DataSource dataSource) {
+        super(dataSource);
+    }
 
     @Override
     public List<Genre> getByIsbnBook(String isbn) {

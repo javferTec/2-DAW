@@ -1,4 +1,4 @@
-package com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.generic;
+package com.fpmislata.basespring.persistence.dao.db.jdbc.cache;
 
 import com.fpmislata.basespring.common.annotation.persistence.Column;
 

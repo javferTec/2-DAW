@@ -5,78 +5,48 @@ import com.fpmislata.basespring.domain.model.Author;
 import com.fpmislata.basespring.domain.model.Book;
 import com.fpmislata.basespring.domain.model.Genre;
 import com.fpmislata.basespring.persistence.dao.db.BookDaoDb;
-import com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.generic.GenericRowMapper;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
+import javax.sql.DataSource;
 import java.sql.PreparedStatement;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Dao
-public class BookDaoJdbc implements BookDaoDb {
-    private final JdbcTemplate jdbcTemplate;
-    private final GenericRowMapper<Book> bookMapper;
+public class BookDaoJdbc extends BaseDaoJdbc<Book> implements BookDaoDb {
+    private final JdbcTemplate jdbcTemplate = new JdbcTemplate();
 
-    public BookDaoJdbc(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-        this.bookMapper = new GenericRowMapper<>(Book.class, jdbcTemplate);
+    public BookDaoJdbc(DataSource dataSource) {
+        super(dataSource);
     }
 
     @Override
     public List<Book> getAll() {
-        String sql = """
-                   SELECT * FROM books
-                """;
-        return jdbcTemplate.query(sql, bookMapper);
+        return super.getAll();
     }
 
     @Override
     public List<Book> getAll(int page, int size) {
-        String sql = "SELECT * FROM books LIMIT ? OFFSET ?";
-        return jdbcTemplate.query(sql, bookMapper);
+        return super.getAll(page, size);
     }
 
     @Override
     public int count() {
-        String sql = """
-                   SELECT COUNT(*) FROM books
-                """;
-        return jdbcTemplate.queryForObject(sql, Integer.class);
+        return super.count();
     }
 
     @Override
     public Optional<Book> findByIsbn(String isbn) {
-        String sql = """
-                     SELECT * FROM books
-                     LEFT JOIN categories ON books.category_id = categories.id
-                     LEFT JOIN publishers ON books.publisher_id = publishers.id
-                     WHERE books.isbn = ?
-                """;
-        try {
-            Book book = jdbcTemplate.queryForObject(sql, bookMapper, isbn);
-            return Optional.of(book);
-        } catch (EmptyResultDataAccessException e) {
-            return Optional.empty();
-        }
+        Map<String, Object> criteria = Map.of("isbn", isbn);
+        return super.getByCriteria(criteria).stream().findFirst();
     }
 
     @Override
     public Optional<Book> getById(long id) {
-        String sql = """
-                     SELECT * FROM books
-                     LEFT JOIN categories ON books.category_id = categories.id
-                     LEFT JOIN publishers ON books.publisher_id = publishers.id
-                     WHERE books.id = ?
-                """;
-        try {
-            Book book = jdbcTemplate.queryForObject(sql, bookMapper, id);
-            return Optional.ofNullable(book);
-        } catch (EmptyResultDataAccessException e) {
-            return Optional.empty();
-        }
+        return super.getById(id);
     }
 
     @Override
@@ -120,15 +90,15 @@ public class BookDaoJdbc implements BookDaoDb {
     public long insert(Book book) {
         String sql = """
                     INSERT INTO books(
-                      isbn, 
-                      title_es, 
-                      title_en, 
-                      synopsis_es, 
-                      synopsis_en, 
-                      price, 
-                      discount, 
-                      cover, 
-                      publisher_id, 
+                      isbn,
+                      title_es,
+                      title_en,
+                      synopsis_es,
+                      synopsis_en,
+                      price,
+                      discount,
+                      cover,
+                      publisher_id,
                       category_id)
                     VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """;
@@ -167,7 +137,7 @@ public class BookDaoJdbc implements BookDaoDb {
                     INSERT INTO books_authors(book_id, author_id)
                     VALUES (?, ?)
                 """;
-        authors.stream().forEach(a -> jdbcTemplate.update(sql, id, a.getId()));
+        authors.forEach(a -> jdbcTemplate.update(sql, id, a.getId()));
     }
 
     @Override
@@ -185,6 +155,6 @@ public class BookDaoJdbc implements BookDaoDb {
                     INSERT INTO books_genres(book_id, genre_id)
                     VALUES(?, ?)
                 """;
-        genres.stream().forEach(g -> jdbcTemplate.update(sql, id, g.getId()));
+        genres.forEach(g -> jdbcTemplate.update(sql, id, g.getId()));
     }
 }
