@@ -17,7 +17,7 @@ public class CategoryRepositoryJdbc implements CategoryRepository {
 
     @Override
     public Optional<Category> findById(Long id) {
-        return categoryDao.findById(id);
+        return categoryDao.getById(id);
     }
 }
 

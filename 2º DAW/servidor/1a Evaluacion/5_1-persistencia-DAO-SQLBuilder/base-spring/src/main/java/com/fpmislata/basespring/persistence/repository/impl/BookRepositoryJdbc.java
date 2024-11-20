@@ -46,7 +46,7 @@ public class BookRepositoryJdbc implements BookRepository {
 
     @Override
     public Optional<Book> findById(long id) {
-        return bookDaoJdbc.findById(id);
+        return bookDaoJdbc.getById(id);
     }
 
     @Override

@@ -8,5 +8,5 @@ public interface AuthorDaoDb extends GenericDaoDb<Author> {
 
     List<Author> getByIsbnBook(String isbn);
     List<Author> getByIdBook(long idBook);
-    List<Author> findAllById(Long[] ids);
+    List<Author> getAllByIds(Long[] ids);
 }

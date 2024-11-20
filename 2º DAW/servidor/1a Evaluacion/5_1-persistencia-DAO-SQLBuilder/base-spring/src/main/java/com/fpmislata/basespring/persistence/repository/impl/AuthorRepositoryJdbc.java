@@ -26,6 +26,6 @@ public class AuthorRepositoryJdbc implements AuthorRepository {
 
     @Override
     public List<Author> findAllById(Long[] ids) {
-        return authorDao.findAllById(ids);
+        return authorDao.getAllByIds(ids);
     }
 }

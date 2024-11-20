@@ -3,6 +3,7 @@ package com.fpmislata.basespring.persistence.dao.db.jdbc;
 import com.fpmislata.basespring.common.annotation.persistence.Column;
 import com.fpmislata.basespring.common.annotation.persistence.PrimaryKey;
 import com.fpmislata.basespring.common.annotation.persistence.Table;
+import com.fpmislata.basespring.persistence.dao.db.GenericDaoDb;
 import com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.generic.GenericRowMapper;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -10,25 +11,54 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public abstract class BaseDaoJdbc<T> {
+public class BaseDaoJdbc<T> implements GenericDaoDb<T> {
 
-    private final JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate = new JdbcTemplate();
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
     private final GenericRowMapper<T> rowMapper;
     protected final Class<T> entityClass;
 
 
-    public BaseDaoJdbc(JdbcTemplate jdbcTemplate, Class<T> entityClass) {
-        this.jdbcTemplate = jdbcTemplate;
+    public BaseDaoJdbc() {
         this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
+        Type type = ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+        this.entityClass = (Class<T>) type;
         this.rowMapper = new GenericRowMapper<>(entityClass, jdbcTemplate);
-        this.entityClass = entityClass;
     }
+
+    // Metodo para manejar cualquier consulta y devolver un único resultado del tipo genérico T
+    public T customSqlQuery(String sql, Map<String, ?> params) {
+        try {
+            if (params != null && !params.isEmpty()) {
+                // Usar NamedParameterJdbcTemplate cuando hay parámetros
+                return namedParameterJdbcTemplate.queryForObject(sql, params, rowMapper);
+            } else {
+                // Usar JdbcTemplate cuando no hay parámetros
+                return jdbcTemplate.queryForObject(sql, rowMapper);
+            }
+        } catch (EmptyResultDataAccessException e) {
+            return null; // Retornar null si no se encuentran resultados
+        }
+    }
+
+    // Metodo para manejar cualquier consulta y devolver una lista de resultados del tipo genérico T
+    public List<T> customSqlQueryForList(String sql, Map<String, ?> params) {
+        if (params != null && !params.isEmpty()) {
+            // Usar NamedParameterJdbcTemplate cuando hay parámetros
+            return namedParameterJdbcTemplate.query(sql, params, rowMapper);
+        } else {
+            // Usar JdbcTemplate cuando no hay parámetros
+            return jdbcTemplate.query(sql, rowMapper);
+        }
+    }
+
 
     // Metodo para obtener todas las entidades
     public List<T> getAll() {
@@ -43,7 +73,7 @@ public abstract class BaseDaoJdbc<T> {
     }
 
     // Metodo para obtener entidades por lista de ids
-    public List<T> findAllById(Long[] ids) {
+    public List<T> getAllByIds(Long[] ids) {
         String sql = getSelectSql() + " WHERE id IN (:ids)";
         Map<String, List<Long>> params = Map.of("ids", Arrays.asList(ids));
         return namedParameterJdbcTemplate.query(sql, params, rowMapper);
@@ -56,7 +86,7 @@ public abstract class BaseDaoJdbc<T> {
     }
 
     // Metodo para obtener una entidad por su ID
-    public Optional<T> findById(long id) {
+    public Optional<T> getById(long id) {
         String sql = getSelectSql() + " WHERE id = ?";
         try {
             T entity = jdbcTemplate.queryForObject(sql, rowMapper, id);
@@ -67,7 +97,7 @@ public abstract class BaseDaoJdbc<T> {
     }
 
     // Buscar por ID
-    public Optional<T> findByPrimaryKey(long id) {
+    public Optional<T> getByPrimaryKey(long id) {
         String sql = "SELECT * FROM " + getTableName() + " WHERE " + getPrimaryKeyColumn() + " = ?";
         RowMapper<T> rowMapper = new GenericRowMapper<>(entityClass, jdbcTemplate);
 
@@ -108,10 +138,6 @@ public abstract class BaseDaoJdbc<T> {
     private String getTableName() {
         Table tableAnnotation = getEntityClass().getAnnotation(Table.class);
         return tableAnnotation != null ? tableAnnotation.name() : entityClass.getSimpleName().toLowerCase();
-        /*if (tableAnnotation != null) {
-            return tableAnnotation.name();
-        }
-        throw new IllegalArgumentException("La entidad no tiene la anotación @Table");*/
     }
 
     // Contar el número de registros
@@ -190,7 +216,9 @@ public abstract class BaseDaoJdbc<T> {
     }
 
     // Obtener la clase de la entidad
-    protected abstract Class<T> getEntityClass();
+    protected Class<T> getEntityClass() {
+        return entityClass;
+    }
 
 
     protected String getColumnName(Field field) {

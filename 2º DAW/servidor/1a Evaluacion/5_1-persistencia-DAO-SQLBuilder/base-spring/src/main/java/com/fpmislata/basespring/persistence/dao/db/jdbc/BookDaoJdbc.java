@@ -64,7 +64,7 @@ public class BookDaoJdbc implements BookDaoDb {
     }
 
     @Override
-    public Optional<Book> findById(long id) {
+    public Optional<Book> getById(long id) {
         String sql = """
                      SELECT * FROM books
                      LEFT JOIN categories ON books.category_id = categories.id

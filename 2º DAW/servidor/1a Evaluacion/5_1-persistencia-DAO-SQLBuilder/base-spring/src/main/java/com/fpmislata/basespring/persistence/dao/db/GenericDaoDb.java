@@ -7,10 +7,9 @@ public interface GenericDaoDb<T> {
 
     List<T> getAll();
     List<T> getAll(int page, int size);
-    Optional<T> findById(long id);
+    Optional<T> getById(long id);
     long insert(T t);
     void update(T t);
     void delete(long id);
     int count();
-
 }
