@@ -1,17 +1,17 @@
 package com.fpmislata.basespring.controller.user.userMapper.book;
 
+import com.fpmislata.basespring.common.annotation.common.Mapper;
 import com.fpmislata.basespring.controller.common.entity.model.author.AuthorCollection;
 import com.fpmislata.basespring.controller.common.entity.model.publisher.PublisherCollection;
 import com.fpmislata.basespring.controller.user.userModel.book.BookUserCollection;
 import com.fpmislata.basespring.controller.user.userModel.book.BookUserDetail;
 import com.fpmislata.basespring.domain.model.Book;
 import com.fpmislata.basespring.domain.model.Genre;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
+@Mapper
 public class BookUserMapperManual {
 
     public static BookUserCollection toBookCollection(Book book) {

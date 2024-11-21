@@ -1,4 +1,4 @@
-package com.fpmislata.basespring.common.annotation.persistence;
+package com.fpmislata.basespring.common.annotation.common;
 
 import org.springframework.stereotype.Component;
 
