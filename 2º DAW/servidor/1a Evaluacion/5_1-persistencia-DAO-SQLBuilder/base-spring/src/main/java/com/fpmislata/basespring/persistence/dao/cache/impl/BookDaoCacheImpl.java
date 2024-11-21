@@ -37,5 +37,6 @@ public class BookDaoCacheImpl implements BookDaoCache {
     public void clearCache() {
         cache.clear();
         expiration.clear();
+        System.out.println("Cache cleared");
     }
 }

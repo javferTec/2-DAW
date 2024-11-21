@@ -58,6 +58,7 @@ public class BookRepositoryJdbc implements BookRepository {
             long id = bookDaoJdbc.insert(book);
             book.setId(id);
         }
+        bookDaoCache.clearCache();
         /*bookDaoJdbc.deleteAuthors(book.getId());
         bookDaoJdbc.insertAuthors(book.getId(), book.getAuthors());
         bookDaoJdbc.deleteGenres(book.getId());
@@ -67,5 +68,6 @@ public class BookRepositoryJdbc implements BookRepository {
     @Override
     public void delete(long id) {
         bookDaoJdbc.delete(id);
+        bookDaoCache.clearCache();
     }
 }
