@@ -12,7 +12,7 @@ import java.util.Optional;
 public class CategoryDaoJdbc extends BaseDaoJdbc<Category> implements CategoryDaoDb {
 
     public CategoryDaoJdbc(DataSource dataSource) {
-        super(dataSource);
+        super(Category.class, dataSource);
     }
 
     @Override

@@ -13,7 +13,7 @@ import java.util.Optional;
 public class AuthorDaoJdbc extends BaseDaoJdbc<Author> implements AuthorDaoDb {
 
     public AuthorDaoJdbc(DataSource dataSource) {
-        super(dataSource);
+        super(Author.class, dataSource);
     }
 
     @Override

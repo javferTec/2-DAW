@@ -13,7 +13,7 @@ import java.util.Optional;
 public class GenreDaoJdbc extends BaseDaoJdbc<Genre> implements GenreDaoDb {
 
     public GenreDaoJdbc(DataSource dataSource) {
-        super(dataSource);
+        super(Genre.class, dataSource);
     }
 
     @Override

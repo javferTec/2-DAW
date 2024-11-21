@@ -12,7 +12,7 @@ import java.util.Optional;
 public class PublisherDaoJdbc extends BaseDaoJdbc<Publisher> implements PublisherDaoDb {
 
     public PublisherDaoJdbc(DataSource dataSource) {
-        super(dataSource);
+        super(Publisher.class, dataSource);
     }
 
     @Override

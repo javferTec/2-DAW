@@ -6,11 +6,8 @@ import com.fpmislata.basespring.domain.model.Book;
 import com.fpmislata.basespring.domain.model.Genre;
 import com.fpmislata.basespring.persistence.dao.db.BookDaoDb;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 
 import javax.sql.DataSource;
-import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -20,7 +17,7 @@ public class BookDaoJdbc extends BaseDaoJdbc<Book> implements BookDaoDb {
     private final JdbcTemplate jdbcTemplate;
 
     public BookDaoJdbc(DataSource dataSource) {
-        super(dataSource);
+        super(Book.class, dataSource);
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
@@ -52,34 +49,7 @@ public class BookDaoJdbc extends BaseDaoJdbc<Book> implements BookDaoDb {
 
     @Override
     public void update(Book book) {
-        String sql = """
-                    UPDATE books
-                    SET isbn = ?,
-                        title_es = ?,
-                        title_en = ?,
-                        synopsis_es = ?,
-                        synopsis_en = ?,
-                        price = ?,
-                        discount = ?,
-                        cover = ?,
-                        publisher_id = ?,
-                        category_id = ?
-                    WHERE id = ?
-                """;
-        jdbcTemplate.update(
-                sql,
-                book.getIsbn(),
-                book.getTitleEs(),
-                book.getTitleEn(),
-                book.getSynopsisEs(),
-                book.getSynopsisEn(),
-                book.getPrice(),
-                book.getDiscount(),
-                book.getCover(),
-                book.getPublisher().getId(),
-                book.getCategory().getId(),
-                book.getId()
-        );
+        super.update(book);
     }
 
     @Override
@@ -89,38 +59,7 @@ public class BookDaoJdbc extends BaseDaoJdbc<Book> implements BookDaoDb {
 
     @Override
     public long insert(Book book) {
-        String sql = """
-                    INSERT INTO books(
-                      isbn,
-                      title_es,
-                      title_en,
-                      synopsis_es,
-                      synopsis_en,
-                      price,
-                      discount,
-                      cover,
-                      publisher_id,
-                      category_id)
-                    VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                """;
-        KeyHolder keyHolder = new GeneratedKeyHolder();
-
-        jdbcTemplate.update(connection -> {
-            PreparedStatement ps = connection.prepareStatement(sql, new String[]{"id"});
-            ps.setString(1, book.getIsbn());
-            ps.setString(2, book.getTitleEs());
-            ps.setString(3, book.getTitleEn());
-            ps.setString(4, book.getSynopsisEs());
-            ps.setString(5, book.getSynopsisEn());
-            ps.setBigDecimal(6, book.getPrice());
-            ps.setFloat(7, book.getDiscount());
-            ps.setString(8, book.getCover());
-            ps.setLong(9, book.getPublisher().getId());
-            ps.setLong(10, book.getCategory().getId());
-            return ps;
-        }, keyHolder);
-
-        return keyHolder.getKey().longValue(); // Devuelve el id generado
+        return super.insert(book);
     }
 
     @Override
