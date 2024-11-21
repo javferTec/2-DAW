@@ -19,10 +19,10 @@ public class GenreDaoJdbc extends BaseDaoJdbc<Genre> implements GenreDaoDb {
     @Override
     public List<Genre> getByIsbnBook(String isbn) {
         String sql = super.getSelectSql() + """
-                JOIN books_genres ON genres.id = books_genres.genre_id
-                JOIN books ON books_genres.book_id = books.id
-                AND books.isbn = ?
-           """;
+                     JOIN books_genres ON genres.id = books_genres.genre_id
+                     JOIN books ON books_genres.book_id = books.id
+                     AND books.isbn = ?
+                """;
         Map<String, String> params = Map.of("isbn", isbn);
         return super.customSqlQueryForList(sql, params);
     }
@@ -30,9 +30,9 @@ public class GenreDaoJdbc extends BaseDaoJdbc<Genre> implements GenreDaoDb {
     @Override
     public List<Genre> getByIdBook(long idBook) {
         String sql = super.getSelectSql() + """
-                JOIN books_genres ON genres.id = books_genres.genre_id
-                AND books_genres.book_id = ?
-           """;
+                     JOIN books_genres ON genres.id = books_genres.genre_id
+                     AND books_genres.book_id = ?
+                """;
         Map<String, Long> params = Map.of("idBook", idBook);
         return super.customSqlQueryForList(sql, params);
     }

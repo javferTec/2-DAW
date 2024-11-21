@@ -10,9 +10,9 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Data
 public class BookUserCollection {
-        private String isbn;
-        private String title;
-        private BigDecimal price;
-        private float discount;
-        private String cover;
+    private String isbn;
+    private String title;
+    private BigDecimal price;
+    private float discount;
+    private String cover;
 }

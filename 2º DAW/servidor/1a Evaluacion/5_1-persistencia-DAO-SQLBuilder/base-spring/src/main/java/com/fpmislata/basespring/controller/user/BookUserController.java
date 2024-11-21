@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(BookUserController.URL)
-public class BookUserController extends BaseController{
+public class BookUserController extends BaseController {
 
     public static final String URL = "/api/books";
 

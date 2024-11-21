@@ -19,10 +19,10 @@ public class AuthorDaoJdbc extends BaseDaoJdbc<Author> implements AuthorDaoDb {
     @Override
     public List<Author> getByIsbnBook(String isbn) {
         String sql = super.getSelectSql() + """
-                JOIN books_authors ON authors.id = books_authors.author_id
-                JOIN books ON books_authors.book_id = books.id
-                AND books.isbn = ?
-           """;
+                     JOIN books_authors ON authors.id = books_authors.author_id
+                     JOIN books ON books_authors.book_id = books.id
+                     AND books.isbn = ?
+                """;
 
         Map<String, Object> params = Map.of("isbn", isbn);
         return super.customSqlQueryForList(sql, params);
@@ -31,9 +31,9 @@ public class AuthorDaoJdbc extends BaseDaoJdbc<Author> implements AuthorDaoDb {
     @Override
     public List<Author> getByIdBook(long idBook) {
         String sql = super.getSelectSql() + """
-                JOIN books_authors ON authors.id = books_authors.author_id
-                AND books_authors.book_id = ?
-           """;
+                     JOIN books_authors ON authors.id = books_authors.author_id
+                     AND books_authors.book_id = ?
+                """;
 
         Map<String, Object> params = Map.of("idBook", idBook);
         return super.customSqlQueryForList(sql, params);

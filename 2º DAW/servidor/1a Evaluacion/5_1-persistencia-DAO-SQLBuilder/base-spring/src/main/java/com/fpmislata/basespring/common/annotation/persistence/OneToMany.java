@@ -7,5 +7,6 @@ import java.lang.annotation.RetentionPolicy;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface OneToMany {
     Class<?> targetEntity(); // La clase de la entidad relacionada
+
     String mappedBy(); // columna que referencia la tabla principal
 }

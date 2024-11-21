@@ -13,13 +13,11 @@ import java.util.function.Function;
 @Controller
 public class BaseController {
 
+    protected ModelMapper modelMapper = new ModelMapper();
     @Value("${app.base.url}")
     private String baseUrl;
-
     @Value("${app.pageSize.default}")
     private String defaultPageSize;
-
-    protected ModelMapper modelMapper = new ModelMapper();
 
     public int getPageSize(Integer size) {
         return (size != null) ? size : Integer.parseInt(defaultPageSize);

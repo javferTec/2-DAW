@@ -11,14 +11,14 @@ import java.util.concurrent.ConcurrentHashMap;
 @Dao
 public class BookDaoCacheImpl implements BookDaoCache {
 
+    private static final long TTL = 600_000L; // 10 minutos en milisegundos
     private final Map<String, Book> cache = new ConcurrentHashMap<>();
     private final Map<String, Long> expiration = new ConcurrentHashMap<>();
-    private static final long TTL = 600_000L; // 10 minutos en milisegundos
 
     @Override
     public Optional<Book> findByIsbn(String isbn) {
         Long expirationTime = expiration.get(isbn);
-        if(expirationTime != null && expirationTime >= System.currentTimeMillis()) {
+        if (expirationTime != null && expirationTime >= System.currentTimeMillis()) {
             System.out.println("Retrieved from cache: " + isbn);
             return Optional.ofNullable(cache.get(isbn));
         }

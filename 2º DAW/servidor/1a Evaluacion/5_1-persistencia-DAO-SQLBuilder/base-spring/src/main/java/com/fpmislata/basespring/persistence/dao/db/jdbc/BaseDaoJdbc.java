@@ -17,10 +17,10 @@ import java.util.stream.Collectors;
 
 public class BaseDaoJdbc<T> implements GenericDaoDb<T> {
 
+    protected final Class<T> entityClass;
     private final JdbcTemplate jdbcTemplate;
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
     private final GenericRowMapper<T> rowMapper;
-    protected final Class<T> entityClass;
 
     public BaseDaoJdbc(Class<T> entityClass, DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
@@ -98,12 +98,6 @@ public class BaseDaoJdbc<T> implements GenericDaoDb<T> {
     }
 
     // ############################################################################################################
-
-    private enum OperationType {
-        INSERT,
-        UPDATE,
-        DELETE
-    }
 
     public long insert(T entity) {
         String tableName = getTableName();
@@ -328,10 +322,6 @@ public class BaseDaoJdbc<T> implements GenericDaoDb<T> {
         throw new IllegalArgumentException("No primary key found for " + entityClass.getSimpleName());
     }
 
-
-    // ############################################################################################################
-
-
     protected String getPrimaryKeyColumn() {
         for (Field field : entityClass.getDeclaredFields()) {
             if (field.isAnnotationPresent(PrimaryKey.class)) {
@@ -340,6 +330,9 @@ public class BaseDaoJdbc<T> implements GenericDaoDb<T> {
         }
         throw new IllegalArgumentException("No primary key found for " + entityClass.getSimpleName());
     }
+
+
+    // ############################################################################################################
 
     protected String getColumnName(Field field) {
         if (field == null) {
@@ -384,5 +377,11 @@ public class BaseDaoJdbc<T> implements GenericDaoDb<T> {
         sql.delete(sql.length() - 4, sql.length());
 
         return sql.toString();
+    }
+
+    private enum OperationType {
+        INSERT,
+        UPDATE,
+        DELETE
     }
 }
