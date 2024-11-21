@@ -1,0 +1,72 @@
+[
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "name": "handleGeneralException",
+                            "type": "function",
+                            "static": false,
+                            "location": "base-spring/src/main/java/com/fpmislata/basespring/common/http_errors/ApiExceptionHandler.java:26"
+                          }
+                        ],
+                        "name": "ApiExceptionHandler",
+                        "type": "class"
+                      }
+                    ],
+                    "name": "http_errors",
+                    "type": "package"
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "name": "preHandle",
+                            "type": "function",
+                            "static": false,
+                            "location": "base-spring/src/main/java/com/fpmislata/basespring/common/locale/CustomLocaleChangeInterceptor.java:20"
+                          }
+                        ],
+                        "name": "CustomLocaleChangeInterceptor",
+                        "type": "class"
+                      }
+                    ],
+                    "name": "locale",
+                    "type": "package"
+                  }
+                ],
+                "name": "common",
+                "type": "package"
+              }
+            ],
+            "name": "basespring",
+            "type": "package"
+          }
+        ],
+        "name": "fpmislata",
+        "type": "package"
+      }
+    ],
+    "name": "com",
+    "type": "package"
+  },
+  {
+    "type": "http",
+    "name": "HTTP server requests",
+    "children": [
+      {
+        "type": "route",
+        "name": "GET /favicon.ico"
+      }
+    ]
+  }
+]
