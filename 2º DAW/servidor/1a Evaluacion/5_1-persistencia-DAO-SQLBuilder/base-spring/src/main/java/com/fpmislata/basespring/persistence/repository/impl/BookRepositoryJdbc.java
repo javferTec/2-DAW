@@ -63,4 +63,9 @@ public class BookRepositoryJdbc implements BookRepository {
         bookDaoJdbc.deleteGenres(book.getId());
         bookDaoJdbc.insertGenres(book.getId(), book.getGenres());*/
     }
+
+    @Override
+    public void delete(long id) {
+        bookDaoJdbc.delete(id);
+    }
 }

@@ -7,6 +7,7 @@ import com.fpmislata.basespring.controller.common.pagination.PaginatedResponse;
 import com.fpmislata.basespring.domain.model.Author;
 import com.fpmislata.basespring.domain.model.Book;
 import com.fpmislata.basespring.domain.model.Genre;
+import com.fpmislata.basespring.domain.useCase.book.admin.BookDeleteUseCase;
 import com.fpmislata.basespring.domain.useCase.book.admin.BookInsertAuthorsUseCase;
 import com.fpmislata.basespring.domain.useCase.book.admin.BookInsertGenresUseCase;
 import com.fpmislata.basespring.domain.useCase.book.admin.BookInsertUseCase;
@@ -36,6 +37,7 @@ public class BookAdminController extends BaseController {
     private final BookInsertGenresUseCase bookInsertGenresUseCase;
     private final BookInsertUseCase bookInsertUseCase;
     private final BookUpdateUseCaseImpl bookUpdateUseCase;
+    private final BookDeleteUseCase bookDeleteUseCase;
 
     @GetMapping
     public ResponseEntity<PaginatedResponse<BookAdminCollection>> getAll(
@@ -82,6 +84,12 @@ public class BookAdminController extends BaseController {
     @PutMapping("/{id}")
     public ResponseEntity<Void> update(@RequestBody Book book) {
         bookUpdateUseCase.execute(book);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+        bookDeleteUseCase.execute(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

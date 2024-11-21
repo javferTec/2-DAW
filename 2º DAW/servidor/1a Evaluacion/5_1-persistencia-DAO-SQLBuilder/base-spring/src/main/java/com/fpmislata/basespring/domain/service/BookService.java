@@ -23,4 +23,6 @@ public interface BookService {
     void addAuthor(Book book, Author author);
 
     void addGenre(Book book, Genre genre);
+
+    void delete(long id);
 }

@@ -54,7 +54,7 @@ public class BookDaoJdbc extends BaseDaoJdbc<Book> implements BookDaoDb {
 
     @Override
     public void delete(long id) {
-        //TODO: Implementar borrar libro
+        super.delete(id);
     }
 
     @Override

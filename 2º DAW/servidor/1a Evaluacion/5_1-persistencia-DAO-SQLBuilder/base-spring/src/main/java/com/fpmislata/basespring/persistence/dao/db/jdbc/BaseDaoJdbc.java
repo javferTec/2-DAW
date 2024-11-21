@@ -3,7 +3,6 @@ package com.fpmislata.basespring.persistence.dao.db.jdbc;
 import com.fpmislata.basespring.common.annotation.persistence.*;
 import com.fpmislata.basespring.persistence.dao.db.GenericDaoDb;
 import com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.generic.GenericRowMapper;
-import org.springframework.boot.actuate.endpoint.OperationType;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -357,9 +356,8 @@ public class BaseDaoJdbc<T> implements GenericDaoDb<T> {
         return field.getName();
     }
 
-
     private String getTableName() {
-        // Asegúrate de que este método devuelve el nombre correcto de la tabla
+        // Asegúrate de que este metodo devuelve el nombre correcto de la tabla
         // para la clase de entidad que se está insertando.
         if (entityClass.isAnnotationPresent(Table.class)) {
             Table tableAnnotation = entityClass.getAnnotation(Table.class);
