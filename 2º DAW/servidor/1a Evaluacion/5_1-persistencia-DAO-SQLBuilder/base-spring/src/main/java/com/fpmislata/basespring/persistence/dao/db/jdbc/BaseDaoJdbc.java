@@ -175,23 +175,27 @@ public class BaseDaoJdbc<T> implements GenericDaoDb<T> {
             String relatedTableName = getTableName(relatedEntity.getClass());
             String joinColumn = annotation.joinColumn(); // Columna de la relación en la tabla principal
 
-            if (operationType == OperationType.INSERT) {
-                if (relatedValues.containsKey(getPrimaryKeyColumn(relatedEntity.getClass()))
-                        && relatedValues.get(getPrimaryKeyColumn(relatedEntity.getClass())) != null) {
-                    // La entidad ya tiene un ID; actualizar en lugar de insertar
-                    String primaryKey = getPrimaryKeyColumn(relatedEntity.getClass());
-                    String sql = buildUpdateSql(relatedTableName, relatedValues, primaryKey);
-                    namedParameterJdbcTemplate.update(sql, relatedValues);
-                } else {
-                    // Insertar la nueva entidad
-                    String sql = buildInsertSql(relatedTableName, relatedValues);
-                    KeyHolder keyHolder = new GeneratedKeyHolder();
-                    namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource(relatedValues), keyHolder);
-                    long relatedId = Objects.requireNonNull(keyHolder.getKey()).longValue();
-                    // Actualizar la columna de relación en la tabla principal
-                    String updateSql = "UPDATE " + getTableName() + " SET " + joinColumn + " = ? WHERE " + getPrimaryKeyColumn() + " = ?";
-                    jdbcTemplate.update(updateSql, relatedId, parentId);
-                }
+            // Si la relación ya tiene un ID (entidad referenciada ya existente)
+            if (relatedValues.containsKey(getPrimaryKeyColumn(relatedEntity.getClass())) &&
+                    relatedValues.get(getPrimaryKeyColumn(relatedEntity.getClass())) != null) {
+
+                // La entidad ya tiene un ID, no insertamos en la tabla referenciada, solo asignamos la relación
+                long relatedId = (Long) relatedValues.get(getPrimaryKeyColumn(relatedEntity.getClass()));
+
+                // Actualizar la tabla principal con el ID de la entidad referenciada
+                String updateSql = "UPDATE " + getTableName() + " SET " + joinColumn + " = ? WHERE " + getPrimaryKeyColumn() + " = ?";
+                jdbcTemplate.update(updateSql, relatedId, parentId);
+
+            } else if (operationType == OperationType.INSERT) {
+                // Si no tiene un ID, es una entidad nueva que debe ser insertada primero
+                String sql = buildInsertSql(relatedTableName, relatedValues);
+                KeyHolder keyHolder = new GeneratedKeyHolder();
+                namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource(relatedValues), keyHolder);
+                long relatedId = Objects.requireNonNull(keyHolder.getKey()).longValue();
+
+                // Luego asociamos la entidad referenciada en la tabla principal
+                String updateSql = "UPDATE " + getTableName() + " SET " + joinColumn + " = ? WHERE " + getPrimaryKeyColumn() + " = ?";
+                jdbcTemplate.update(updateSql, relatedId, parentId);
             }
         }
     }
