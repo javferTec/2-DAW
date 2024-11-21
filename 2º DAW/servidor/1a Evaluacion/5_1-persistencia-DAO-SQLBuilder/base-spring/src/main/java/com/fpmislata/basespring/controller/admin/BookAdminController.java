@@ -1,6 +1,6 @@
 package com.fpmislata.basespring.controller.admin;
 
-import com.fpmislata.basespring.controller.admin.adminMapper.book.BookAdminMapper;
+import com.fpmislata.basespring.controller.admin.adminMapper.book.BookAdminMapperManual;
 import com.fpmislata.basespring.controller.admin.adminModel.book.BookAdminCollection;
 import com.fpmislata.basespring.controller.common.BaseController;
 import com.fpmislata.basespring.controller.common.pagination.PaginatedResponse;
@@ -38,6 +38,7 @@ public class BookAdminController extends BaseController {
     private final BookInsertUseCase bookInsertUseCase;
     private final BookUpdateUseCaseImpl bookUpdateUseCase;
     private final BookDeleteUseCase bookDeleteUseCase;
+    private final BookAdminMapperManual bookAdminMapperManual;
 
     @GetMapping
     public ResponseEntity<PaginatedResponse<BookAdminCollection>> getAll(
@@ -48,7 +49,7 @@ public class BookAdminController extends BaseController {
                 page,
                 size,
                 offset -> bookGetAllUseCase.execute(offset, getPageSize(size)),
-                BookAdminMapper.INSTANCE::toBookCollection,
+                bookAdminMapperManual::toBookAdminCollection,
                 bookCountUseCase.execute(),
                 URL
         );

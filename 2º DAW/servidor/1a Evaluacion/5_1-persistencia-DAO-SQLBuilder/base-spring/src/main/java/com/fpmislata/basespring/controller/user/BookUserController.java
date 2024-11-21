@@ -2,7 +2,7 @@ package com.fpmislata.basespring.controller.user;
 
 import com.fpmislata.basespring.controller.common.BaseController;
 import com.fpmislata.basespring.controller.common.pagination.PaginatedResponse;
-import com.fpmislata.basespring.controller.user.userMapper.book.BookUserMapper;
+import com.fpmislata.basespring.controller.user.userMapper.book.BookUserMapperManual;
 import com.fpmislata.basespring.controller.user.userModel.book.BookUserCollection;
 import com.fpmislata.basespring.controller.user.userModel.book.BookUserDetail;
 import com.fpmislata.basespring.domain.useCase.book.common.BookCountUseCase;
@@ -32,7 +32,7 @@ public class BookUserController extends BaseController{
                 page,
                 size,
                 offset -> bookGetAllUseCase.execute(offset, getPageSize(size)),
-                BookUserMapper.INSTANCE::toBookCollection,
+                BookUserMapperManual::toBookCollection,
                 bookCountUseCase.execute(),
                 URL
         );
@@ -43,7 +43,7 @@ public class BookUserController extends BaseController{
         return super.findByIsbn(
                 isbn,
                 bookFindByIsbnUseCase::execute,
-                BookUserMapper.INSTANCE::toBookDetail
+                BookUserMapperManual::toBookDetail
         );
     }
 
