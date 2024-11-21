@@ -2,7 +2,7 @@ package com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.generic;
 
 import com.fpmislata.basespring.common.annotation.persistence.*;
 import com.fpmislata.basespring.common.exception.MappingException;
-import com.fpmislata.basespring.persistence.dao.db.jdbc.cache.FieldCache;
+import com.fpmislata.basespring.persistence.dao.db.jdbc.cache.ReflectionColumnFieldCache;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -33,7 +33,7 @@ public class GenericRowMapper<T> implements RowMapper<T> {
             // Se crea una nueva instancia del objeto T
             T instance = type.getDeclaredConstructor().newInstance();
             // Se obtienen los campos de la clase utilizando un cache
-            Map<String, Field> fields = FieldCache.getCachedFields(type);
+            Map<String, Field> fields = ReflectionColumnFieldCache.getCachedFields(type);
 
             // Mapea los campos simples
             for (Map.Entry<String, Field> entry : fields.entrySet()) {

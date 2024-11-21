@@ -7,14 +7,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class FieldCache {
+public class ReflectionColumnFieldCache {
     // Declaracion de una constante CACHE que almacena un mapa con las clases y sus campos. Es un ConcurrentHashMap para permitir acceso seguro en entornos multihilo
     private static final Map<Class<?>, Map<String, Field>> CACHE = new ConcurrentHashMap<>();
 
     // Metodo publico que recibe una clase y devuelve un mapa con los campos de esa clase que estan anotados con @Column
     public static Map<String, Field> getCachedFields(Class<?> clazz) {
         // Si la clase ya tiene los campos en el cache, los devuelve; si no, los extrae usando el metodo extractFields
-        return CACHE.computeIfAbsent(clazz, FieldCache::extractFields);
+        return CACHE.computeIfAbsent(clazz, ReflectionColumnFieldCache::extractFields);
     }
 
     // Metodo privado que recibe una clase y extrae los campos que estan anotados con la anotacion @Column
