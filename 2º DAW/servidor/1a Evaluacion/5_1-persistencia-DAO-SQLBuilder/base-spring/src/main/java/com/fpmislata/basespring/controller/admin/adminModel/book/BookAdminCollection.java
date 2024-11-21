@@ -1,8 +1,14 @@
 package com.fpmislata.basespring.controller.admin.adminModel.book;
 
-public record BookAdminCollection(
-        String isbn,
-        String title
-) {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+public class BookAdminCollection {
+    private String isbn;
+    private String title;
 }
 

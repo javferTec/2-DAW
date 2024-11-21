@@ -1,6 +1,7 @@
 package com.fpmislata.basespring.controller.common;
 
 import com.fpmislata.basespring.controller.common.pagination.PaginatedResponse;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,8 @@ public class BaseController {
 
     @Value("${app.pageSize.default}")
     private String defaultPageSize;
+
+    protected ModelMapper modelMapper = new ModelMapper();
 
     public int getPageSize(Integer size) {
         return (size != null) ? size : Integer.parseInt(defaultPageSize);

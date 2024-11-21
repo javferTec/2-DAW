@@ -49,7 +49,7 @@ public class BookAdminController extends BaseController {
                 page,
                 size,
                 offset -> bookGetAllUseCase.execute(offset, getPageSize(size)),
-                bookAdminMapperManual::toBookAdminCollection,
+                book -> modelMapper.map(book, BookAdminCollection.class),
                 bookCountUseCase.execute(),
                 URL
         );

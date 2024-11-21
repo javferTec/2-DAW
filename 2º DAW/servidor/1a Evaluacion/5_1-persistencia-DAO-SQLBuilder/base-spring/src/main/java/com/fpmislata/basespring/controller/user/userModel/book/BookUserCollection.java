@@ -1,12 +1,18 @@
 package com.fpmislata.basespring.controller.user.userModel.book;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.math.BigDecimal;
 
-public record BookUserCollection(
-        String isbn,
-        String title,
-        BigDecimal price,
-        float discount,
-        String cover
-) {
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+public class BookUserCollection {
+        private String isbn;
+        private String title;
+        private BigDecimal price;
+        private float discount;
+        private String cover;
 }
