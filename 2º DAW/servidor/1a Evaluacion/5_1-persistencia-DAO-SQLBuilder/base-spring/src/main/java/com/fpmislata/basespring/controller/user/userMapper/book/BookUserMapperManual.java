@@ -27,13 +27,13 @@ public class BookUserMapperManual {
     public static BookUserDetail toBookDetail(Book book) {
         // Mapeo de géneros
         List<String> genres = book.getGenres().stream()
-                .map(Genre::getName)  // Suponiendo que Genre tiene un método getName
+                .map(Genre::getName)
                 .collect(Collectors.toList());
 
         // Mapeo de autores
         List<AuthorCollection> authorsCollection = book.getAuthors().stream()
                 .map(author -> new AuthorCollection(author.getId(),
-                                                           author.getName())) // Suponiendo que Author tiene un método getName
+                                                           author.getName()))
                 .collect(Collectors.toList());
 
         // Mapeo de Publisher
