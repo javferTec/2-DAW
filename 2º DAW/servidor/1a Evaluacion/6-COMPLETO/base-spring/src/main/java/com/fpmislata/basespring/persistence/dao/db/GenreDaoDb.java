@@ -5,10 +5,7 @@ import com.fpmislata.basespring.domain.model.Genre;
 import java.util.List;
 
 public interface GenreDaoDb extends GenericDaoDb<Genre> {
-
     List<Genre> getByIdBook(long idBook);
 
-    List<Genre> findAllById(Long[] ids);
-
-    List<Genre> getByIsbnBook(String isbn);
+    List<Genre> getAllById(Long[] ids);
 }

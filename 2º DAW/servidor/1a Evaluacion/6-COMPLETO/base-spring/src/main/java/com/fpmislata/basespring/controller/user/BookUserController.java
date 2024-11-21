@@ -6,8 +6,8 @@ import com.fpmislata.basespring.controller.user.userMapper.book.BookUserMapper;
 import com.fpmislata.basespring.controller.user.userModel.book.BookUserCollection;
 import com.fpmislata.basespring.controller.user.userModel.book.BookUserDetail;
 import com.fpmislata.basespring.domain.useCase.book.common.BookCountUseCase;
-import com.fpmislata.basespring.domain.useCase.book.common.BookFindByIsbnUseCase;
 import com.fpmislata.basespring.domain.useCase.book.common.BookGetAllUseCase;
+import com.fpmislata.basespring.domain.useCase.book.common.BookGetByIsbnUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +21,7 @@ public class BookUserController extends BaseController {
 
     private final BookGetAllUseCase bookGetAllUseCase;
     private final BookCountUseCase bookCountUseCase;
-    private final BookFindByIsbnUseCase bookFindByIsbnUseCase;
+    private final BookGetByIsbnUseCase bookGetByIsbnUseCase;
 
     @GetMapping
     public ResponseEntity<PaginatedResponse<BookUserCollection>> getAll(
@@ -39,10 +39,10 @@ public class BookUserController extends BaseController {
     }
 
     @GetMapping("/{isbn}")
-    public ResponseEntity<BookUserDetail> findByIsbn(@PathVariable String isbn) {
-        return super.findByIsbn(
+    public ResponseEntity<BookUserDetail> getByIsbn(@PathVariable String isbn) {
+        return super.getByIsbn(
                 isbn,
-                bookFindByIsbnUseCase::execute,
+                bookGetByIsbnUseCase::execute,
                 BookUserMapper::toBookDetail
         );
     }

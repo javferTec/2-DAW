@@ -21,8 +21,8 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public List<Author> findAllById(List<Author> authors) {
-        List<Author> foundAuthors = authorRepository.findAllById(
+    public List<Author> getAllById(List<Author> authors) {
+        List<Author> foundAuthors = authorRepository.getAllById(
                 authors
                         .stream()
                         .map(Author::getId)

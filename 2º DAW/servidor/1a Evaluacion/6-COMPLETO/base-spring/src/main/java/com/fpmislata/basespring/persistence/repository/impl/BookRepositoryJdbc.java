@@ -33,11 +33,11 @@ public class BookRepositoryJdbc implements BookRepository {
     }
 
     @Override
-    public Optional<Book> findByIsbn(String isbn) {
-        return bookDaoCache.findByIsbn(isbn).or(
+    public Optional<Book> getByIsbn(String isbn) {
+        return bookDaoCache.getByIsbn(isbn).or(
                 () -> {
                     System.out.println("Retrieved from db: " + isbn);
-                    Optional<Book> book = bookDaoJdbc.findByIsbn(isbn);
+                    Optional<Book> book = bookDaoJdbc.getByIsbn(isbn);
                     book.ifPresent(bookDaoCache::save);
                     return book;
                 }
@@ -45,13 +45,13 @@ public class BookRepositoryJdbc implements BookRepository {
     }
 
     @Override
-    public Optional<Book> findById(long id) {
+    public Optional<Book> getById(long id) {
         return bookDaoJdbc.getById(id);
     }
 
     @Override
     public void save(Book book) {
-        //Si el id existe, actualizar, si no, instalar
+        //Si el id existe, actualizar, si no, insertar
         if (book.getId() != null) {
             bookDaoJdbc.update(book);
         } else {
@@ -59,10 +59,6 @@ public class BookRepositoryJdbc implements BookRepository {
             book.setId(id);
         }
         bookDaoCache.clearCache();
-        /*bookDaoJdbc.deleteAuthors(book.getId());
-        bookDaoJdbc.insertAuthors(book.getId(), book.getAuthors());
-        bookDaoJdbc.deleteGenres(book.getId());
-        bookDaoJdbc.insertGenres(book.getId(), book.getGenres());*/
     }
 
     @Override

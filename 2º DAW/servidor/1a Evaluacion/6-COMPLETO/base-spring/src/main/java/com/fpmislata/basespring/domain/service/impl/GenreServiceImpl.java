@@ -21,8 +21,8 @@ public class GenreServiceImpl implements GenreService {
     }
 
     @Override
-    public List<Genre> findAllById(List<Genre> genres) {
-        List<Genre> foundGenres = genreRepository.findAllById(
+    public List<Genre> getAllById(List<Genre> genres) {
+        List<Genre> foundGenres = genreRepository.getAllById(
                 genres
                         .stream()
                         .map(Genre::getId)

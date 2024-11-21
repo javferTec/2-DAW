@@ -16,7 +16,7 @@ public class BookDeleteUseCaseImpl implements BookDeleteUseCase {
 
     @Override
     public void execute(long id) {
-        bookService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Book " + id + " not found"));
+        bookService.getById(id).orElseThrow(() -> new ResourceNotFoundException("Book " + id + " not found"));
         bookService.delete(id);
     }
 }

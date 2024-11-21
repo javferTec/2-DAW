@@ -15,17 +15,12 @@ public class AuthorRepositoryJdbc implements AuthorRepository {
     private final AuthorDaoDb authorDao;
 
     @Override
-    public List<Author> getByIsbnBook(String isbn) {
-        return authorDao.getByIsbnBook(isbn);
-    }
-
-    @Override
     public List<Author> getByIdBook(long idBook) {
         return authorDao.getByIdBook(idBook);
     }
 
     @Override
-    public List<Author> findAllById(Long[] ids) {
+    public List<Author> getAllById(Long[] ids) {
         return authorDao.getAllByIds(ids);
     }
 }

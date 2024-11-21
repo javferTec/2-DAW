@@ -22,10 +22,10 @@ public class BookInsertGenresUseCaseImpl implements BookInsertGenresUseCase {
 
     @Override
     public void execute(Integer id, List<Genre> genres) {
-        Book book = bookService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Book " + id + " not found"));
+        Book book = bookService.getById(id).orElseThrow(() -> new ResourceNotFoundException("Book " + id + " not found"));
 
         genreService
-                .findAllById(genres)
+                .getAllById(genres)
                 .forEach(genre -> bookService.addGenre(book, genre));
 
         bookService.save(book);

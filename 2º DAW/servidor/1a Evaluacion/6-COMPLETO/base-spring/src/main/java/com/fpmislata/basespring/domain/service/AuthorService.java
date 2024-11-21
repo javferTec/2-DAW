@@ -7,5 +7,5 @@ import java.util.List;
 public interface AuthorService {
     List<Author> getByIdBook(long idBook);
 
-    List<Author> findAllById(List<Author> authors);
+    List<Author> getAllById(List<Author> authors);
 }

@@ -5,9 +5,7 @@ import com.fpmislata.basespring.domain.model.Author;
 import java.util.List;
 
 public interface AuthorRepository {
-    List<Author> getByIsbnBook(String isbn);
-
     List<Author> getByIdBook(long idBook);
 
-    List<Author> findAllById(Long[] ids);
+    List<Author> getAllById(Long[] ids);
 }

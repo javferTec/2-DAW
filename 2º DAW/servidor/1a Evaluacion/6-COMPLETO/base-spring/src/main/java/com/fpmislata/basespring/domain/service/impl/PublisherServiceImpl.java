@@ -15,7 +15,7 @@ public class PublisherServiceImpl implements PublisherService {
     private final PublisherRepository publisherRepository;
 
     @Override
-    public Optional<Publisher> findById(Long id) {
-        return publisherRepository.findById(id);
+    public Optional<Publisher> getById(Long id) {
+        return publisherRepository.getById(id);
     }
 }

@@ -14,9 +14,9 @@ public interface BookService {
 
     int count();
 
-    Optional<Book> findByIsbn(String isbn);
+    Optional<Book> getByIsbn(String isbn);
 
-    Optional<Book> findById(long id);
+    Optional<Book> getById(long id);
 
     void save(Book book);
 

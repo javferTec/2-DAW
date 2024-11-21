@@ -19,7 +19,7 @@ public class BookUserMapper {
         // Mapear el libro a BookUserDetail
         BookUserDetail bookUserDetail = modelMapper.map(book, BookUserDetail.class);
 
-        // Mapear las relaciones manualmente
+        // Mapea la editorial
         if (book.getPublisher() != null) {
             bookUserDetail.setPublisherCollection(new PublisherCollection(
                     book.getPublisher().getId(),

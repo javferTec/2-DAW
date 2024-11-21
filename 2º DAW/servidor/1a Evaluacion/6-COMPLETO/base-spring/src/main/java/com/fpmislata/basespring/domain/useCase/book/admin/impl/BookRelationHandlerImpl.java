@@ -22,15 +22,15 @@ public class BookRelationHandlerImpl implements BookRelationHandler {
     @Override
     public void resolveRelations(Book book) {
         book.setPublisher(publisherService
-                .findById(book.getPublisher().getId())
+                .getById(book.getPublisher().getId())
                 .orElseThrow(() -> new ResourceNotFoundException("Publisher " + book.getPublisher().getName() + " not found")));
 
         book.setCategory(categoryService
-                .findById(book.getCategory().getId())
+                .getById(book.getCategory().getId())
                 .orElseThrow(() -> new ResourceNotFoundException("Category " + book.getCategory().getId() + " not found")));
 
-        book.setAuthors(authorService.findAllById(book.getAuthors()));
+        book.setAuthors(authorService.getAllById(book.getAuthors()));
 
-        book.setGenres(genreService.findAllById(book.getGenres()));
+        book.setGenres(genreService.getAllById(book.getGenres()));
     }
 }

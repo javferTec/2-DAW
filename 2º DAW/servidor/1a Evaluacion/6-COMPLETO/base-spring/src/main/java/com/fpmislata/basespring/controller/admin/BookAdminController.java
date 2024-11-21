@@ -1,6 +1,5 @@
 package com.fpmislata.basespring.controller.admin;
 
-import com.fpmislata.basespring.controller.admin.adminMapper.book.BookAdminMapperManual;
 import com.fpmislata.basespring.controller.admin.adminModel.book.BookAdminCollection;
 import com.fpmislata.basespring.controller.common.BaseController;
 import com.fpmislata.basespring.controller.common.pagination.PaginatedResponse;
@@ -13,8 +12,8 @@ import com.fpmislata.basespring.domain.useCase.book.admin.BookInsertGenresUseCas
 import com.fpmislata.basespring.domain.useCase.book.admin.BookInsertUseCase;
 import com.fpmislata.basespring.domain.useCase.book.admin.impl.BookUpdateUseCaseImpl;
 import com.fpmislata.basespring.domain.useCase.book.common.BookCountUseCase;
-import com.fpmislata.basespring.domain.useCase.book.common.BookFindByIsbnUseCase;
 import com.fpmislata.basespring.domain.useCase.book.common.BookGetAllUseCase;
+import com.fpmislata.basespring.domain.useCase.book.common.BookGetByIsbnUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,13 +31,12 @@ public class BookAdminController extends BaseController {
 
     private final BookGetAllUseCase bookGetAllUseCase;
     private final BookCountUseCase bookCountUseCase;
-    private final BookFindByIsbnUseCase bookFindByIsbnUseCase;
+    private final BookGetByIsbnUseCase bookGetByIsbnUseCase;
     private final BookInsertAuthorsUseCase bookInsertAuthorsUseCase;
     private final BookInsertGenresUseCase bookInsertGenresUseCase;
     private final BookInsertUseCase bookInsertUseCase;
     private final BookUpdateUseCaseImpl bookUpdateUseCase;
     private final BookDeleteUseCase bookDeleteUseCase;
-    private final BookAdminMapperManual bookAdminMapperManual;
 
     @GetMapping
     public ResponseEntity<PaginatedResponse<BookAdminCollection>> getAll(
@@ -56,10 +54,10 @@ public class BookAdminController extends BaseController {
     }
 
     @GetMapping("/{isbn}")
-    public ResponseEntity<Book> findByIsbn(@PathVariable String isbn) {
-        return super.findByIsbn(
+    public ResponseEntity<Book> getByIsbn(@PathVariable String isbn) {
+        return super.getByIsbn(
                 isbn,
-                bookFindByIsbnUseCase::execute,
+                bookGetByIsbnUseCase::execute,
                 Function.identity() // No se requiere transformación
         );
     }

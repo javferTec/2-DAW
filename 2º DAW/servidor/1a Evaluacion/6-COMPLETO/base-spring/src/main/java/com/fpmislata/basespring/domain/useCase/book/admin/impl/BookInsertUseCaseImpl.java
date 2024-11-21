@@ -18,7 +18,7 @@ public class BookInsertUseCaseImpl implements BookInsertUseCase {
 
     @Override
     public void execute(Book book) {
-        if (bookService.findByIsbn(book.getIsbn()).isPresent()) {
+        if (bookService.getByIsbn(book.getIsbn()).isPresent()) {
             throw new ResourceAlreadyExistsException("Book with ISBN " + book.getIsbn() + " already exists");
         }
 

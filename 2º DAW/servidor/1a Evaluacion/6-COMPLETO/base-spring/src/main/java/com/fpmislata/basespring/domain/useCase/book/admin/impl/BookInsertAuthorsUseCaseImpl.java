@@ -22,10 +22,10 @@ public class BookInsertAuthorsUseCaseImpl implements BookInsertAuthorsUseCase {
 
     @Override
     public void execute(Integer id, List<Author> authors) {
-        Book book = bookService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Book " + id + " not found"));
+        Book book = bookService.getById(id).orElseThrow(() -> new ResourceNotFoundException("Book " + id + " not found"));
 
         authorService
-                .findAllById(authors)
+                .getAllById(authors)
                 .forEach(author -> bookService.addAuthor(book, author));
 
         bookService.save(book);

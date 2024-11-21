@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 @AllArgsConstructor
-public class PaginatedResponse<T> { // Clase encargada de devolver una respuesta paginada con los datos solicitados por el cliente
+public class PaginatedResponse<T> {
     private List<T> data;
     private int total;
     private int currentPage;

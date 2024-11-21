@@ -30,7 +30,7 @@ public class BaseController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    // Metodo genérico para "getAll"
+    // Metodo generico para getAll
     public <Entity, Collection> ResponseEntity<PaginatedResponse<Collection>> getAll(
             int page, Integer size,
             Function<Integer, List<Entity>> fetchEntities,
@@ -47,8 +47,8 @@ public class BaseController {
         return createPaginatedResponse(items, totalCount, page, pageSize, baseUrl);
     }
 
-    // Metodo genérico para "findByIsbn"
-    public <Entity, Detail> ResponseEntity<Detail> findByIsbn(
+    // Metodo generico para findByIsbn
+    public <Entity, Detail> ResponseEntity<Detail> getByIsbn(
             String isbn,
             Function<String, Entity> fetchEntityByIsbn,
             Function<Entity, Detail> mapToDetail) {

@@ -5,5 +5,5 @@ import com.fpmislata.basespring.domain.model.Publisher;
 import java.util.Optional;
 
 public interface PublisherRepository {
-    Optional<Publisher> findById(Long id);
+    Optional<Publisher> getById(Long id);
 }

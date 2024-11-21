@@ -16,7 +16,7 @@ public class BookDaoCacheImpl implements BookDaoCache {
     private final Map<String, Long> expiration = new ConcurrentHashMap<>();
 
     @Override
-    public Optional<Book> findByIsbn(String isbn) {
+    public Optional<Book> getByIsbn(String isbn) {
         Long expirationTime = expiration.get(isbn);
         if (expirationTime != null && expirationTime >= System.currentTimeMillis()) {
             System.out.println("Retrieved from cache: " + isbn);

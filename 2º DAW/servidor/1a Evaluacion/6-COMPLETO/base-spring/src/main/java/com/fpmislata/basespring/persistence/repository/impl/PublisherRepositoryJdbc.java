@@ -15,7 +15,7 @@ public class PublisherRepositoryJdbc implements PublisherRepository {
     private final PublisherDaoDb publisherDao;
 
     @Override
-    public Optional<Publisher> findById(Long id) {
+    public Optional<Publisher> getById(Long id) {
         return publisherDao.getById(id);
     }
 }

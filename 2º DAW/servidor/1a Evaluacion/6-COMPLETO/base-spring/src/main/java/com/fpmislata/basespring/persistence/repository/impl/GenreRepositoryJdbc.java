@@ -15,17 +15,12 @@ public class GenreRepositoryJdbc implements GenreRepository {
     private final GenreDaoDb genreDao;
 
     @Override
-    public List<Genre> getByIsbnBook(String isbn) {
-        return genreDao.getByIsbnBook(isbn);
-    }
-
-    @Override
     public List<Genre> getByIdBook(long idBook) {
         return genreDao.getByIdBook(idBook);
     }
 
     @Override
-    public List<Genre> findAllById(Long[] ids) {
-        return genreDao.findAllById(ids);
+    public List<Genre> getAllById(Long[] ids) {
+        return genreDao.getAllById(ids);
     }
 }
