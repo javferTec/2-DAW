@@ -2,7 +2,7 @@ package com.fpmislata.basespring.persistence.dao.db.jdbc;
 
 import com.fpmislata.basespring.common.annotation.persistence.*;
 import com.fpmislata.basespring.persistence.dao.db.GenericDaoDb;
-import com.fpmislata.basespring.persistence.dao.db.jdbc.cache.ReflectionColumnFieldCache;
+import com.fpmislata.basespring.persistence.dao.db.jdbc.utils.cache.ReflectionColumnFieldCache;
 import com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.generic.GenericRowMapper;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
