@@ -18,8 +18,8 @@ import java.util.Map;
 import java.util.Optional;
 
 public class EntityMetadataExtractor<T> {
-    private final Class<T> entityClass;
     private static final Logger logger = LoggerFactory.getLogger(EntityMetadataExtractor.class);
+    private final Class<T> entityClass;
 
     public EntityMetadataExtractor(Class<T> entityClass) {
         this.entityClass = entityClass;
