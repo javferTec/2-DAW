@@ -18,7 +18,7 @@ public class AuthorDaoJdbc extends BaseDaoJdbc<Author> implements AuthorDaoDb {
 
     @Override
     public List<Author> getByIdBook(long idBook) {
-        String sql = super.getSelectSql() + """
+        String sql = super.select() + """
                      JOIN books_authors ON authors.id = books_authors.author_id
                      AND books_authors.book_id = ?
                 """;

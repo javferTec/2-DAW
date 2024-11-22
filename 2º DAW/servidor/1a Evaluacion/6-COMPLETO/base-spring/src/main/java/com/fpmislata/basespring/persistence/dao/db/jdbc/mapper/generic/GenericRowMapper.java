@@ -126,7 +126,7 @@ public class GenericRowMapper<T> implements RowMapper<T> {
         if (foreignKeyValue != null) {
             String query = String.format("SELECT * FROM %s WHERE id = ?", getTableName(targetEntity));
             // Realiza una consulta para obtener la entidad relacionada
-            Object relatedInstance = jdbcTemplate.queryForObject(query, new Object[]{foreignKeyValue}, new GenericRowMapper<>(targetEntity, jdbcTemplate));
+            Object relatedInstance = jdbcTemplate.queryForObject(query, new GenericRowMapper<>(targetEntity, jdbcTemplate), foreignKeyValue);
             setRelatedField(instance, field, relatedInstance); // Establece el valor de la entidad relacionada
         }
     }
@@ -158,8 +158,9 @@ public class GenericRowMapper<T> implements RowMapper<T> {
     private List<?> mapRelatedEntities(Class<?> targetEntity, String query, Object instance) {
         try {
             // Realiza la consulta y mapea las entidades relacionadas
-            return jdbcTemplate.query(query, new Object[]{getPrimaryKey(instance)},
-                    (rs, rowNum) -> new GenericRowMapper<>(targetEntity, jdbcTemplate).mapRow(rs, rowNum));
+            return jdbcTemplate.query(query,
+                    (rs, rowNum) -> new GenericRowMapper<>(targetEntity, jdbcTemplate).mapRow(rs, rowNum),
+                    getPrimaryKey(instance));
         } catch (Exception e) {
             logger.error("Error mapping related entities: {}", e.getMessage(), e);
             return Collections.emptyList(); // Devuelve una lista vacia en caso de error
