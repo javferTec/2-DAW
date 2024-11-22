@@ -3,17 +3,28 @@ package com.fpmislata.basespring.persistence.dao.db.jdbc.utils.metadata;
 import com.fpmislata.basespring.common.annotation.persistence.Column;
 import com.fpmislata.basespring.common.annotation.persistence.PrimaryKey;
 import com.fpmislata.basespring.common.annotation.persistence.Table;
+import com.fpmislata.basespring.common.exception.MappingException;
 import com.fpmislata.basespring.persistence.dao.db.jdbc.utils.cache.ReflectionColumnFieldCache;
-import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Field;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-@RequiredArgsConstructor
 public class EntityMetadataExtractor<T> {
     private final Class<T> entityClass;
+    private static final Logger logger = LoggerFactory.getLogger(EntityMetadataExtractor.class);
+
+    public EntityMetadataExtractor(Class<T> entityClass) {
+        this.entityClass = entityClass;
+    }
+
 
     // Extrae los valores de las columnas de una entidad en un mapa clave-valor
     public Map<String, Object> extractColumnValues(Object entity) {
@@ -65,8 +76,45 @@ public class EntityMetadataExtractor<T> {
     }
 
     // Genera el SQL de selección de todos los registros para la tabla de la entidad actual
-    public String getSelectSql() {
+    public String getSelectTable() {
         return "SELECT * FROM " + getTableName(); // Retorna el SQL SELECT
     }
 
+    // Metodo para obtener la clave primaria de una entidad
+    public Object getPrimaryKey(Object instance) {
+        return getPrimaryKeyField(instance)
+                .map(field -> {
+                    try {
+                        field.setAccessible(true);
+                        return field.get(instance);
+                    } catch (IllegalAccessException e) {
+                        throw new MappingException("Failed to access primary key field", e);
+                    }
+                })
+                .orElseThrow(() -> new MappingException("No primary key found in " + instance.getClass()));
+    }
+
+    // Metodo para obtener el campo de la clave primaria de una entidad
+    public Optional<Field> getPrimaryKeyField(Object instance) {
+        return Arrays.stream(instance.getClass().getDeclaredFields())
+                .filter(field -> field.isAnnotationPresent(PrimaryKey.class)) // Filtra los campos con la anotacion PrimaryKey
+                .findFirst(); // Devuelve el primer campo que tenga la anotacion
+    }
+
+    // Metodo para verificar si una columna existe en el ResultSet
+    public boolean columnExists(ResultSet resultSet, String columnName) {
+        try {
+            ResultSetMetaData metaData = resultSet.getMetaData(); // Obtiene los metadatos del resultado
+            int columnCount = metaData.getColumnCount(); // Obtiene el numero de columnas
+            // Itera sobre todas las columnas para verificar si existe
+            for (int i = 1; i <= columnCount; i++) {
+                if (metaData.getColumnName(i).equalsIgnoreCase(columnName)) {
+                    return true;
+                }
+            }
+        } catch (SQLException e) {
+            logger.error("Error checking if column '{}' exists: {}", columnName, e.getMessage(), e);
+        }
+        return false;
+    }
 }

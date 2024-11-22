@@ -18,7 +18,7 @@ public class GenreDaoJdbc extends BaseDaoJdbc<Genre> implements GenreDaoDb {
 
     @Override
     public List<Genre> getByIdBook(long idBook) {
-        String sql = super.select() + """
+        String sql = super.selectTable() + """
                      JOIN books_genres ON genres.id = books_genres.genre_id
                      AND books_genres.book_id = ?
                 """;

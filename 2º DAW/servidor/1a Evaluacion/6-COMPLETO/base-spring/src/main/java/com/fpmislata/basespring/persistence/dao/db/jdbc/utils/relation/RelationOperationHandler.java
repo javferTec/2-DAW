@@ -5,7 +5,7 @@ import com.fpmislata.basespring.common.annotation.persistence.OneToMany;
 import com.fpmislata.basespring.common.annotation.persistence.OneToOne;
 import com.fpmislata.basespring.persistence.dao.db.jdbc.utils.metadata.EntityMetadataExtractor;
 import com.fpmislata.basespring.persistence.dao.db.jdbc.utils.operation.OperationType;
-import com.fpmislata.basespring.persistence.dao.db.jdbc.utils.sql.SqlBuilder;
+import com.fpmislata.basespring.persistence.dao.db.jdbc.utils.sql.SqlBuilderOperation;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -18,20 +18,20 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
 
-public class RelationHandler<T> {
+public class RelationOperationHandler<T> {
 
     private final Class<T> entityClass;
     private final EntityMetadataExtractor<T> metadata;
     private final JdbcTemplate jdbcTemplate;
-    private final SqlBuilder sqlBuilder;
+    private final SqlBuilderOperation sqlBuilderOperation;
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-    public RelationHandler(Class<T> entityClass, DataSource dataSource) {
+    public RelationOperationHandler(Class<T> entityClass, DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
         this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
         this.entityClass = entityClass;
         this.metadata = new EntityMetadataExtractor<>(entityClass);
-        this.sqlBuilder = new SqlBuilder();
+        this.sqlBuilderOperation = new SqlBuilderOperation();
     }
 
 
@@ -72,7 +72,7 @@ public class RelationHandler<T> {
 
             } else if (operationType == OperationType.INSERT) {
                 // Si es una nueva entidad relacionada, primero la insertamos
-                String sql = sqlBuilder.buildInsertSql(relatedTableName, relatedValues);
+                String sql = sqlBuilderOperation.buildInsertSql(relatedTableName, relatedValues);
                 KeyHolder keyHolder = new GeneratedKeyHolder();
                 namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource(relatedValues), keyHolder);
                 long relatedId = Objects.requireNonNull(keyHolder.getKey()).longValue();
@@ -97,11 +97,11 @@ public class RelationHandler<T> {
                 relatedValues.put(mappedBy, parentId); // Configura la clave foránea en la entidad relacionada
 
                 if (operationType == OperationType.INSERT) {
-                    String sql = sqlBuilder.buildInsertSql(relatedTableName, relatedValues);
+                    String sql = sqlBuilderOperation.buildInsertSql(relatedTableName, relatedValues);
                     namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource(relatedValues));
                 } else if (operationType == OperationType.UPDATE) {
                     String primaryKey = metadata.getPrimaryKeyColumn(relatedEntity.getClass());
-                    String sql = sqlBuilder.buildUpdateSql(relatedTableName, relatedValues, primaryKey);
+                    String sql = sqlBuilderOperation.buildUpdateSql(relatedTableName, relatedValues, primaryKey);
                     namedParameterJdbcTemplate.update(sql, relatedValues);
                 }
             }

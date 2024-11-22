@@ -4,8 +4,8 @@ import com.fpmislata.basespring.persistence.dao.db.GenericDaoDb;
 import com.fpmislata.basespring.persistence.dao.db.jdbc.mapper.generic.GenericRowMapper;
 import com.fpmislata.basespring.persistence.dao.db.jdbc.utils.metadata.EntityMetadataExtractor;
 import com.fpmislata.basespring.persistence.dao.db.jdbc.utils.operation.OperationType;
-import com.fpmislata.basespring.persistence.dao.db.jdbc.utils.relation.RelationHandler;
-import com.fpmislata.basespring.persistence.dao.db.jdbc.utils.sql.SqlBuilder;
+import com.fpmislata.basespring.persistence.dao.db.jdbc.utils.relation.RelationOperationHandler;
+import com.fpmislata.basespring.persistence.dao.db.jdbc.utils.sql.SqlBuilderOperation;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -24,22 +24,21 @@ public class BaseDaoJdbc<T> implements GenericDaoDb<T> {
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate; // Permite el uso de parametros nombrados en consultas
     private final GenericRowMapper<T> rowMapper; // Mapea las filas del resultado SQL a objetos de la clase generica
     private final EntityMetadataExtractor<T> entityMetadataExtractor; // Extrae los valores de las columnas de una entidad en un mapa clave-valor
-    private final RelationHandler<T> relationHandler; // Maneja las relaciones entre entidades
-    private final SqlBuilder sqlBuilder; // Construye SQL de inserción, actualización y criterios WHERE
+    private final RelationOperationHandler<T> relationOperationHandler; // Maneja las relaciones entre entidades
+    private final SqlBuilderOperation sqlBuilderOperation; // Construye SQL de inserción, actualización y criterios WHERE
 
     // Constructor
     // Inicializa las variables de instancia con los parametros proporcionados
     public BaseDaoJdbc(Class<T> entityClass, DataSource dataSource) {
         this.entityClass = entityClass;
-        this.relationHandler = new RelationHandler<>(entityClass, dataSource);
+        this.relationOperationHandler = new RelationOperationHandler<>(entityClass, dataSource);
         this.entityMetadataExtractor = new EntityMetadataExtractor<>(entityClass);
-        this.sqlBuilder = new SqlBuilder();
+        this.sqlBuilderOperation = new SqlBuilderOperation();
         this.jdbcTemplate = new JdbcTemplate(dataSource);
         this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource); // dataSource es un objeto que representa la fuente de datos
-        this.rowMapper = new GenericRowMapper<>(entityClass, jdbcTemplate);
+        this.rowMapper = new GenericRowMapper<>(entityClass, dataSource);
     }
 
-    // ##################### Generic Query Methods #####################
 
     // Ejecuta una consulta SQL personalizada que devuelve una unica entidad
     public T customSqlQuery(String sql, Map<String, ?> params) {
@@ -61,31 +60,31 @@ public class BaseDaoJdbc<T> implements GenericDaoDb<T> {
 
     // Recupera todas las entidades de la tabla asociada
     public List<T> getAll() {
-        return jdbcTemplate.query(entityMetadataExtractor.getSelectSql(), rowMapper);
+        return jdbcTemplate.query(entityMetadataExtractor.getSelectTable(), rowMapper);
     }
 
     // Recupera una pagina especifica de entidades
     public List<T> getAll(int page, int size) {
-        String sql = entityMetadataExtractor.getSelectSql() + " LIMIT ? OFFSET ?";
+        String sql = entityMetadataExtractor.getSelectTable() + " LIMIT ? OFFSET ?";
         return jdbcTemplate.query(sql, rowMapper, size, (page - 1) * size);
     }
 
     // Recupera entidades por un array de IDs
     public List<T> getAllByIds(Long[] ids) {
-        String sql = entityMetadataExtractor.getSelectSql() + " WHERE id IN (:ids)";
+        String sql = entityMetadataExtractor.getSelectTable() + " WHERE id IN (:ids)";
         Map<String, List<Long>> params = Map.of("ids", Arrays.asList(ids));
         return namedParameterJdbcTemplate.query(sql, params, rowMapper);
     }
 
     // Recupera entidades segun un mapa de criterios
     public List<T> getByCriteria(Map<String, Object> criteria) {
-        String sql = sqlBuilder.buildSqlWithCriteria(entityMetadataExtractor.getSelectSql(), criteria);
+        String sql = sqlBuilderOperation.buildSqlWithCriteria(entityMetadataExtractor.getSelectTable(), criteria);
         return namedParameterJdbcTemplate.query(sql, criteria, rowMapper);
     }
 
     // Recupera una entidad por su ID como un Optional
     public Optional<T> getById(long id) {
-        return queryForOptional(entityMetadataExtractor.getSelectSql() + " WHERE id = ?", id);
+        return queryForOptional(entityMetadataExtractor.getSelectTable() + " WHERE id = ?", id);
     }
 
     // Recupera una entidad usando su clave primaria
@@ -109,36 +108,34 @@ public class BaseDaoJdbc<T> implements GenericDaoDb<T> {
         }
     }
 
-    // ##################### CRUD Operations #####################
-
     // Inserta una nueva entidad en la base de datos
     public long insert(T entity) {
         Map<String, Object> values = entityMetadataExtractor.extractColumnValues(entity);
-        String sql = sqlBuilder.buildInsertSql(entityMetadataExtractor.getTableName(), values);
+        String sql = sqlBuilderOperation.buildInsertSql(entityMetadataExtractor.getTableName(), values);
         KeyHolder keyHolder = new GeneratedKeyHolder();
         namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource(values), keyHolder);
         long generatedId = Objects.requireNonNull(keyHolder.getKey()).longValue();
-        relationHandler.handleRelations(entity, generatedId, OperationType.INSERT);
+        relationOperationHandler.handleRelations(entity, generatedId, OperationType.INSERT);
         return generatedId;
     }
 
     // Actualiza una entidad existente en la base de datos
     public void update(T entity) {
         Map<String, Object> values = entityMetadataExtractor.extractColumnValues(entity);
-        String sql = sqlBuilder.buildUpdateSql(entityMetadataExtractor.getTableName(), values, entityMetadataExtractor.getPrimaryKeyColumn());
+        String sql = sqlBuilderOperation.buildUpdateSql(entityMetadataExtractor.getTableName(), values, entityMetadataExtractor.getPrimaryKeyColumn());
         namedParameterJdbcTemplate.update(sql, values);
-        relationHandler.handleRelations(entity, (Long) values.get(entityMetadataExtractor.getPrimaryKeyColumn()), OperationType.UPDATE);
+        relationOperationHandler.handleRelations(entity, (Long) values.get(entityMetadataExtractor.getPrimaryKeyColumn()), OperationType.UPDATE);
     }
 
     // Elimina una entidad por su ID
     public void delete(long id) {
-        relationHandler.handleRelationsBeforeDelete(id);
+        relationOperationHandler.handleRelationsBeforeDelete(id);
         String sql = "DELETE FROM " + entityMetadataExtractor.getTableName() + " WHERE " + entityMetadataExtractor.getPrimaryKeyColumn() + " = ?";
         jdbcTemplate.update(sql, id);
     }
 
-    public String select() {
-        return entityMetadataExtractor.getSelectSql();
+    public String selectTable() {
+        return entityMetadataExtractor.getSelectTable();
     }
 
 }

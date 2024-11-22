@@ -3,7 +3,7 @@ package com.fpmislata.basespring.persistence.dao.db.jdbc.utils.sql;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class SqlBuilder {
+public class SqlBuilderOperation {
 
     // Construye un SQL de inserción basado en el nombre de la tabla y los valores proporcionados
     public String buildInsertSql(String tableName, Map<String, Object> values) {
