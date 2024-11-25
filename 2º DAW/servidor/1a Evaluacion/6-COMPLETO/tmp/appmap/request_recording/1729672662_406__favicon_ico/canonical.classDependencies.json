@@ -1,6 +1,0 @@
-[
-  {
-    "caller": "GET /favicon.ico",
-    "callee": "com/fpmislata"
-  }
-]

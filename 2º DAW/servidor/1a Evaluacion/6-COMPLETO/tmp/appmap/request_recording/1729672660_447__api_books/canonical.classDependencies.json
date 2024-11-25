@@ -1,6 +1,0 @@
-[
-  {
-    "caller": "GET /api/books",
-    "callee": "com/fpmislata"
-  }
-]

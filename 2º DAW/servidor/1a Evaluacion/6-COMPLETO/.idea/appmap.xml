@@ -14,6 +14,12 @@
         </entry>
       </map>
     </option>
+    <option name="explainWithNavieOpened" value="true" />
     <option name="openedAppMapEditor" value="true" />
+    <option name="recentRemoteRecordingURLs">
+      <list>
+        <option value="http://localhost:8080/api/books" />
+      </list>
+    </option>
   </component>
 </project>

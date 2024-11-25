@@ -1,5 +1,0 @@
-[
-  "     SELECT * FROM books\n     LEFT JOIN categories ON books.category_id = categories.id\n     LEFT JOIN publishers ON books.publisher_id = publishers.id\n     WHERE books.isbn = ?\n",
-  "    SELECT authors.* FROM authors\n                    JOIN books_authors ON authors.id = books_authors.author_id\n                    JOIN books ON books_authors.book_id = books.id\n                    AND books.isbn = ?\n",
-  "    SELECT genres.* FROM genres\n                    JOIN books_genres ON genres.id = books_genres.genre_id\n                    JOIN books ON books_genres.book_id = books.id\n                    AND books.isbn = ?\n"
-]

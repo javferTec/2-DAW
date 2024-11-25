@@ -1,7 +1,0 @@
-[
-  "com/fpmislata/basespring/common/http_errors/ApiExceptionHandler",
-  "com/fpmislata/basespring/common/locale/CustomLocaleChangeInterceptor",
-  "com/fpmislata/basespring/controller/BookController",
-  "com/fpmislata/basespring/domain/service/impl/BookServiceImpl",
-  "com/fpmislata/basespring/persistence/repository/impl/jdbc/BookRepositoryImplJdbc"
-]

@@ -1,4 +1,4 @@
 name: "base-spring"
 packages:
-- path: "com.fpmislata.basespring"
+- path: "base-spring.src.main.java.com.fpmislata.basespring"
 appmap_dir: "tmp/appmap"

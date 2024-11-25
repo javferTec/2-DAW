@@ -1,4 +1,0 @@
-[
-  "SELECT * FROM books LEFT JOIN categories ON books.category_id = categories.id LEFT JOIN publishers ON books.publisher_id = publishers.id",
-  "SELECT @@session.tx_isolation"
-]
