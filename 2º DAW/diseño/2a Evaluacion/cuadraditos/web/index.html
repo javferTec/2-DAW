@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <title>Diseño Javi</title>
+  </head>
+
+  <body>
+    <!---->
+
+    <div class="l-flex">
+      <div class="g--background-color-{ red, blue@phone, yellow@tablet, green@desktop, brown@fulldesktop }"></div>
+
+      <div class="g--background-color-red g--background-color-blue@phone g--background-color-yellow@tablet g--background-color-green@desktop g--background-color-brown@fulldesktop"></div>
+    </div>
+
+    <script>
+      document.querySelectorAll('[class*="{"]').forEach((element) => {
+        const originalClass = element.getAttribute("class");
+
+        // Extraer la parte fija antes de las llaves
+        const baseClass = originalClass.split("{")[0].replace(/\s+/g, "");
+
+        // Reemplazar las llaves con las clases dinámicas
+        const expandedClasses = originalClass.replace(
+          /[^{]*\{([^}]+)\}/g,
+          (_, classes) => {
+            return classes
+              .trim()
+              .split(",")
+              .map((cls) => baseClass + cls.trim())
+              .join(" ");
+          }
+        );
+
+        // Asignar las clases expandidas al atributo class del elemento
+        element.setAttribute("class", expandedClasses);
+      });
+    </script>
+    
+  </body>
+</html>
